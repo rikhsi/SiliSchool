@@ -1,0 +1,22 @@
+@import '../../styles/colors.less';
+@import '../../styles/fonts.less';
+
+
+.header{
+    &__container{
+        padding: 40px 0;
+        max-width: 1312px;
+        margin: 0 auto;
+    }
+    &__logo{
+        .text(950,32px,41px,@mainBlue);
+        cursor: pointer;
+    }
+    &__menu{
+        .text(700,16px,20px,@mainBlack);
+        
+        &-hover{
+            cursor: pointer;
+        }
+    }
+}
