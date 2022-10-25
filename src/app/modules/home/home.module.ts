@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { MainComponent } from './main/main.component';
 import { NewsComponent } from './news/news.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 //swiperModule
 import { SwiperModule } from 'swiper/angular';
@@ -13,15 +14,22 @@ import { SwiperModule } from 'swiper/angular';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzImageModule } from 'ng-zorro-antd/image';
+import { NzTypographyModule } from 'ng-zorro-antd/typography';
+
 //shared
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
+
+//translateModule
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @NgModule({
   declarations: [
     HomeComponent,
     MainComponent,
-    NewsComponent
+    NewsComponent,
+    GalleryComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +38,9 @@ import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
     NzButtonModule,
     NzImageModule,
     TitleModule,
-    SkeletonModule
+    SkeletonModule,
+    TranslateModule,
+    NzTypographyModule
   ]
 })
 export class HomeModule { }

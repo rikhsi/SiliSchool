@@ -1,32 +1,20 @@
 @import '../../../styles/colors.less';
 @import '../../../styles/fonts.less';
 
-.news{
+.gallery{
+    &__wrapper{
+        padding: 128px 0;
+        background-color: @yellow;
+    }  
+    
     &__container{
         max-width: 1312px;
         margin: 0 auto;
     }
 
-    &__title{
-        .text(700,30px,150%,@grey);
-    }
-
-    &__info{
-        .text(400,24px,150%,@grey);
-    }
-
-    &__button{
-        width: auto;
-        height: auto;
-        background: inherit;
-        border: none;
-        .text(300,16px,42px,@grey);
-        text-decoration-line: underline;
-    }
-
     &__img{
         height: 100%;
-        max-height: 400px;
+        max-height: 680px;
         overflow: hidden;
         border-radius: 16px;
         background-color: @skeleton;

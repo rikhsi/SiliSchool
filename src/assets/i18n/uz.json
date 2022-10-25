@@ -8,5 +8,12 @@
             "about": "Biz haqimizda"
         },
         "time": "Dush-Shan"
+    },
+    "news": {
+        "title": "Yangiliklar",
+        "button": "Batafsil o'qing"
+    },
+    "gallery": {
+        "title": "Galereya"
     }
 }

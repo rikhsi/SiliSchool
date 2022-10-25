@@ -1,0 +1,25 @@
+<div class="gallery__wrapper">
+    <div nz-row nzAlign="middle" [nzGutter]="[0,64]" class="gallery__container">
+        <div nz-col nzSpan="24">
+            <sili-title [title]="title | translate" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
+        </div>
+        <div nz-col nzSpan="24">
+            <ng-container *ngIf="!isLoading">
+                <swiper #swiper [config]="config">
+                    <ng-template swiperSlide *ngFor="let data of galleries">
+                        <div nz-row [nzGutter]="[65]">
+                            <div nz-col nzSpan="24">
+                                <div class="gallery__img">
+                                    <img nz-image [nzSrc]="data.img" [nzFallback]="fallback" alt="news">
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </swiper>
+            </ng-container>
+            <ng-container *ngIf="isLoading">
+                <sili-skeleton [isImageSkeleton]="true"></sili-skeleton>
+            </ng-container>
+        </div>
+    </div>
+</div>

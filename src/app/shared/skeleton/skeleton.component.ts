@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'sili-skeleton',
@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkeletonComponent implements OnInit {
 
+  @Input() isImageSkeleton: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

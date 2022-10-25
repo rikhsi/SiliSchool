@@ -1,7 +1,7 @@
 <div class="news__container">
     <div nz-row [nzGutter]="[0,65]">
         <div nz-col nzSpan="24">
-            <sili-title [title]="title" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
+            <sili-title [title]="title | translate" [titleColor]="titleColor" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
         </div>
         <div nz-col nzSpan="24">
             <ng-container *ngIf="!isLoading">
@@ -11,13 +11,13 @@
                             <div nz-col nzSpan="12">
                                 <div nz-row [nzGutter]="[0,25]">
                                     <div nz-col nzSpan="24">
-                                        <h1 class="news__title">{{data.title}}</h1>
+                                        <h1 nz-typography nzEllipsis [nzEllipsisRows]="2" class="news__title">{{data.title}}</h1>
                                     </div>
                                     <div nz-col nzSpan="24">
-                                        <h2 class="news__info">{{data.info}}</h2>
+                                        <h2 nz-typography nzEllipsis [nzEllipsisRows]="6" class="news__info">{{data.info}}</h2>
                                     </div>
                                     <div nz-col nzSpan="24">
-                                        <span class="news__button">Читать полностью</span>
+                                        <button class="news__button">{{'news.button' | translate}}</button>
                                     </div>
                                 </div>
                             </div>

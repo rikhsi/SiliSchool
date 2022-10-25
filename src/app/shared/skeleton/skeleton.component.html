@@ -1,17 +1,28 @@
-<div nz-row [nzGutter]="[65]">
-    <div nz-col nzSpan="12">
-        <div nz-row [nzGutter]="[0,48]">
-            <div nz-col nzSpan="24">
-                <nz-skeleton [nzActive]="true"></nz-skeleton> 
+<ng-container *ngIf="!isImageSkeleton">
+    <div nz-row [nzGutter]="[65]">
+        <div nz-col nzSpan="12">
+            <div nz-row [nzGutter]="[0,48]">
+                <div nz-col nzSpan="24">
+                    <nz-skeleton [nzActive]="true"></nz-skeleton> 
+                </div>
+                <div nz-col nzSpan="24">
+                    <nz-skeleton [nzActive]="true"></nz-skeleton> 
+                </div>
             </div>
-            <div nz-col nzSpan="24">
-                <nz-skeleton [nzActive]="true"></nz-skeleton> 
+        </div>
+        <div nz-col nzSpan="12">
+            <div class="skeleton__img">
+                <nz-skeleton-element [nzActive]="true" nzType="button" [nzSize]="'default'"></nz-skeleton-element>  
             </div>
         </div>
     </div>
-    <div nz-col nzSpan="12">
-        <div class="skeleton__img">
-            <nz-skeleton-element [nzActive]="true" nzType="button" [nzSize]="'default'"></nz-skeleton-element>  
+</ng-container>
+<ng-container *ngIf="isImageSkeleton">
+    <div nz-row>
+        <div nz-col nzSpan="24">
+            <div class="skeleton__img isImageSkeleton">
+                <nz-skeleton-element [nzActive]="true" nzType="button" [nzSize]="'default'"></nz-skeleton-element>  
+            </div>
         </div>
     </div>
-</div>
+</ng-container>
