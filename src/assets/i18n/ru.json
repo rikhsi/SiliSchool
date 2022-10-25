@@ -1,8 +1,8 @@
 {
     "header": {
-        "logo": "ДШМИ-15",
+        "logo": "ДШМИ",
         "menu": {
-            "department": "Отделения",
+            "department": "Направления",
             "info": "Информация",
             "teachers": "Учителя",
             "about": "О нас"

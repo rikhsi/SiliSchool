@@ -20,8 +20,14 @@
         height: auto;
         background: inherit;
         border: none;
-        .text(300,16px,42px,@grey);
+        transition: 0.3s;
         text-decoration-line: underline;
+        .text(300,16px,42px,@grey);
+        
+        &:hover{
+            transition: 0.3s;
+            color: @mainRed;
+        }
     }
 
     &__img{
