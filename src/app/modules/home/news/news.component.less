@@ -1,0 +1,35 @@
+@import '../../../styles/colors.less';
+@import '../../../styles/fonts.less';
+
+.news{
+    &__container{
+        max-width: 1312px;
+        margin: 0 auto;
+    }
+
+    &__title{
+        .text(700,30px,150%,@grey);
+    }
+
+    &__info{
+        .text(400,24px,150%,@grey);
+    }
+
+    &__button{
+        .text(300,16px,42px,@grey);
+        text-decoration-line: underline;
+    }
+
+    &__img{
+        height: 100%;
+        max-height: 400px;
+        overflow: hidden;
+        border-radius: 16px;
+        cursor: pointer;
+
+        img{
+            pointer-events:none;
+            object-fit: cover;
+        }
+    }
+}

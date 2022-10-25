@@ -1,0 +1,50 @@
+@import '../../../styles/colors.less';
+@import '../../../styles/fonts.less';
+
+.main{
+    &__wrapper{
+        background-color: @mainBlue;
+    }  
+    
+    &__container{
+        max-width: 1312px;
+        margin: 0 auto;
+    }
+
+    &__title{
+        letter-spacing: 0.2px;
+        .text(700,64px,80px,@white);
+    }
+
+    &__info{
+        max-width: 572px;
+        letter-spacing: 0.2px;
+        .text(400,20px,30px,@white);
+    }
+
+    &__buttons{
+        width: 186px;
+        height: 54px;
+        border: none;
+        border-radius: 5px;
+        letter-spacing: 0.2px;
+        .text(700,16px,22px,@white);
+
+        &-red{
+            background-color: @mainRed;
+        }
+
+        &-default{
+            border: 1.5px solid @buttonBorder;
+            background-color: inherit;
+        }
+    }
+
+    &__img{
+        padding-top: 75px;
+        
+        img{
+            object-fit: cover;
+        }
+    }
+}

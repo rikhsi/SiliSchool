@@ -28,7 +28,7 @@ import { HttpLoaderFactory } from './services/translate';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
