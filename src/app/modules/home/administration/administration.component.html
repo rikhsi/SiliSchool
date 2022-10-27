@@ -1,28 +1,24 @@
 <div class="adminstration__wrapper">
     <div class="adminstration__container">
-       <div nz-row> 
+        <div nz-row [nzGutter]="[0,32]">
             <div nz-col nzSpan="24">
-                <div nz-row [nzGutter]="[0,32]">
-                    <div nz-col nzSpan="24">
-                        <sili-title [title]="title | translate" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <ng-container *ngIf="!isLoading">
-                             <swiper #swiper [config]="config" class="swiper">
-                                <ng-template swiperSlide *ngFor="let data of adminstration">
-                                    <sili-teacher [teacher]="data"></sili-teacher>             
-                                </ng-template>
-                            </swiper>     
-                        </ng-container>
-                        <ng-container *ngIf="isLoading">
-                            <sili-adminstration-skeleton [counter]="4"></sili-adminstration-skeleton>
-                        </ng-container>
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <sili-more></sili-more>
-                    </div>
-                </div>
+                <sili-title [title]="title | translate" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
             </div>
-       </div>
+            <div nz-col nzSpan="24">
+                <ng-container *ngIf="!isLoading">
+                    <swiper #swiper [config]="config" class="adminstration__swiper">
+                        <ng-template swiperSlide *ngFor="let data of teachers">
+                            <sili-teacher [teacher]="data"></sili-teacher>             
+                        </ng-template>
+                    </swiper>     
+                </ng-container>
+                <ng-container *ngIf="isLoading">
+                    <sili-adminstration-skeleton [counter]="4"></sili-adminstration-skeleton>
+                </ng-container>
+            </div>
+            <div nz-col nzSpan="24">
+                <sili-more></sili-more>
+            </div>
+        </div>
     </div>
 </div>

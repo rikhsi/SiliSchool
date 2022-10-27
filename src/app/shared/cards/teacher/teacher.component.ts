@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Teacher } from 'src/app/models/teacher';
+import { Adminstration } from 'src/app/models/adminstration';
 
 
 @Component({
@@ -8,10 +8,8 @@ import { Teacher } from 'src/app/models/teacher';
   styleUrls: ['./teacher.component.less']
 })
 export class TeacherComponent implements OnInit {
-
+  @Input() teacher!: Adminstration;
   fallback:string = '../../../../assets/img/fallback.png';
-
-  @Input() teacher!: Teacher;
 
   constructor() { }
 

@@ -6,8 +6,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./title.component.less']
 })
 export class TitleComponent implements OnInit {
-
   @Input() title!: string;
+  @Input() isShow: boolean = true;
   @Output() swipePrev = new EventEmitter();
   @Output() swipeNext = new EventEmitter();
 

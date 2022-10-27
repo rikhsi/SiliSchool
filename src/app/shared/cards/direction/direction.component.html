@@ -1,0 +1,18 @@
+<div class="direction__card">
+    <div nz-row [nzGutter]="[0,20]">
+        <div nz-col nzSpan="24">
+            <div class="direction__img">
+                <img nz-image [nzSrc]="direction.img" [nzFallback]="fallback">
+            </div>
+        </div>
+        <div nz-col nzSpan="24">
+            <h1 class="direction__title">{{direction.title}}</h1>
+        </div>
+        <div nz-col nzSpan="24">
+            <div class="direction__spacer"></div>
+        </div>
+        <div nz-col nzSpan="24">
+            <h2 nz-typography nzEllipsis [nzEllipsisRows]="3" class="direction__info">{{direction.info}}</h2>
+        </div>
+    </div>
+</div> 

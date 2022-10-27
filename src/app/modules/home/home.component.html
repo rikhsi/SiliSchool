@@ -1,17 +1,31 @@
-<main nz-row [nzGutter]="[0,128]">
+<main nz-row>
     <section nz-col nzSpan="24">
         <sili-main></sili-main>
     </section>
-    <section nz-col nzSpan="24">
-        <sili-news></sili-news>
-    </section>
-    <!-- <section nz-col nzSpan="24">
-        <sili-gallery></sili-gallery>
-    </section> -->
-    <section nz-col nzSpan="24">
-        <sili-achievements></sili-achievements>
-    </section>
-    <section nz-col nzSpan="24">
-        <sili-administration></sili-administration>
-    </section>
+    <div nz-col nzSpan="24">
+        <div nz-row [nzGutter]="[0,128]">
+            <section nz-col nzSpan="24">
+                <sili-directions></sili-directions>
+            </section>
+            <section nz-col nzSpan="24">
+                <sili-news></sili-news>
+            </section>
+            <section nz-col nzSpan="24">
+                <sili-gallery></sili-gallery>
+            </section>
+            <section nz-col nzSpan="24">
+                <sili-achievements></sili-achievements>
+            </section>
+            <div nz-col nzSpan="24">
+                <div nz-row>
+                    <section nz-col nzSpan="24">
+                        <sili-administration></sili-administration>
+                    </section>
+                    <section nz-col nzSpan="24">
+                        <sili-faq></sili-faq>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>

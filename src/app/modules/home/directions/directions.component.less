@@ -1,13 +1,25 @@
 @import '../../../styles/colors.less';
 
-.adminstration{
+.gallery{
     &__wrapper{
         padding: 128px 0;
         background: @adminstration;
-    }
+    }  
+    
     &__container{
         max-width: 1312px;
         margin: 0 auto;
+    }
+
+    &__img{
+        height: 400px;
+        overflow: hidden;
+        background-color: @skeleton;
+
+        img{
+            pointer-events:none;
+            object-fit: cover;
+        }
     }
 
     &__swiper{

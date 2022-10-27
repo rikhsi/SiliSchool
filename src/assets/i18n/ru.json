@@ -22,5 +22,11 @@
     },
     "adminstration": {
         "title": "Админстрация"
+    },
+    "directions": {
+        "title": "Направления"
+    },
+    "faq": {
+        "title": "Faq"
     }
 }

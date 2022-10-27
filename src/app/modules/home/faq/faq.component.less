@@ -1,0 +1,42 @@
+@import '../../../styles/colors.less';
+@import '../../../styles/fonts.less';
+
+.faq{
+    &__wrapper{
+        padding: 128px 0;
+        background-color: @yellow;
+    }  
+    
+    &__container{
+        max-width: 1312px;
+        margin: 0 auto;
+    }
+
+    &__answer{
+        max-width: 1110px;
+        padding-top: 20px;
+        .text(400,24px,150%,@grey);
+    }
+}
+
+::ng-deep .ant-collapse-header{
+    margin: 0;
+    padding: 0;
+    .text(700,30px,150%,@grey) !important;
+}
+
+::ng-deep .ant-collapse > .ant-collapse-item > .ant-collapse-header{
+    padding: 0;
+}
+
+::ng-deep .ant-collapse > .ant-collapse-item.ant-collapse-no-arrow > .ant-collapse-header{
+    padding-left: 0;
+}
+
+::ng-deep .ant-collapse-borderless > .ant-collapse-item > .ant-collapse-content > .ant-collapse-content-box{
+    padding: 0;
+}
+
+::ng-deep .ant-collapse-borderless > .ant-collapse-item{
+    border-bottom: 1px solid @faqBorder;
+}

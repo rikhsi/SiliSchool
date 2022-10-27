@@ -12,6 +12,18 @@ export class GalleryService {
     },
     {
       img: '../../../../assets/img/banner.png'
+    },
+    {
+      img: '../../../../assets/imgs/banner.png'
+    },
+    {
+      img: 'https://i.redd.it/38aeu51hq3d61.jpg'
+    },
+    {
+      img: '../../../../assets/img/banner.png'
+    },
+    {
+      img: '../../../../assets/imgs/banner.png'
     }
   ];
   

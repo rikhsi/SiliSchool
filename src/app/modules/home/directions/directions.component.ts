@@ -1,19 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, {SwiperOptions, Autoplay} from "swiper";
-import { Gallery } from 'src/app/models/gallery';
-import { GalleryService } from 'src/app/services/gallery.service';
+import { Direction } from 'src/app/models/direction';
+import { DirectionsService } from 'src/app/services/directions.service';
 
 @Component({
-  selector: 'sili-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.less']
+  selector: 'sili-directions',
+  templateUrl: './directions.component.html',
+  styleUrls: ['./directions.component.less']
 })
-export class GalleryComponent implements OnInit {
-  title: string = 'gallery.title';
+export class DirectionsComponent implements OnInit {
+  title: string = 'directions.title';
   isLoading: boolean = true;
   fallback:string = '../../../../assets/img/fallback.png';
-  galleries!: Gallery[];
+  directions!: Direction[];
   config: SwiperOptions = {
     slidesPerView: 3,
     spaceBetween: 24,
@@ -25,13 +25,13 @@ export class GalleryComponent implements OnInit {
     }
   };
 
-  constructor(private galleryService: GalleryService) { 
+  constructor(private directionsService: DirectionsService) { 
     SwiperCore.use([Autoplay]);
   }
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.galleries = this.galleryService.galleries;
+      this.directions = this.directionsService.directions;
       this.isLoading = false;
     }, 2000);
   }
@@ -43,4 +43,5 @@ export class GalleryComponent implements OnInit {
   swipeNext(): void {
     this.swiper?.swiperRef.slideNext(700);
   }
+
 }

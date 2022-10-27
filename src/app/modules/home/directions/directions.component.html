@@ -1,18 +1,18 @@
-<div class="news__container">
-    <div nz-row [nzGutter]="[0,32]">
+<div class="gallery__wrapper">
+    <div nz-row nzAlign="middle" [nzGutter]="[0,32]" class="gallery__container">
         <div nz-col nzSpan="24">
             <sili-title [title]="title | translate" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
         </div>
         <div nz-col nzSpan="24">
             <ng-container *ngIf="!isLoading">
-                <swiper #swiper [config]="config" class="news__swiper">
-                    <ng-template swiperSlide *ngFor="let data of adverts">
-                        <sili-advert [advert]="data"></sili-advert>  
+                <swiper #swiper [config]="config" class="gallery__swiper">
+                    <ng-template swiperSlide *ngFor="let data of directions">
+                        <sili-direction [direction]="data"></sili-direction>
                     </ng-template>
                 </swiper>
             </ng-container>
             <ng-container *ngIf="isLoading">
-                <sili-news-skeleton></sili-news-skeleton>
+                <sili-direction-skeleton [counter]="3"></sili-direction-skeleton>
             </ng-container>
         </div>
         <div nz-col nzSpan="24">

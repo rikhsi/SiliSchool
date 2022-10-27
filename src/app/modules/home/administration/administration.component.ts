@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, {SwiperOptions, Autoplay} from "swiper";
-import { Teacher } from 'src/app/models/teacher';
+import { Adminstration } from 'src/app/models/adminstration';
 import { AdminstrationService } from 'src/app/services/adminstration.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class AdministrationComponent implements OnInit {
   title: string = 'adminstration.title';
   fallback:string = '../../../../assets/img/fallback.png';
   isLoading: boolean = true;
-  adminstration!: Teacher[];
+  teachers!: Adminstration[];
   config: SwiperOptions = {
     slidesPerView: 4,
     spaceBetween: 24,
@@ -31,7 +31,7 @@ export class AdministrationComponent implements OnInit {
 
   ngOnInit(): void {    
     setTimeout(() => {
-      this.adminstration = this.teachersService.teachers;
+      this.teachers = this.teachersService.teachers;
       this.isLoading = false;
     }, 2000);
   }

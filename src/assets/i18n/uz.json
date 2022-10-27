@@ -22,5 +22,11 @@
     },
     "adminstration": {
         "title": "Ma'muriyat"
+    },
+    "directions": {
+        "title": "Yo`nalishlar"
+    },
+    "faq": {
+        "title": "Ko'p so'raladigan savollar"
     }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Achievements } from 'src/app/models/achievements';
+import { Achievements } from 'src/app/models/achievement';
 import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, {SwiperOptions, Autoplay} from "swiper";
 import { AchievementsService } from 'src/app/services/achievements.service';

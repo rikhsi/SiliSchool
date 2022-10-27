@@ -5,13 +5,15 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { AdvertComponent } from './advert/advert.component';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { DirectionComponent } from './direction/direction.component';
 
 
 
 @NgModule({
   declarations: [
     TeacherComponent,
-    AdvertComponent
+    AdvertComponent,
+    DirectionComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
   ],
   exports: [
     TeacherComponent,
-    AdvertComponent
+    AdvertComponent,
+    DirectionComponent
   ]
 })
 export class CardsModule { }

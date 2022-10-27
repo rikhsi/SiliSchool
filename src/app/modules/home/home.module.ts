@@ -6,6 +6,10 @@ import { HomeComponent } from './home.component';
 import { MainComponent } from './main/main.component';
 import { NewsComponent } from './news/news.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { DirectionsComponent } from './directions/directions.component';
+import { FaqComponent } from './faq/faq.component';
+import { AchievementsComponent } from './achievements/achievements.component';
+import { AdministrationComponent } from './administration/administration.component';
 
 //swiperModule
 import { SwiperModule } from 'swiper/angular';
@@ -15,18 +19,16 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 
 //shared
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
 import { MoreModule } from 'src/app/shared/more/more.module';
+import { CardsModule } from 'src/app/shared/cards/cards.module';
 
 //translateModule
 import { TranslateModule } from '@ngx-translate/core';
-import { AchievementsComponent } from './achievements/achievements.component';
-import { AdministrationComponent } from './administration/administration.component';
-import { CardsModule } from 'src/app/shared/cards/cards.module';
-
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { CardsModule } from 'src/app/shared/cards/cards.module';
     NewsComponent,
     GalleryComponent,
     AchievementsComponent,
-    AdministrationComponent
+    AdministrationComponent,
+    DirectionsComponent,
+    FaqComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +47,7 @@ import { CardsModule } from 'src/app/shared/cards/cards.module';
     NzGridModule,
     NzButtonModule,
     NzImageModule,
+    NzCollapseModule,
     TitleModule,
     SkeletonModule,
     MoreModule,

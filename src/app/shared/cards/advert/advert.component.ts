@@ -7,8 +7,8 @@ import { Advert } from 'src/app/models/advert';
   styleUrls: ['./advert.component.less']
 })
 export class AdvertComponent implements OnInit {
-  fallback:string = '../../../../assets/img/fallback.png';
   @Input() advert!: Advert;
+  fallback:string = '../../../../assets/img/fallback.png';
 
   constructor() { }
 

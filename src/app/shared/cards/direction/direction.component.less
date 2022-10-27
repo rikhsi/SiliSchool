@@ -1,0 +1,31 @@
+@import '../../../styles/colors.less';
+@import '../../../styles/fonts.less';
+
+.direction{
+    &__card{
+        background: @white;
+        box-shadow: @cardShadow;
+        padding: 36px;
+    }
+    &__img{
+        height: 160px;
+        overflow: hidden;
+        
+        img{
+            pointer-events: none;
+            object-fit: cover;
+        }
+    }
+    &__spacer{
+        width: 50px;
+        height: 2px;
+        background: @mainRed;
+    }
+    &__title{
+        letter-spacing: 0.1px;
+        .text(700,24px,32px,@directionTitle);
+    }
+    &__info{
+        .text(400,14px,20px,@directionInfo);
+    }
+}

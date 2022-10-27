@@ -5,13 +5,17 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NewsSkeletonComponent } from './news-skeleton/news-skeleton.component';
 import { AdminstrationSkeletonComponent } from './adminstration-skeleton/adminstration-skeleton.component';
 import { AchievementSkeletonComponent } from './achievement-skeleton/achievement-skeleton.component';
+import { GallerySkeletonComponent } from './gallery-skeleton/gallery-skeleton.component';
+import { DirectionSkeletonComponent } from './direction-skeleton/direction-skeleton.component';
 
 
 @NgModule({
   declarations: [
     NewsSkeletonComponent,
     AdminstrationSkeletonComponent,
-    AchievementSkeletonComponent
+    AchievementSkeletonComponent,
+    GallerySkeletonComponent,
+    DirectionSkeletonComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +25,9 @@ import { AchievementSkeletonComponent } from './achievement-skeleton/achievement
   exports: [
     NewsSkeletonComponent,
     AchievementSkeletonComponent,
-    AdminstrationSkeletonComponent
+    AdminstrationSkeletonComponent,
+    GallerySkeletonComponent,
+    DirectionSkeletonComponent
   ]
 })
 export class SkeletonModule { }

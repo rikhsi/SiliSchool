@@ -19,9 +19,9 @@ export class NewsComponent implements OnInit {
     loop: true,
     simulateTouch:false,
     fadeEffect: { crossFade: true, },
-    // autoplay: {
-    //   delay: 10000
-    // }
+    autoplay: {
+      delay: 10000
+    }
   };
 
   constructor(private newsService: NewsService) { 
