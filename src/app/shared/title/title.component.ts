@@ -8,7 +8,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class TitleComponent implements OnInit {
 
   @Input() title!: string;
-  @Input() titleColor!: string;
   @Output() swipePrev = new EventEmitter();
   @Output() swipeNext = new EventEmitter();
 

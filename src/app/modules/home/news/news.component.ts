@@ -11,7 +11,6 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class NewsComponent implements OnInit {
   title: string = 'news.title';
-  titleColor: string = '#4A4A4A';
   fallback:string = '../../../../assets/img/fallback.png';
   isLoading: boolean = true;
   adverts!: Advert[];

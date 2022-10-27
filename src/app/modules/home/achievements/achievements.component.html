@@ -1,0 +1,23 @@
+<div class="achievements__container">
+    <div nz-row [nzGutter]="[0,64]">
+        <div nz-col nzSpan="24">
+            <sili-title [title]="title | translate" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
+        </div>
+        <div nz-col nzSpan="24">
+            <ng-container *ngIf="!isLoading">
+                <swiper #swiper [config]="config">
+                    <ng-template swiperSlide *ngFor="let data of achievements">
+                        <img nz-image [nzSrc]="data.img" [nzFallback]="fallback" alt="news" class="achievements__img">   
+                    </ng-template>
+                </swiper>
+            </ng-container>
+            <ng-container *ngIf="isLoading">
+                <sili-skeleton></sili-skeleton>
+            </ng-container>
+        </div>
+        <div nz-col nzSpan="24">
+            <sili-more></sili-more>
+        </div>
+    </div>
+</div>
+

@@ -19,9 +19,11 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 //shared
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
+import { MoreModule } from 'src/app/shared/more/more.module';
 
 //translateModule
 import { TranslateModule } from '@ngx-translate/core';
+import { AchievementsComponent } from './achievements/achievements.component';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { TranslateModule } from '@ngx-translate/core';
     HomeComponent,
     MainComponent,
     NewsComponent,
-    GalleryComponent
+    GalleryComponent,
+    AchievementsComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +42,7 @@ import { TranslateModule } from '@ngx-translate/core';
     NzImageModule,
     TitleModule,
     SkeletonModule,
+    MoreModule,
     TranslateModule,
     NzTypographyModule
   ]

@@ -15,5 +15,9 @@
     },
     "gallery": {
         "title": "Galereya"
+    },
+    "more": "Ko'proq ko'rsatish",
+    "achievements": {
+        "title": "Yutuqlar"
     }
 }

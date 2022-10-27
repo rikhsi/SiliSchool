@@ -1,7 +1,7 @@
 <div class="news__container">
-    <div nz-row [nzGutter]="[0,65]">
+    <div nz-row [nzGutter]="[0,64]">
         <div nz-col nzSpan="24">
-            <sili-title [title]="title | translate" [titleColor]="titleColor" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
+            <sili-title [title]="title | translate" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
         </div>
         <div nz-col nzSpan="24">
             <ng-container *ngIf="!isLoading">
@@ -33,6 +33,9 @@
             <ng-container *ngIf="isLoading">
                 <sili-skeleton></sili-skeleton>
             </ng-container>
+        </div>
+        <div nz-col nzSpan="24">
+            <sili-more></sili-more>
         </div>
     </div>
 </div>
