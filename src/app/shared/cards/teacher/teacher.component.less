@@ -1,0 +1,31 @@
+@import '../../../styles/colors.less';
+@import '../../../styles/fonts.less';
+
+.teacher{
+    padding-bottom: 30px;
+    background: @white;
+    box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+    
+    &__img{
+        height: 315px;
+        background-color: @grey;
+        overflow: hidden;
+
+        img{
+            pointer-events: none;
+            object-fit: cover;
+        }
+    }
+
+    &__name{
+        text-align: center;
+        text-transform: uppercase;
+        .text(700,24px,150%,@grey);
+    }
+
+    &__role{
+        text-align: center;
+        text-transform: uppercase;
+        .text(400,16px,150%,@grey);
+    }
+}

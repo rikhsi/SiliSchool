@@ -24,6 +24,8 @@ import { MoreModule } from 'src/app/shared/more/more.module';
 //translateModule
 import { TranslateModule } from '@ngx-translate/core';
 import { AchievementsComponent } from './achievements/achievements.component';
+import { AdministrationComponent } from './administration/administration.component';
+import { CardsModule } from 'src/app/shared/cards/cards.module';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { AchievementsComponent } from './achievements/achievements.component';
     MainComponent,
     NewsComponent,
     GalleryComponent,
-    AchievementsComponent
+    AchievementsComponent,
+    AdministrationComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +47,8 @@ import { AchievementsComponent } from './achievements/achievements.component';
     SkeletonModule,
     MoreModule,
     TranslateModule,
-    NzTypographyModule
+    NzTypographyModule,
+    CardsModule
   ]
 })
 export class HomeModule { }

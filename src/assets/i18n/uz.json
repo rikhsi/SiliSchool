@@ -19,5 +19,8 @@
     "more": "Ko'proq ko'rsatish",
     "achievements": {
         "title": "Yutuqlar"
+    },
+    "adminstration": {
+        "title": "Ma'muriyat"
     }
 }

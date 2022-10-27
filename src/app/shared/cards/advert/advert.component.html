@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card__box">
+        <div nz-row [nzGutter]="[24]" nzJustify="space-between">
+            <div nz-col nzSpan="12">
+                <div nz-row [nzGutter]="[0,8]">
+                    <div nz-col nzSpan="24">
+                        <h3 class="card__data">{{advert.data}}</h3>
+                    </div>
+                    <div nz-col nzSpan="24">
+                        <h1 nz-typography nzEllipsis [nzEllipsisRows]="2" class="card__title">{{advert.title}}</h1>
+                    </div>
+                    <div nz-col nzSpan="24">
+                        <h2 nz-typography nzEllipsis [nzEllipsisRows]="7" class="card__info">{{advert.info}}</h2>
+                    </div>
+                </div>
+            </div>
+            <div nz-col nzSpan="12">
+                <div class="card__img">
+                    <img nz-image [nzSrc]="advert.img" [nzFallback]="fallback" alt="news">
+                </div>
+            </div>
+        </div>
+    </div>      
+</div>  

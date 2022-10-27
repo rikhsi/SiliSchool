@@ -11,7 +11,6 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class NewsComponent implements OnInit {
   title: string = 'news.title';
-  fallback:string = '../../../../assets/img/fallback.png';
   isLoading: boolean = true;
   adverts!: Advert[];
   config: SwiperOptions = {
@@ -20,9 +19,9 @@ export class NewsComponent implements OnInit {
     loop: true,
     simulateTouch:false,
     fadeEffect: { crossFade: true, },
-    autoplay: {
-      delay: 10000
-    }
+    // autoplay: {
+    //   delay: 10000
+    // }
   };
 
   constructor(private newsService: NewsService) { 

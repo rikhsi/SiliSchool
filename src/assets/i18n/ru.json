@@ -19,5 +19,8 @@
     "more": "Показать еще",
     "achievements": {
         "title": "Достижения"
+    },
+    "adminstration": {
+        "title": "Админстрация"
     }
 }
