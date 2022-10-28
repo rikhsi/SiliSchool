@@ -8,27 +8,32 @@ export class AdminstrationService {
 
   teachers: Adminstration[] = [
     {
+      id: 1,
+      img: 'https://apicms.thestar.com.my/uploads/images/2022/05/15/1585587.jpg',
+      name: 'Нилуфар Джалоловна',
+      role: 'Директор'
+    },
+    {
+      id: 2,
+      img: 'https://www.nea.org/sites/default/files/styles/1920wide/public/legacy/2020/04/new_teacher-1-e1588171214853.jpeg?itok=ALfxF_qT',
+      name: 'Нилуфар Джалоловна',
+      role: 'Директор'
+    },
+    {
+      id: 3,
       img: 'http://www.educatsionnext.org/wp-content/uploads/2020/03/ednext-sept19-blog-hess-teacher.png',
       name: 'Нилуфар Джалоловна',
       role: 'Директор'
     },
     {
-      img: 'http://www.educationnext.org/wp-content/uploads/2020/03/ednext-sept19-blog-hess-teacher.png',
+      id: 4,
+      img: 'http://www.educatsionnext.org/wp-content/uploads/2020/03/ednext-sept19-blog-hess-teacher.png',
       name: 'Нилуфар Джалоловна',
       role: 'Директор'
     },
     {
-      img: 'http://www.educationnext.org/wp-content/uploads/2020/03/ednext-sept19-blog-hess-teacher.png',
-      name: 'Нилуфар Джалоловна',
-      role: 'Директор'
-    },
-    {
-      img: 'http://www.educationnext.org/wp-content/uploads/2020/03/ednext-sept19-blog-hess-teacher.png',
-      name: 'Нилуфар Джалоловна',
-      role: 'Директор'
-    },
-    {
-      img: 'http://www.educationnext.org/wp-content/uploads/2020/03/ednext-sept19-blog-hess-teacher.png',
+      id: 5,
+      img: 'http://www.educatsionnext.org/wp-content/uploads/2020/03/ednext-sept19-blog-hess-teacher.png',
       name: 'Нилуфар Джалоловна',
       role: 'Директор'
     },

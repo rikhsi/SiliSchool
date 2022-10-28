@@ -1,0 +1,39 @@
+<div class="faq__wrapper">
+    <div nz-row nzAlign="middle" [nzGutter]="[0,32]" class="faq__container">
+        <div nz-col nzSpan="24">
+            <sili-title [title]="title | translate" [isShow]="false"></sili-title>
+        </div>
+        <div nz-col nzSpan="24">
+            <nz-collapse [nzBordered]="false">
+                <nz-collapse-panel
+                    #p
+                    *ngFor="let data of faqs; let item = index;"
+                    [nzActive]="false"
+                    [nzShowArrow]="false"
+                    [nzHeader]="title"
+                    [ngStyle]="customStyle"
+                    [nzExtra]="!p.nzActive ? expandedIcon : expandedIcon2"
+                >
+                    <p class="faq__answer">
+                        {{data.answer}}
+                    </p>
+                    <ng-template #expandedIcon>
+                        <button nz-button nzType="primary" class="faq__button"> 
+                            <span nz-icon nzType="plus" nzTheme="outline" class="faq__icon"></span>
+                        </button>   
+                    </ng-template>
+                    <ng-template #expandedIcon2>
+                        <button nz-button nzType="primary" class="faq__button">
+                            <span nz-icon nzType="minus" nzTheme="outline" class="faq__icon"></span>
+                        </button>    
+                    </ng-template>
+                    <ng-template #title>
+                        <div class="faq__title">
+                            {{item+1}}. {{data.answer}}
+                        </div>      
+                    </ng-template>
+                </nz-collapse-panel>
+            </nz-collapse>
+        </div>
+    </div>
+</div>

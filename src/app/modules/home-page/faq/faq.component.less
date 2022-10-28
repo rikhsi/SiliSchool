@@ -1,0 +1,38 @@
+@import '../../../styles/colors.less';
+@import '../../../styles/fonts.less';
+
+.faq{
+    &__wrapper{
+        padding: 128px 0;
+        background-color: @yellow;
+    }  
+    
+    &__container{
+        max-width: 1312px;
+        margin: 0 auto;
+    }
+
+    &__title{
+        max-width: 1130px;
+        .text(700,30px,150%,@grey) !important;
+    }
+
+    &__answer{
+        max-width: 1130px;
+        padding-top: 20px;
+        .text(400,24px,150%,@grey);
+    }
+
+    &__icon{
+        font-size: 24px;
+        color: @faqButton;
+    }
+
+    &__button{
+        width: 64px;
+        height: 64px;
+        border: 1px solid @faqButton;
+        background: inherit;
+    }
+}
+

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 //components
-import { HomeComponent } from './home.component';
+import { HomePageComponent } from './home-page.component';
 import { MainComponent } from './main/main.component';
 import { NewsComponent } from './news/news.component';
 import { GalleryComponent } from './gallery/gallery.component';
@@ -29,10 +29,11 @@ import { CardsModule } from 'src/app/shared/cards/cards.module';
 
 //translateModule
 import { TranslateModule } from '@ngx-translate/core';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
   declarations: [
-    HomeComponent,
+    HomePageComponent,
     MainComponent,
     NewsComponent,
     GalleryComponent,
@@ -42,6 +43,7 @@ import { TranslateModule } from '@ngx-translate/core';
     FaqComponent
   ],
   imports: [
+    CommonModule,
     CommonModule,
     SwiperModule,
     NzGridModule,
@@ -53,7 +55,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MoreModule,
     TranslateModule,
     NzTypographyModule,
-    CardsModule
+    CardsModule,
+    NzIconModule
   ]
 })
-export class HomeModule { }
+export class HomePageModule { }

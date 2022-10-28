@@ -11,7 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 
 //modules
 import { AppRoutingModule } from './app-routing.module';
-import { HomeModule } from './modules/home/home.module';
+import { HomePageModule } from './modules/home-page/home-page.module';
 
 //formsModule
 import { FormsModule } from '@angular/forms';
@@ -36,7 +36,7 @@ import { HttpLoaderFactory } from './services/translate';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    HomeModule,
+    HomePageModule,
     NzGridModule,
     TranslateModule.forRoot({
       loader: {
