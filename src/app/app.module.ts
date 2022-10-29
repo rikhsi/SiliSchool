@@ -29,6 +29,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from './services/translate';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     HomePageModule,
     NzGridModule,
     NzFormModule,
+    NzIconModule,
     ReactiveFormsModule,
     NzInputModule,
     NzButtonModule,

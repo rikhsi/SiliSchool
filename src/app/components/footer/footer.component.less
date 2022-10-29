@@ -17,6 +17,48 @@
         padding: 64px;
         background: @adminstration;
     }
+    &__logo{
+        width: auto;
+        height: auto;
+        background: inherit;
+        border: none;
+        padding: 0;
+        .text(900,32px,39px,@mainRed);
+    }
+    &__text{
+        transition: 0.3s;
+        .mainText(400,16px,24px,@white);
+
+        &:hover{
+            transition: 0.3s;
+            color: @mainRed;
+        }
+    }
+    &__icon{
+        font-size: 22px;
+        color: @mainRed;
+    }
+    &__media{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 1px solid @mainRed;
+        background: inherit;
+
+        &-icon{
+            max-height: 18px;
+            font-size: 18px;
+            color: @mainRed;
+        }
+    }
+    &__location{
+        height: 254px;
+        overflow: hidden;
+    }
 }
 
 .form{
