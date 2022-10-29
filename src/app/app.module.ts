@@ -30,6 +30,9 @@ import { HttpLoaderFactory } from './services/translate';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { AnimationModule } from './shared/animation/animation.module';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     ReactiveFormsModule,
     NzInputModule,
     NzButtonModule,
+    NzDropDownModule,
+    NzSpinModule,
+    AnimationModule,
     NgxMaskModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -57,7 +63,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-      defaultLanguage: 'ru'
+      defaultLanguage: 'ru',
     })
   ],
   bootstrap: [AppComponent]

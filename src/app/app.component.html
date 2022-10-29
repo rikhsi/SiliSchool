@@ -1,5 +1,11 @@
-<header>
-  <sili-header></sili-header>
+<div *ngIf="isLoading" class="sili__spin">
+  <nz-spin [nzIndicator]="spin"></nz-spin> 
+</div>
+<ng-template #spin>
+  <sili-loading></sili-loading>
+</ng-template>
+<header class="sili__header">
+  <sili-header (changeStatus)="changeStatus()"></sili-header>
 </header>
 <main>
   <router-outlet></router-outlet>

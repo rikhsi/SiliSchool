@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
-import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'sili-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.less']
 })
+
 export class FooterComponent implements OnInit {
   newOrder!: FormGroup;
   schoolNumber!: number;
@@ -15,6 +16,7 @@ export class FooterComponent implements OnInit {
   schoolLocation!: string;
   youTube!: string;
   instagram!: string;
+  locationLink!: string;
 
   constructor(private fb: FormBuilder, private mainService: MainService) { 
     this.newOrder = this.fb.group({
@@ -30,6 +32,7 @@ export class FooterComponent implements OnInit {
     this.schoolLocation = this.mainService.schoolLocation;
     this.youTube = this.mainService.youTube;
     this.instagram = this.mainService.instagram;
+    this.locationLink = this.mainService.locationLink;
   }
 
   submitForm(e:Event):void{
@@ -61,7 +64,16 @@ export class FooterComponent implements OnInit {
           window.open(this.youTube, "_blank");
           break
         }
+        case 3: {
+          window.open(this.locationLink, "_blank")
+        }
       }
+    }, 300);
+  }
+
+  scroll():void{
+    setTimeout(() => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }, 300);
   }
 }

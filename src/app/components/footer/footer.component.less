@@ -21,7 +21,8 @@
         width: auto;
         height: auto;
         background: inherit;
-        border: none;
+        border: none !important;
+        box-shadow: none;
         padding: 0;
         .text(900,32px,39px,@mainRed);
     }
@@ -35,7 +36,7 @@
         }
     }
     &__icon{
-        font-size: 22px;
+        font-size: 18px;
         color: @mainRed;
     }
     &__media{
@@ -56,8 +57,13 @@
         }
     }
     &__location{
+        width: 100%;
         height: 254px;
         overflow: hidden;
+
+        img{
+            object-fit: fill;
+        }
     }
 }
 

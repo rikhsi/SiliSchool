@@ -1,0 +1,61 @@
+.notes{
+    position: fixed;
+    width: 100%;
+    top: 50%;
+
+    &__box {
+        position: relative;
+        width: 500px;
+        height: 300px;
+        margin: auto;
+    }
+}
+
+.note{
+    &__1{
+        top: 10px;
+        left: 0;
+    }
+    &__2{
+        top: 20px;
+        left: 30%;
+    }
+    &__3{
+        top: 90px;
+        left: 50%;
+    }
+    &__4{
+        top: 40px;
+        left: 70%;
+    }
+}
+
+.note__1,
+.note__2,
+.note__3,
+.note__4 {
+    position: absolute;
+    animation: notes 1s infinite linear;
+    font-size: 50px;
+    opacity: 0;
+}
+
+
+@keyframes notes {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5) translate(50%, -50%);
+    }
+    80% {
+        opacity: 0;
+        transform: scale(1.5) translate(100%, -100%);
+    }
+    100% {
+        transform: scale(1.5) translate(100%, -100%);
+        opacity: 0;
+    }
+}

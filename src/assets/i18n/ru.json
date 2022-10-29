@@ -4,8 +4,8 @@
         "menu": {
             "department": "Направления",
             "info": "Информация",
-            "teachers": "Учителя",
-            "about": "О нас"
+            "achievements": "Достижения",
+            "adminstration": "Админстрация"
         },
         "time": "Пон - Суб"
     },
