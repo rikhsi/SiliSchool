@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'sili-footer',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.less']
 })
 export class FooterComponent implements OnInit {
+  newOrder!: FormGroup;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { 
+    this.newOrder = this.fb.group({
+      name: [null, [Validators.required, Validators.minLength(3)]],
+      phone: [null, [Validators.required]],
+      mail: [null, [Validators.email, Validators.required]],
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  submitForm():void{
+
   }
 
 }

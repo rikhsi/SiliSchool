@@ -1,0 +1,55 @@
+@import '../../styles/colors.less';
+@import '../../styles/fonts.less';
+
+.footer{
+    &__wrapper{
+        padding: 64px 0;
+        background: @mainBlack;
+    }
+    &__container{
+        max-width: 1312px;
+        margin: 0 auto;
+    }
+    &__form{
+        margin: 0;
+        max-width: 588px;
+        height: 544px;
+        padding: 64px;
+        background: @adminstration;
+    }
+}
+
+.form{
+    &__title{
+        text-align: center;
+        .mainText(600,48px,120%,@white);
+    }
+    &__input{
+        text-align: center;
+        height: 50px;
+        border: 1.5px solid @white;
+        background: inherit;
+        letter-spacing: 0.08em;
+        .mainText(400,16px,24px,@white);
+
+        &::placeholder{
+            letter-spacing: 0.08em;
+            text-align: center;
+            .mainText(400,16px,24px,@white);
+        }
+    }
+    &__button{
+        width: 100%;
+        height: 50px;
+        border: none;
+        background: @white;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        .mainText(600,16px,24px,@mainBlack);
+    }
+    &__convention{
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        .mainText(400,10px,15px,@white);
+    }
+}

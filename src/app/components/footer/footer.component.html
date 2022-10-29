@@ -1,1 +1,53 @@
-<p>footer works!</p>
+<div class="footer__wrapper">
+    <div class="footer__container">
+        <div nz-row>
+            <div nz-col nzSpan="24">
+                <div nz-row nzJustify="space-between" nzAlign="middle">
+                    <div nz-col nzSpan="11">
+                        ss
+                    </div>
+                    <div nz-col>
+                        <div class="footer__form">
+                            <form nz-form [formGroup]="newOrder" (ngSubmit)="submitForm()">
+                                <div nz-row [nzGutter]="[0,24]">
+                                    <div nz-col nzSpan="24">
+                                        <p class="form__title">{{'footer.form.title' | translate}}</p>
+                                    </div>
+                                    <div nz-col nzSpan="24">
+                                        <nz-form-item>
+                                            <nz-form-control nzErrorTip="Ошибка">
+                                                <nz-input-group>
+                                                    <input type="text" nz-input name="name" formControlName="name" placeholder="Имя" class="form__input"/>
+                                                </nz-input-group>
+                                            </nz-form-control>
+                                        </nz-form-item>
+                                        <nz-form-item>
+                                            <nz-form-control nzErrorTip="Ошибка">
+                                                <nz-input-group>
+                                                    <input type="text" nz-input name="phone" formControlName="phone" placeholder="Номер Телефона" mask="+000(00) 000-00-00" [showMaskTyped]="false" class="form__input"/>
+                                                </nz-input-group>
+                                            </nz-form-control>
+                                        </nz-form-item>
+                                        <nz-form-item>
+                                            <nz-form-control nzErrorTip="Ошибка">
+                                                <nz-input-group>
+                                                    <input type="text" nz-input name="mail" formControlName="mail" placeholder="E-MAIL" class="form__input"/>
+                                                </nz-input-group>
+                                            </nz-form-control>
+                                        </nz-form-item>
+                                        <button nz-button [nzType]="'primary'" class="form__button">
+                                            {{'footer.form.send' | translate}}
+                                        </button>
+                                    </div>
+                                    <div nz-col nzSpan="24">
+                                        <span class="form__convention">{{'footer.form.convention' | translate}}</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,16 +13,22 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomePageModule } from './modules/home-page/home-page.module';
 
+//ngxMaskModule
+import { NgxMaskModule } from 'ngx-mask';
+
 //formsModule
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //ngZorroModules
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 //translateModule and service
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from './services/translate';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
@@ -38,6 +44,11 @@ import { HttpLoaderFactory } from './services/translate';
     BrowserAnimationsModule,
     HomePageModule,
     NzGridModule,
+    NzFormModule,
+    ReactiveFormsModule,
+    NzInputModule,
+    NzButtonModule,
+    NgxMaskModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
