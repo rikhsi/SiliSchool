@@ -15,7 +15,7 @@ export class GalleryComponent implements OnInit {
   fallback:string = '../../../../assets/img/fallback.png';
   galleries!: Gallery[];
   config: SwiperOptions = {
-    slidesPerView: 3,
+    slidesPerView: 2,
     spaceBetween: 24,
     touchEventsTarget: 'container',
     grabCursor: true,

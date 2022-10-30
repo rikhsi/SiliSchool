@@ -1,1 +1,23 @@
-<p>news-page works!</p>
+<div nz-row [nzGutter]="[0,80]">
+    <div nz-col nzSpan="24">
+        <sili-page-container [title]="'Новости школы'"></sili-page-container>
+    </div>  
+    <div nz-col nzSpan="24">
+        <div class="news__container">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <div nz-row [nzGutter]="[0,64]">
+                        <div nz-col nzSpan="24" *ngFor="let data of news">
+                            <sili-advert [advert]="data"></sili-advert>
+                        </div>
+                        <ng-container *ngIf="isLoading">
+                            <div nz-col nzSpan="24">
+                                <sili-news-skeleton [counter]="5"></sili-news-skeleton>
+                            </div>           
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

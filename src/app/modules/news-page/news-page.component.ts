@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Advert } from 'src/app/models/advert';
+import { NewsService } from 'src/app/services/news.service';
 
 @Component({
   selector: 'sili-news-page',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-page.component.less']
 })
 export class NewsPageComponent implements OnInit {
+  isLoading = true;
+  news!: Advert[];
 
-  constructor() { }
+  constructor(private newsService: NewsService) {}
 
-  ngOnInit(): void {
+  getData():void{
+    this.news = this.newsService.adverts;
   }
 
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.getData();
+      this.isLoading = !this.isLoading
+    }, 2000);
+  }
 }

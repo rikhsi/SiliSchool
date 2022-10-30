@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,13 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
-
+  selector: string = ".sili__wrapper";
   isLoading: boolean = false;
 
-  constructor(){}
+  constructor(private router: Router){}
 
   ngOnInit(): void {
     this.changeStatus();
+  }
+
+  onScroll() {
+    switch(this.router.url){
+      case '/news': {
+        console.log('news')
+        break
+      }
+      case '/home': {
+        console.log('home')
+        break
+      }
+    }
   }
 
   changeStatus():void{

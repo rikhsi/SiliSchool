@@ -4,12 +4,14 @@
 <ng-template #spin>
   <sili-loading></sili-loading>
 </ng-template>
-<header class="sili__header">
-  <sili-header (changeStatus)="changeStatus()"></sili-header>
-</header>
-<main>
-  <router-outlet></router-outlet>
-</main> 
-<footer>
-  <sili-footer></sili-footer>
-</footer>
+<div class="sili__wrapper" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [infiniteScrollContainer]="selector" [fromRoot]="true" (scrolled)="onScroll()">
+  <header class="sili__header">
+    <sili-header (changeStatus)="changeStatus()"></sili-header>
+  </header>
+  <main class="sili__main">
+    <router-outlet></router-outlet>
+  </main> 
+  <footer>
+    <sili-footer></sili-footer>
+  </footer>
+</div>

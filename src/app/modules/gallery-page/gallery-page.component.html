@@ -1,3 +1,30 @@
-<div class="container">
-    ss
+<div nz-row [nzGutter]="[0,80]">
+    <div nz-col nzSpan="24">
+        <sili-page-container [title]="title"></sili-page-container>
+    </div>  
+    <div nz-col nzSpan="24">
+        <div class="gallery__container">
+            <div nz-row nzJustify="center" [nzGutter]="[0,32]">
+                <div nz-col nzSpan="24">
+                    <ng-container *ngIf="!isLoading">
+                        <div class="gallery__box">
+                            <div nz-row [nzGutter]="[24,24]">
+                                <div nz-col nzSpan="12" *ngFor="let data of gallery">
+                                    <div class="gallery__img">
+                                        <img nz-image [nzSrc]="data.img" [nzFallback]="fallback">
+                                    </div>                      
+                                </div>
+                            </div>
+                        </div>                
+                    </ng-container>
+                    <ng-container *ngIf="isLoading">
+                        <sili-gallery-skeleton [counter]="6"></sili-gallery-skeleton>
+                    </ng-container>            
+                </div>
+                <div nz-col>
+                    <nz-pagination [nzPageIndex]="1" [nzTotal]="36" [nzPageSize]="9"></nz-pagination>         
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

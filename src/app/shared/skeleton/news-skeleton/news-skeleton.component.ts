@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'sili-news-skeleton',
@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news-skeleton.component.less']
 })
 export class NewsSkeletonComponent implements OnInit {
-
+  @Input() counter!: number;
+  skeleton: any[] = []
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.skeleton = this.skeleton.concat(...Array(this.counter))
   }
 
 }
