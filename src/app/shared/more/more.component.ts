@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'sili-more',
@@ -8,11 +7,10 @@ import { Router } from '@angular/router';
 })
 export class MoreComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  @Output() loadMore = new EventEmitter();
+
+  constructor() { }
 
   ngOnInit(): void {}
 
-  changePage():void{
-    this.router.navigate(['/gallery'])
-  }
 }

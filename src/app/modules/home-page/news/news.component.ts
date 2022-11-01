@@ -3,6 +3,7 @@ import { Advert } from 'src/app/models/advert';
 import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, { EffectFade,SwiperOptions, Autoplay} from "swiper";
 import { NewsService } from 'src/app/services/news.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sili-news',
@@ -21,10 +22,16 @@ export class NewsComponent implements OnInit {
     fadeEffect: { crossFade: true, },
     autoplay: {
       delay: 10000
+    },
+    lazy: {
+      loadPrevNext: true,
+      loadPrevNextAmount: 1,
+      checkInView: true,
+      loadOnTransitionStart: true
     }
   };
 
-  constructor(private newsService: NewsService) { 
+  constructor(private newsService: NewsService, private router: Router) { 
     SwiperCore.use([Autoplay, EffectFade]);
   }
 
@@ -33,6 +40,12 @@ export class NewsComponent implements OnInit {
       this.adverts = this.newsService.adverts;
       this.isLoading = false;
     }, 2000);
+  }
+
+  navigate(): void{
+    setTimeout(() => {
+      this.router.navigate(['/news'])
+    }, 300);
   }
 
   @ViewChild(SwiperComponent) swiper?: SwiperComponent;

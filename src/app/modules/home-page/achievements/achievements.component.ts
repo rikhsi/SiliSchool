@@ -22,6 +22,12 @@ export class AchievementsComponent implements OnInit {
     grabCursor: true,
     autoplay: {
       delay: 10000
+    },
+    lazy: {
+      loadPrevNext: true,
+      loadPrevNextAmount: 3,
+      checkInView: true,
+      loadOnTransitionStart: true
     }
   };
   

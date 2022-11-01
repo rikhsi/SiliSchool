@@ -1,17 +1,11 @@
 {
     "header": {
         "logo": "ДШМИ",
-        "menu": {
-            "department": "Направления",
-            "info": "Информация",
-            "achievements": "Достижения",
-            "adminstration": "Админстрация"
-        },
         "time": "Пон - Суб"
     },
     "news": {
         "title": "Новости",
-        "button": "Читать полностью"
+        "pageTitle": "Новости школы"
     },
     "gallery": {
         "title": "Галерея"
@@ -27,7 +21,8 @@
         "title": "Направления"
     },
     "faq": {
-        "title": "Faq"
+        "title": "Faq",
+        "info": "Информация"
     },
     "footer": {
         "form":  {

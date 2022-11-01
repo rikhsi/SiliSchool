@@ -1,17 +1,11 @@
 {
     "header": {
         "logo": "BMSM",
-        "menu": {
-            "department": "Yo`nalishlar",
-            "info": "Ma`lumotlar",
-            "achievements": "Yutuqlar",
-            "adminstration": "Ma'muriyat"
-        },
         "time": "Du-Sha"
     },
     "news": {
         "title": "Yangiliklar",
-        "button": "Batafsil o'qing"
+        "pageTitle": "Maktab yangiliklari"
     },
     "gallery": {
         "title": "Galereya"
@@ -27,7 +21,8 @@
         "title": "Yo`nalishlar"
     },
     "faq": {
-        "title": "Ko'p so'raladigan savollar"
+        "title": "Ko'p so'raladigan savollar",
+        "info": "Ma`lumotlar"
     },
     "footer": {
         "form":  {

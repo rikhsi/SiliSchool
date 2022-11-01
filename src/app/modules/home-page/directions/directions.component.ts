@@ -22,6 +22,12 @@ export class DirectionsComponent implements OnInit {
     loop: true,
     autoplay: {
       delay: 10000
+    },
+    lazy: {
+      loadPrevNext: true,
+      loadPrevNextAmount: 3,
+      checkInView: true,
+      loadOnTransitionStart: true
     }
   };
 

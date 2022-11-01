@@ -12,7 +12,6 @@ export class HeaderComponent implements OnInit {
   schoolNumber!: number;
   schoolPhone!: string;
   currentLang: string = 'Ру';
-  isLoading: boolean = false;
   @Output() changeStatus = new EventEmitter();
 
   constructor(private mainService: MainService,public translateService: TranslateService, private router: Router) { }
@@ -42,6 +41,31 @@ export class HeaderComponent implements OnInit {
         }
       }
     })
+  }
+
+  navigate(id: number):void{
+    switch(id){
+      case 1: {
+        this.changeStatus.emit();
+        this.router.navigate(['/directions'])
+        break
+      }
+      case 2: {
+        this.changeStatus.emit();
+        this.router.navigate(['/info'])
+        break
+      }
+      case 3: {
+        this.changeStatus.emit();
+        this.router.navigate(['/gallery'])
+        break
+      }
+      case 4: {
+        this.changeStatus.emit();
+        this.router.navigate(['/news'])
+        break
+      }
+    }
   }
 
   backHome():void{

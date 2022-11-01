@@ -22,6 +22,12 @@ export class AdministrationComponent implements OnInit {
     grabCursor: true,
     autoplay: {
       delay: 10000
+    },
+    lazy: {
+      loadPrevNext: true,
+      loadPrevNextAmount: 4,
+      checkInView: true,
+      loadOnTransitionStart: true
     }
   };
 

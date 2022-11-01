@@ -33,8 +33,6 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { AnimationModule } from './shared/animation/animation.module';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -49,7 +47,6 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
     HttpClientModule,
     BrowserAnimationsModule,
     HomePageModule,
-    InfiniteScrollModule,
     NzGridModule,
     NzFormModule,
     NzIconModule,
@@ -72,5 +69,3 @@ import { InfiniteScrollModule } from "ngx-infinite-scroll";
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-platformBrowserDynamic().bootstrapModule(AppModule);

@@ -4,7 +4,7 @@
 <ng-template #spin>
   <sili-loading></sili-loading>
 </ng-template>
-<div class="sili__wrapper" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" [infiniteScrollContainer]="selector" [fromRoot]="true" (scrolled)="onScroll()">
+<div class="sili__wrapper">
   <header class="sili__header">
     <sili-header (changeStatus)="changeStatus()"></sili-header>
   </header>

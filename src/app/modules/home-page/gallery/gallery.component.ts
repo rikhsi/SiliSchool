@@ -3,6 +3,7 @@ import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, {SwiperOptions, Autoplay} from "swiper";
 import { Gallery } from 'src/app/models/gallery';
 import { GalleryService } from 'src/app/services/gallery.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sili-gallery',
@@ -22,10 +23,16 @@ export class GalleryComponent implements OnInit {
     loop: true,
     autoplay: {
       delay: 10000
+    },
+    lazy: {
+      loadPrevNext: true,
+      loadPrevNextAmount: 2,
+      checkInView: true,
+      loadOnTransitionStart: true
     }
   };
 
-  constructor(private galleryService: GalleryService) { 
+  constructor(private galleryService: GalleryService, private router: Router) { 
     SwiperCore.use([Autoplay]);
   }
 
@@ -34,6 +41,12 @@ export class GalleryComponent implements OnInit {
       this.galleries = this.galleryService.galleries;
       this.isLoading = false;
     }, 2000);
+  }
+
+  navigate(): void{
+    setTimeout(() => {
+      this.router.navigate(['/gallery'])
+    }, 300);
   }
 
   @ViewChild(SwiperComponent) swiper?: SwiperComponent;

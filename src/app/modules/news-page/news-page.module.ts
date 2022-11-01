@@ -8,6 +8,7 @@ import { CardsModule } from 'src/app/shared/cards/cards.module';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
 import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
+import { MoreModule } from 'src/app/shared/more/more.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PageContainerModule } from 'src/app/shared/page-container/page-containe
     CardsModule,
     NzSkeletonModule,
     SkeletonModule,
-    PageContainerModule
+    PageContainerModule,
+    MoreModule
   ]
 })
 export class NewsPageModule { }

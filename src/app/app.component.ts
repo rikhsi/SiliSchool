@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,26 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
-  selector: string = ".sili__wrapper";
   isLoading: boolean = false;
 
   constructor(private router: Router){}
 
   ngOnInit(): void {
     this.changeStatus();
-  }
-
-  onScroll() {
-    switch(this.router.url){
-      case '/news': {
-        console.log('news')
-        break
+    this.router.events.subscribe((event:any) => {
+      if (!(event instanceof NavigationEnd)) {
+          return;
       }
-      case '/home': {
-        console.log('home')
-        break
-      }
-    }
+      window.scrollTo(0, 0)
+  });
   }
 
   changeStatus():void{
@@ -34,5 +26,5 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       this.isLoading = !this.isLoading;
     }, 1000);
-  }
+  }  
 }

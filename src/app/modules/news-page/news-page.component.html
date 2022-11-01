@@ -1,13 +1,13 @@
 <div nz-row [nzGutter]="[0,80]">
     <div nz-col nzSpan="24">
-        <sili-page-container [title]="'Новости школы'"></sili-page-container>
+        <sili-page-container [title]="title"></sili-page-container>
     </div>  
     <div nz-col nzSpan="24">
         <div class="news__container">
             <div nz-row>
                 <div nz-col nzSpan="24">
                     <div nz-row [nzGutter]="[0,64]">
-                        <div nz-col nzSpan="24" *ngFor="let data of news">
+                        <div nz-col nzSpan="24" *ngFor="let data of paginatedList">
                             <sili-advert [advert]="data"></sili-advert>
                         </div>
                         <ng-container *ngIf="isLoading">
@@ -15,6 +15,9 @@
                                 <sili-news-skeleton [counter]="5"></sili-news-skeleton>
                             </div>           
                         </ng-container>
+                        <div nz-col nzSpan="24">
+                            <sili-more (loadMore)="loadMore()"></sili-more>
+                        </div>  
                     </div>
                 </div>
             </div>

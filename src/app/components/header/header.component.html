@@ -11,10 +11,10 @@
                     <div nz-col nzFlex="auto"></div>
                     <div nz-col>
                         <ul nz-row [nzGutter]="[24]" nzAlign="middle">
-                            <li nz-col class="header__menu header__menu-hover">{{'header.menu.department' | translate}}</li>
-                            <li nz-col class="header__menu header__menu-hover">{{'header.menu.info' | translate}}</li>
-                            <li nz-col class="header__menu header__menu-hover">{{'header.menu.achievements' | translate}}</li>
-                            <li nz-col class="header__menu header__menu-hover">{{'header.menu.adminstration' | translate}}</li>
+                            <li nz-col class="header__menu header__menu-hover" (click)="navigate(1)">{{'directions.title' | translate}}</li>
+                            <li nz-col class="header__menu header__menu-hover" (click)="navigate(2)">{{'faq.info' | translate}}</li>
+                            <li nz-col class="header__menu header__menu-hover" (click)="navigate(3)">{{'gallery.title' | translate}}</li>
+                            <li nz-col class="header__menu header__menu-hover" (click)="navigate(4)">{{'news.title' | translate}}</li>
                         </ul>               
                     </div>
                 </div>

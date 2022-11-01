@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PageContainerComponent } from './page-container.component';
 import { NzGridModule } from 'ng-zorro-antd/grid';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -11,7 +12,8 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
   ],
   imports: [
     CommonModule,
-    NzGridModule
+    NzGridModule,
+    TranslateModule
   ],
   exports: [
     PageContainerComponent

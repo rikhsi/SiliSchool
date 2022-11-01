@@ -9,7 +9,7 @@
                     <ng-container *ngIf="!isLoading">
                         <div class="gallery__box">
                             <div nz-row [nzGutter]="[24,24]">
-                                <div nz-col nzSpan="12" *ngFor="let data of gallery">
+                                <div nz-col nzSpan="12" *ngFor="let data of paginatedList">
                                     <div class="gallery__img">
                                         <img nz-image [nzSrc]="data.img" [nzFallback]="fallback">
                                     </div>                      
@@ -18,11 +18,11 @@
                         </div>                
                     </ng-container>
                     <ng-container *ngIf="isLoading">
-                        <sili-gallery-skeleton [counter]="6"></sili-gallery-skeleton>
+                        <sili-gallery-skeleton [counter]="pageSize"></sili-gallery-skeleton>
                     </ng-container>            
                 </div>
                 <div nz-col>
-                    <nz-pagination [nzPageIndex]="1" [nzTotal]="36" [nzPageSize]="9"></nz-pagination>         
+                    <nz-pagination [nzPageIndex]="1" [nzTotal]="gallery.length" [nzPageSize]="pageSize" (nzPageIndexChange)="loadPage($event)"></nz-pagination>       
                 </div>
             </div>
         </div>
