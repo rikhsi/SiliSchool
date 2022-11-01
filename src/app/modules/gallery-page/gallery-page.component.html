@@ -4,26 +4,24 @@
     </div>  
     <div nz-col nzSpan="24">
         <div class="gallery__container">
-            <div nz-row nzJustify="center" [nzGutter]="[0,32]">
+            <div nz-row [nzGutter]="[0,64]">
                 <div nz-col nzSpan="24">
-                    <ng-container *ngIf="!isLoading">
-                        <div class="gallery__box">
-                            <div nz-row [nzGutter]="[24,24]">
-                                <div nz-col nzSpan="12" *ngFor="let data of paginatedList">
-                                    <div class="gallery__img">
-                                        <img nz-image [nzSrc]="data.img" [nzFallback]="fallback">
-                                    </div>                      
-                                </div>
-                            </div>
-                        </div>                
-                    </ng-container>
-                    <ng-container *ngIf="isLoading">
-                        <sili-gallery-skeleton [counter]="pageSize"></sili-gallery-skeleton>
-                    </ng-container>            
+                    <div nz-row [nzGutter]="[24,24]">
+                        <div nz-col nzSpan="12" *ngFor="let data of paginatedList">
+                            <div class="gallery__img">
+                                <img nz-image [nzSrc]="data.img" [nzFallback]="fallback">
+                            </div>                      
+                        </div>
+                        <ng-container *ngIf="isLoading">
+                            <div nz-col nzSpan="24">
+                                <sili-gallery-skeleton [counter]="pageSize"></sili-gallery-skeleton>
+                            </div>           
+                        </ng-container>
+                    </div>
                 </div>
-                <div nz-col>
-                    <nz-pagination [nzPageIndex]="1" [nzTotal]="gallery.length" [nzPageSize]="pageSize" (nzPageIndexChange)="loadPage($event)"></nz-pagination>       
-                </div>
+                <div nz-col nzSpan="24">
+                    <sili-more (loadMore)="loadMore()"></sili-more>
+                </div>  
             </div>
         </div>
     </div>

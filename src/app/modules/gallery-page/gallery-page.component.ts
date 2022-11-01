@@ -10,7 +10,7 @@ import { GalleryService } from 'src/app/services/gallery.service';
 export class GalleryPageComponent implements OnInit {
   title: string = 'gallery.title';
   fallback:string = '../../../../assets/img/fallback.png';
-  pageSize: number = 4;
+  pageSize: number = 6;
   isLoading: boolean = true;
   gallery!: Gallery[];
   paginatedList!: Gallery[];
@@ -18,23 +18,23 @@ export class GalleryPageComponent implements OnInit {
   constructor(private galleryService: GalleryService) { }
 
   ngOnInit(): void {
-    this.gallery = this.galleryService.galleries;
     setTimeout(() => {
-      this.paginatedList = this.gallery.slice(0,4)
-      this.isLoading = false;
-    }, 1000);
+      this.getData();
+      this.isLoading = !this.isLoading;
+    }, 2000);
   }
 
-  loadPage(index: number):void{
-    this.isLoading = true;
-    const startIndex = (index-1) * this.pageSize;
-    let endIndex = startIndex + this.pageSize;
-    if(endIndex > this.gallery.length) {
-      endIndex = this.gallery.length
-    }
+  getData():void{
+    this.gallery = this.galleryService.galleries;
+    this.paginatedList = this.galleryService.galleries;
+  }
+
+  loadMore():void{
+    this.isLoading = true
     setTimeout(() => {
-      this.paginatedList = this.gallery.slice(startIndex,endIndex);
-      this.isLoading = false;
-    }, 1000);
+      this.paginatedList = this.paginatedList.concat(this.galleryService.galleries);
+      this.gallery = [...this.paginatedList];
+      this.isLoading = false
+    }, 2000);
   }
 }
