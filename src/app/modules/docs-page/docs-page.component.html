@@ -1,0 +1,31 @@
+<div class="docs__wrapper">
+    <div nz-row [nzGutter]="[0,80]">
+        <div nz-col nzSpan="24">
+            <sili-page-container [title]="title"></sili-page-container>
+        </div>  
+        <div nz-col nzSpan="24">
+            <div class="docs__container">
+                <div nz-row [nzGutter]="[0,24]">
+                    <div nz-col nzSpan="24" *ngFor="let data of docs">
+                        <div class="docs__card">
+                            <div nz-row nzAlign="middle" nzJustify="space-between">
+                                <div nz-col>
+                                    <h1 class="card__title">{{data.title}}</h1>
+                                </div>
+                                <div nz-col>
+                                    <button nz-button nzType="primary" class="card__button">{{'docs.button' | translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="isLoading">
+                        <div nz-col nzSpan="24">
+                            <sili-docs-skeleton [counter]="4"></sili-docs-skeleton>
+                        </div>                  
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+

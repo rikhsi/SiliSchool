@@ -12,6 +12,22 @@ const routes: Routes = [
     path: "news",
     loadChildren: () => import('./modules/news-page/news-page.module').then(m => m.NewsPageModule)
   },
+  {
+    path: 'docs',
+    loadChildren: () => import('./modules/docs-page/docs-page.module').then(m => m.DocsPageModule)
+  },
+  {
+    path: 'time-table',
+    loadChildren: () => import('./modules/time-table-page/time-table-page.module').then(m => m.TimeTablePageModule)
+  },
+  {
+    path: 'directions',
+    loadChildren: () => import('./modules/directions-page/directions-page.module').then(m => m.DirectionsPageModule)
+  },
+  {
+    path: 'connection',
+    loadChildren: () => import('./modules/connection-page/connection-page.module').then(m => m.ConnectionPageModule)
+  },
   { path: "**", redirectTo: "/home" }
 ];
 

@@ -24,14 +24,25 @@
         "title": "Ko'p so'raladigan savollar",
         "info": "Ma`lumotlar"
     },
-    "footer": {
-        "form":  {
-            "title": "Biz bilan bog'laning",
-            "name": "Ismingiz",
-            "phone": "Telefon raqamingiz",
-            "mail": "Elektron pochta",
-            "send": "Yuborish",
-            "convention": "Ushbu shaklni yuborish orqali siz shaxsiy ma'lumotlarni qayta ishlash va axborot byulletenlarini qabul qilish siyosatiga rozilik bildirasiz"
-        }
+    "docs": {
+        "title": "Hujjatlar",
+        "button": "Hujjatni yuklab olish"
+    },
+    "time-table": {
+        "title": "Jadval",
+        "button": "Jadvalni yuklab olish"
+    },
+    "connection": {
+        "title": "Aloqaga chiqish"
+    },
+    "form":  {
+        "title": "Biz bilan bog'laning",
+        "name": "FIO",
+        "phone": "Telefon raqamingiz",
+        "mail": "Elektron pochta",
+        "message": "Izoh",
+        "error": "",
+        "send": "Yuborish",
+        "convention": "Ushbu shaklni yuborish orqali siz shaxsiy ma'lumotlarni qayta ishlash va axborot byulletenlarini qabul qilish siyosatiga rozilik bildirasiz"
     }
 }

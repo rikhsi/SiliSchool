@@ -1,0 +1,67 @@
+@import '../../styles/colors.less';
+@import '../../styles/fonts.less';
+
+.connection{
+    &__wrapper{
+        width: 100%;
+        padding: 64px 0;
+        background: @mainBlue;
+    }
+    &__container{
+        max-width: 1312px;
+        margin: 0 auto;
+    }
+    &__title{
+        .mainText(700,64px,80px,@white);
+    }
+    &__input{
+        width: 100%;
+        height: 50px;
+        letter-spacing: 0.08em;
+        background: rgba(255, 255, 255, 0.8);
+        .mainText(400,16px,24px,@mainBlack);
+
+        &::placeholder{
+            text-transform: uppercase;
+            color: #999999;
+            text-align: center;
+        }
+        &:focus{
+            background: @white;
+        }
+    }
+    &__area{
+        width: 100%;
+        height: 120px;
+        resize: none;
+        letter-spacing: 0.08em;
+        background: rgba(255, 255, 255, 0.8);
+        .mainText(400,16px,24px,@mainBlack);
+
+        &::placeholder{
+            padding-top: 40px;
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+            color: #999999;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        &:focus{
+            background: @white;
+        }
+    }
+    &__button{
+        width: 100%;
+        height: 50px;
+        border: none;
+        background: @mainRed;
+        .mainText(600,16px,24px,@white);
+    }
+    &__convention{
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        .mainText(400,10px,15px,@white);
+    }
+}
+

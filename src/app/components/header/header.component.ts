@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
       }
       case 2: {
         this.changeStatus.emit();
-        this.router.navigate(['/info'])
+        this.router.navigate(['/docs'])
         break
       }
       case 3: {

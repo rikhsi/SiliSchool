@@ -18,9 +18,9 @@ export class MainComponent implements OnInit {
 
   changePage(id: number):void{
     if(id === 1){
-      this.router.navigate(['gallery'])
+      this.router.navigate(['/connection'])
     } else{
-      this.router.navigate(['/news'])
+      this.router.navigate(['/time-table'])
     }
   }
 }

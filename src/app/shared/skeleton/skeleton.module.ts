@@ -7,6 +7,7 @@ import { AdminstrationSkeletonComponent } from './adminstration-skeleton/adminst
 import { AchievementSkeletonComponent } from './achievement-skeleton/achievement-skeleton.component';
 import { GallerySkeletonComponent } from './gallery-skeleton/gallery-skeleton.component';
 import { DirectionSkeletonComponent } from './direction-skeleton/direction-skeleton.component';
+import { DocsSkeletonComponent } from './docs-skeleton/docs-skeleton.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { DirectionSkeletonComponent } from './direction-skeleton/direction-skele
     AdminstrationSkeletonComponent,
     AchievementSkeletonComponent,
     GallerySkeletonComponent,
-    DirectionSkeletonComponent
+    DirectionSkeletonComponent,
+    DocsSkeletonComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { DirectionSkeletonComponent } from './direction-skeleton/direction-skele
     AchievementSkeletonComponent,
     AdminstrationSkeletonComponent,
     GallerySkeletonComponent,
-    DirectionSkeletonComponent
+    DirectionSkeletonComponent,
+    DocsSkeletonComponent
   ]
 })
 export class SkeletonModule { }

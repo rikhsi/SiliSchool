@@ -4,16 +4,24 @@
             <sili-title [title]="title | translate" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
         </div>
         <div nz-col nzSpan="24">
-            <ng-container *ngIf="!isLoading">
-                <swiper #swiper [config]="config" class="gallery__swiper">
-                    <ng-template swiperSlide *ngFor="let data of directions">
-                        <sili-direction [direction]="data"></sili-direction>
-                    </ng-template>
-                </swiper>
-            </ng-container>
-            <ng-container *ngIf="isLoading">
-                <sili-direction-skeleton [counter]="3"></sili-direction-skeleton>
-            </ng-container>
+            <div class="gallery__swiper">
+                <div nz-row>
+                    <div nz-col nzSpan="24">
+                        <ng-container *ngIf="!isLoading">
+                            <swiper #swiper [config]="config">
+                                <ng-template swiperSlide *ngFor="let data of directions">
+                                    <sili-direction [direction]="data"></sili-direction>
+                                </ng-template>
+                            </swiper>
+                        </ng-container>
+                    </div>
+                    <div nz-col nzSpan="24">
+                        <ng-container *ngIf="isLoading">
+                            <sili-direction-skeleton [counter]="3"></sili-direction-skeleton>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
         </div>
         <div nz-col nzSpan="24">
             <sili-more></sili-more>

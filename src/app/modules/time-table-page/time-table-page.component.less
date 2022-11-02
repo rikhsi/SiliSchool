@@ -1,0 +1,29 @@
+@import '../../styles/colors.less';
+@import '../../styles/fonts.less';
+
+.table{
+    &__wrapper{
+        background: @docsBg;
+    }
+    &__container{
+        max-width: 1312px;
+        margin: 0 auto;
+        padding-bottom: 120px;
+    }
+    &__card{
+        padding: 24px;
+        background: @white;
+    }
+}
+
+.card{
+    &__title{
+        .mainText(700,24px,150%,@mainBlack);
+    }
+    &__button{
+        height: 40px;
+        border: none;
+        background: @mainRed;
+        .mainText(400,14px,150%,@white);
+    }
+}
