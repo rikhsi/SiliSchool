@@ -5,7 +5,11 @@ import { DirectionsPageComponent } from './directions-page.component';
 const routes: Routes = [
   {
     path: '',
-    component: DirectionsPageComponent
+    component: DirectionsPageComponent,
+  },
+  {
+    path: ':id',
+    loadChildren: () => import('./modules/directions-card-page/directions-card-page.module').then(m => m.DirectionsCardPageModule)
   }
 ];
 

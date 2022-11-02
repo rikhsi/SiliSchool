@@ -41,7 +41,12 @@
         "phone": "Telefon raqamingiz",
         "mail": "Elektron pochta",
         "message": "Izoh",
-        "error": "",
+        "errors": {
+            "name": "FIO ni to`liq kiriting",
+            "phone": "Telefon raqamingizni to`liq kiriting",
+            "mail": "Elektron pochtangizni to`liq kiriting",
+            "message": "Izohingizni kiriting"
+        },
         "send": "Yuborish",
         "convention": "Ushbu shaklni yuborish orqali siz shaxsiy ma'lumotlarni qayta ishlash va axborot byulletenlarini qabul qilish siyosatiga rozilik bildirasiz"
     }

@@ -10,9 +10,8 @@ import { DirectionsService } from 'src/app/services/directions.service';
 export class DirectionsPageComponent implements OnInit {
   title: string = 'directions.title'
   isLoading: boolean = true;
-
   directions!: Direction[];
-
+ 
   constructor(private DirectionsService: DirectionsService) { }
 
   ngOnInit(): void {
@@ -21,5 +20,4 @@ export class DirectionsPageComponent implements OnInit {
       this,this.isLoading = false;
     }, 2000);
   }
-
 }

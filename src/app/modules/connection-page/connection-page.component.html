@@ -13,28 +13,28 @@
                                     <div nz-row>
                                         <div nz-col nzSpan="24">
                                             <nz-form-item>
-                                                <nz-form-control [nzErrorTip]="'form.error' | translate">
+                                                <nz-form-control [nzErrorTip]="'form.errors.name' | translate">
                                                   <input nz-input [placeholder]="'form.name' | translate" formControlName="name" class="connection__input"/>
                                                 </nz-form-control>
                                             </nz-form-item>
                                         </div>
                                         <div nz-col nzSpan="24">
                                             <nz-form-item>
-                                                <nz-form-control [nzErrorTip]="'form.error' | translate">
+                                                <nz-form-control [nzErrorTip]="'form.errors.phone' | translate">
                                                     <input nz-input [placeholder]="'form.phone' | translate" formControlName="phone" mask="+000(00) 000-00-00" [showMaskTyped]="false" class="connection__input"/>
                                                 </nz-form-control>
                                             </nz-form-item>
                                         </div>
                                         <div nz-col nzSpan="24">
                                             <nz-form-item>
-                                                <nz-form-control [nzErrorTip]="'form.error' | translate">
+                                                <nz-form-control [nzErrorTip]="'form.errors.mail' | translate">
                                                     <input nz-input [placeholder]="'form.mail' | translate" formControlName="email" class="connection__input"/>
                                                 </nz-form-control>
                                             </nz-form-item>
                                         </div>
                                         <div nz-col nzSpan="24">
                                             <nz-form-item>
-                                                <nz-form-control [nzErrorTip]="'form.error' | translate">
+                                                <nz-form-control [nzErrorTip]="'form.errors.message' | translate">
                                                     <textarea nz-input [placeholder]="'form.message' | translate" formControlName="message" class="connection__area"></textarea>
                                                 </nz-form-control>
                                             </nz-form-item>

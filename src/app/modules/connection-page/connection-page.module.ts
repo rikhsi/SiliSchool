@@ -3,12 +3,20 @@ import { CommonModule } from '@angular/common';
 
 import { ConnectionPageRoutingModule } from './connection-page-routing.module';
 import { ConnectionPageComponent } from './connection-page.component';
+
+//formsModules
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+//ngZorroModules
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
-import { TranslateModule } from '@ngx-translate/core';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+
+//translateModule
+import { TranslateModule } from '@ngx-translate/core';
+
+//ngxMaskModule
 import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
@@ -23,8 +31,8 @@ import { NgxMaskModule } from 'ngx-mask';
     NzGridModule,
     NzInputModule,
     NzFormModule,
-    TranslateModule,
     NzButtonModule,
+    TranslateModule,
     NgxMaskModule
   ]
 })

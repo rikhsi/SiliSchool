@@ -21,7 +21,7 @@ export class ConnectionPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit():void {
+  submit(): void {
     if (this.order.valid) {
       this.order.reset();
     } else {
@@ -33,5 +33,4 @@ export class ConnectionPageComponent implements OnInit {
       });
     }
   }
-
 }

@@ -1,0 +1,40 @@
+<div class="card__wrapper">
+    <div class="card__container">
+        <div nz-row [nzGutter]="[0,120]">
+            <div nz-col nzSpan="24">
+                <div nz-row [nzGutter]="[0,64]">
+                    <div nz-col nzSpan="24">
+                        breadCrump
+                    </div>
+                    <div nz-col nzSpan="24" style="pointer-events: none;" *ngIf="!isLoading">
+                        <sili-direction [direction]="direction" [height]="true"></sili-direction>
+                    </div>
+                    <ng-container *ngIf="isLoading">
+                        <div nz-col nzSpan="24">
+                            <sili-direction-skeleton [counter]="1" [span]="24" [height]="true"></sili-direction-skeleton>
+                        </div>           
+                    </ng-container>     
+                </div>
+            </div>
+            <div nz-col nzSpan="24">
+                <div nz-row [nzGutter]="[0,64]">
+                    <div nz-col nzSpan="24">
+                        <sili-title [isShow]="false" [title]="'Учителя по направлению'"></sili-title>
+                    </div>
+                    <div nz-col nzSpan="24" *ngIf="!isLoading">
+                        <div nz-row [nzGutter]="[24,24]">
+                            <div nz-col nzSpan="6" *ngFor="let data of teachers">
+                                <sili-teacher [teacher]="data"></sili-teacher>
+                            </div>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="isLoading">
+                        <div nz-col nzSpan="24">
+                            <sili-adminstration-skeleton [counter]="4"></sili-adminstration-skeleton>
+                        </div>           
+                    </ng-container>     
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

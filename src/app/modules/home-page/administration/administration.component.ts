@@ -13,7 +13,7 @@ export class AdministrationComponent implements OnInit {
   title: string = 'adminstration.title';
   fallback:string = '../../../../assets/img/fallback.png';
   isLoading: boolean = true;
-  teachers!: Adminstration[];
+  administrations!: Adminstration[];
   config: SwiperOptions = {
     slidesPerView: 4,
     spaceBetween: 24,
@@ -37,7 +37,7 @@ export class AdministrationComponent implements OnInit {
 
   ngOnInit(): void {    
     setTimeout(() => {
-      this.teachers = this.teachersService.teachers;
+      this.administrations = this.teachersService.teachers;
       this.isLoading = false;
     }, 2000);
   }

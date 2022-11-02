@@ -6,6 +6,13 @@
         background: @white;
         box-shadow: @cardShadow;
         padding: 36px;
+        transition: 0.3s;
+        cursor: pointer;
+
+        &:hover{
+            transition: 0.3s;
+            background: @directionHover;
+        }
     }
     &__img{
         height: 160px;
@@ -28,4 +35,8 @@
     &__info{
         .text(400,14px,20px,@directionInfo);
     }
+}
+
+.height{
+    height: 265px !important; 
 }

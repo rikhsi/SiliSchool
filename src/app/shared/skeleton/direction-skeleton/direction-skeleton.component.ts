@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DirectionSkeletonComponent implements OnInit {
   @Input() counter!: number;
+  @Input() span: number = 8;
+  @Input() height!: boolean;
   skeleton: any[] = [];
 
   constructor() { }

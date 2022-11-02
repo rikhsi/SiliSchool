@@ -19,7 +19,5 @@ export class DocsPageComponent implements OnInit {
       this.docs = this.docsService.docs;
       this.isLoading = false;
     }, 2000);
-    
   }
-
 }

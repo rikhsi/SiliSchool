@@ -1,7 +1,7 @@
 @import '../../../styles/colors.less';
 @import '../../../styles/fonts.less';
 
-.teacher{
+.administration{
     padding-bottom: 30px;
     background: @white;
     box-shadow: @cardShadow;
@@ -20,19 +20,12 @@
     &__name{
         text-align: center;
         text-transform: uppercase;
-        .mainText(700,24px,150%,@grey);
+        .text(700,24px,150%,@grey);
     }
-    &__button{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        align-items: center;
-        padding: 0;
-        height: 61px;
-        border: none;
-        background: inherit;
-        box-shadow: none;
-        .mainText(400,14px,150%,@mainRed);
+
+    &__role{
+        text-align: center;
+        text-transform: uppercase;
+        .text(400,16px,150%,@grey);
     }
 }

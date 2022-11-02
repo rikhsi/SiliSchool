@@ -7,8 +7,8 @@
             <div nz-col nzSpan="24">
                 <ng-container *ngIf="!isLoading">
                     <swiper #swiper [config]="config" class="adminstration__swiper">
-                        <ng-template swiperSlide *ngFor="let data of teachers">
-                            <sili-teacher [teacher]="data"></sili-teacher>             
+                        <ng-template swiperSlide *ngFor="let data of administrations">
+                            <sili-adminstration [administration]="data"></sili-adminstration>          
                         </ng-template>
                     </swiper>     
                 </ng-container>
