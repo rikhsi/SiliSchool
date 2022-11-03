@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   isLoading: boolean = false;
 
   constructor(private router: Router){}
-
+  
   ngOnInit(): void {
     this.changeStatus();
     this.router.events.subscribe((event:any) => {
@@ -18,7 +18,8 @@ export class AppComponent implements OnInit {
           return;
       }
       window.scrollTo(0, 0)
-  });
+      this.changeStatus();
+    });
   }
 
   changeStatus():void{

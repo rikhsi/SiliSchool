@@ -8,6 +8,7 @@ import { CardsModule } from 'src/app/shared/cards/cards.module';
 import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module';
+import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module'
     SkeletonModule,
     TitleModule,
     BreadCrumpModule,
+    PageContainerModule
   ]
 })
 export class DirectionsCardPageModule { }
