@@ -3,6 +3,9 @@
 
 
 .header{
+    &__wrapper{
+        padding: 0 24px;
+    }
     &__container{
         padding: 36px 0;
         max-width: 1312px;
@@ -17,6 +20,10 @@
         border: none;
         .mainText(600,32px,41px,@mainBlue);
         cursor: pointer;
+
+        @media (max-width: 767px) {
+            .mainText(900,24px,36px,@mainBlue);
+        }
     }
     &__menu{
         transition: 0.3s;
@@ -45,6 +52,12 @@
         padding: 0 8px;
         .text(500,16px,20px,@white);
     }
+
+    &__list{
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
 }
 
 [nz-menu]{
@@ -58,6 +71,34 @@
 
     &:hover{
         background: @adminstration;
+    }
+}
+
+// .list{
+//     @media (max-width:1199px) {
+//         & li:nth-child(2){
+//             display: none;
+//         }
+//     }
+// }
+
+.hide{
+    @media (max-width:1199px) {
+        display: none;
+    }
+}
+
+.adaptive{
+    &__button{
+        padding: 0;
+        box-shadow: none;
+        border: none;
+        background: inherit;
+        color: blue;
+
+        span{
+            font-size: 18px;
+        }
     }
 }
 
