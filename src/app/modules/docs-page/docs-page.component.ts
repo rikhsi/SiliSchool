@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreadCrump } from 'src/app/models/breadCrump';
 import { Docs } from 'src/app/models/docs';
 import { DocsService } from 'src/app/services/docs.service';
 
@@ -11,7 +12,16 @@ export class DocsPageComponent implements OnInit {
   title: string = 'faq.info';
   isLoading: boolean = true;
   docs!: Docs[];
-
+  breadCrump: BreadCrump[] = [
+    {
+      title: 'home.title',
+      path: ''
+    },
+    {
+      title: 'faq.info',
+      path: '/docs'
+    }
+  ];
   constructor(private docsService: DocsService) { }
 
   ngOnInit(): void {

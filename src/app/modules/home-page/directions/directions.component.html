@@ -1,7 +1,7 @@
 <div class="gallery__wrapper">
     <div nz-row nzAlign="middle" [nzGutter]="[0,32]" class="gallery__container">
         <div nz-col nzSpan="24">
-            <sili-title [title]="title | translate" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
+            <sili-title [title]="title" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
         </div>
         <div nz-col nzSpan="24">
             <div class="gallery__swiper">
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div nz-col nzSpan="24">
-            <sili-more></sili-more>
+            <sili-more (loadMore)="navigate()"></sili-more>
         </div>
     </div>
 </div>

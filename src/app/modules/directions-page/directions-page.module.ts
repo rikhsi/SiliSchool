@@ -11,6 +11,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
 import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
 import { CardsModule } from 'src/app/shared/cards/cards.module';
+import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { CardsModule } from 'src/app/shared/cards/cards.module';
     NzGridModule,
     SkeletonModule,
     PageContainerModule,
-    CardsModule
+    CardsModule,
+    BreadCrumpModule
   ]
 })
 export class DirectionsPageModule { }

@@ -1,8 +1,13 @@
 <div class="table__wrapper">
-    <div nz-row [nzGutter]="[0,80]">
+    <div nz-row [nzGutter]="[0,64]">
         <div nz-col nzSpan="24">
             <sili-page-container [title]="title"></sili-page-container>
         </div>  
+        <div nz-col nzSpan="24">
+            <div class="table__container">
+                <sili-bread-crump [breadCrump]="breadCrump"></sili-bread-crump>
+            </div>
+        </div>
         <div nz-col nzSpan="24">
             <div class="table__container">
                 <div nz-row [nzGutter]="[0,24]">

@@ -4,7 +4,7 @@
             <div nz-col nzSpan="24">
                 <div nz-row [nzGutter]="[0,64]">
                     <div nz-col nzSpan="24">
-                        breadCrump
+                        <sili-bread-crump [breadCrump]="breadCrump"></sili-bread-crump>
                     </div>
                     <div nz-col nzSpan="24" style="pointer-events: none;" *ngIf="!isLoading">
                         <sili-direction [direction]="direction" [height]="true"></sili-direction>
@@ -19,7 +19,7 @@
             <div nz-col nzSpan="24">
                 <div nz-row [nzGutter]="[0,64]">
                     <div nz-col nzSpan="24">
-                        <sili-title [isShow]="false" [title]="'Учителя по направлению'"></sili-title>
+                        <sili-title [isShow]="false" [title]="title"></sili-title>
                     </div>
                     <div nz-col nzSpan="24" *ngIf="!isLoading">
                         <div nz-row [nzGutter]="[24,24]">

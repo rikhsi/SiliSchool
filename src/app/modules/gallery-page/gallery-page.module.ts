@@ -8,6 +8,7 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { MoreModule } from 'src/app/shared/more/more.module';
+import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MoreModule } from 'src/app/shared/more/more.module';
     NzGridModule,
     SkeletonModule,
     NzImageModule,
-    MoreModule
+    MoreModule,
+    BreadCrumpModule
   ]
 })
 export class GalleryPageModule { }

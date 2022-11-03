@@ -7,6 +7,7 @@ import { DocsPageComponent } from './docs-page.component';
 //sharedModules
 import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
 import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
+import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module';
 
 //ngZorroModules
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -14,7 +15,6 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 
 //translateModule
 import { TranslateModule } from '@ngx-translate/core';
-
 
 
 @NgModule({
@@ -29,6 +29,7 @@ import { TranslateModule } from '@ngx-translate/core';
     NzGridModule,
     NzButtonModule,
     TranslateModule,
+    BreadCrumpModule
   ]
 })
 export class DocsPageModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreadCrump } from 'src/app/models/breadCrump';
 import { Gallery } from 'src/app/models/gallery';
 import { GalleryService } from 'src/app/services/gallery.service';
 
@@ -14,6 +15,16 @@ export class GalleryPageComponent implements OnInit {
   isLoading: boolean = true;
   gallery!: Gallery[];
   paginatedList!: Gallery[];
+  breadCrump: BreadCrump[] = [
+    {
+      title: 'home.title',
+      path: ''
+    },
+    {
+      title: 'gallery.title',
+      path: '/gallery'
+    }
+  ];
 
   constructor(private galleryService: GalleryService) { }
 

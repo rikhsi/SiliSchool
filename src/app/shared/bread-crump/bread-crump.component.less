@@ -1,0 +1,21 @@
+@import '../../styles/colors.less';
+@import '../../styles/fonts.less';
+
+.bread{
+    &:last-child{
+        & div{
+            color: #999999;
+        pointer-events: none;
+        }
+        .bread__svg{
+            display: none;
+        }
+    }
+    &__title{
+        cursor: pointer;
+        &:hover{
+            color: @mainRed;
+        }
+        .text(500,16px,20px,@mainBlack);
+    }
+}

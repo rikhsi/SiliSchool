@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Advert } from 'src/app/models/advert';
+import { BreadCrump } from 'src/app/models/breadCrump';
 import { NewsService } from 'src/app/services/news.service';
 
 @Component({
@@ -12,13 +13,23 @@ export class NewsPageComponent implements OnInit {
   isLoading = true;
   news!: Advert[];
   paginatedList: Advert[] = [];
+  breadCrump: BreadCrump[] = [
+    {
+      title: 'home.title',
+      path: ''
+    },
+    {
+      title: 'news.title',
+      path: '/news'
+    }
+  ];
 
   constructor(private newsService: NewsService) {}
 
   ngOnInit(): void {
     setTimeout(() => {
       this.getData();
-      this.isLoading = !this.isLoading
+      this.isLoading = !this.isLoading;
     }, 2000);
   }
 

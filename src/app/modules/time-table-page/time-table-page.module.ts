@@ -10,6 +10,7 @@ import { TimeTablePageComponent } from './time-table-page.component';
 //sharedModules
 import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
 import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
+import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module';
 
 //ngZorroModules
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -29,7 +30,8 @@ import { TranslateModule } from '@ngx-translate/core';
     NzGridModule,
     NzButtonModule,
     TranslateModule,
-    SkeletonModule
+    SkeletonModule,
+    BreadCrumpModule
   ]
 })
 export class TimeTablePageModule { }

@@ -1,0 +1,32 @@
+@import '../../../../styles/colors.less';
+@import '../../../../styles/fonts.less';
+
+.card{
+    &__wrapper{
+        padding: 64px 0 120px 0;
+    }
+    &__container{
+        max-width: 1312px;
+        margin: 0 auto;
+    }
+    &__box{
+        padding: 36px;
+        background: @newsCardPageBg;
+    }
+    &__img{
+        height: 400px;
+        overflow: hidden;
+        background-color: @skeleton;
+
+        img{
+            pointer-events:none;
+            object-fit: fill;
+        }
+    }
+    &__title{
+        .text(700,30px,150%,@grey);
+    }
+    &__info{
+        .text(400,24px,150%,@grey);
+    }
+}

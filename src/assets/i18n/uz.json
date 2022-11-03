@@ -3,9 +3,13 @@
         "logo": "BMSM",
         "time": "Du-Sha"
     },
+    "home": {
+        "title": "Kirish"
+    },
     "news": {
         "title": "Yangiliklar",
-        "pageTitle": "Maktab yangiliklari"
+        "pageTitle": "Maktab yangiliklari",
+        "more-news": "Boshqa yangiliklar"
     },
     "gallery": {
         "title": "Galereya"
@@ -18,7 +22,8 @@
         "title": "Ma'muriyat"
     },
     "directions": {
-        "title": "Yo`nalishlar"
+        "title": "Yo`nalishlar",
+        "teachers": "Yo`nalish o`qituvchilari"
     },
     "faq": {
         "title": "Ko'p so'raladigan savollar",

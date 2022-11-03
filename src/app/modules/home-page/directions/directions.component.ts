@@ -3,6 +3,7 @@ import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, {SwiperOptions, Autoplay} from "swiper";
 import { Direction } from 'src/app/models/direction';
 import { DirectionsService } from 'src/app/services/directions.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sili-directions',
@@ -31,7 +32,7 @@ export class DirectionsComponent implements OnInit {
     }
   };
 
-  constructor(private directionsService: DirectionsService) { 
+  constructor(private directionsService: DirectionsService,private router: Router) { 
     SwiperCore.use([Autoplay]);
   }
 
@@ -40,6 +41,12 @@ export class DirectionsComponent implements OnInit {
       this.directions = this.directionsService.directions;
       this.isLoading = false;
     }, 2000);
+  }
+
+  navigate(): void{
+    setTimeout(() => {
+      this.router.navigate(['/directions'])
+    }, 300);
   }
 
   @ViewChild(SwiperComponent) swiper?: SwiperComponent;

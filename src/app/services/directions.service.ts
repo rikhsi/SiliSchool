@@ -10,7 +10,7 @@ export class DirectionsService {
       id: 1,
       img: '../../assets/img/direction.png',
       title: 'Фортепиано',
-      info: 'The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour'
+      info: 'The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour The gradual accumulation of information about atomic and small-scale behaviour'
     },
     {
       id: 2,

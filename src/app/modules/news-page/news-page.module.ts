@@ -9,6 +9,7 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
 import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
 import { MoreModule } from 'src/app/shared/more/more.module';
+import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MoreModule } from 'src/app/shared/more/more.module';
     NzSkeletonModule,
     SkeletonModule,
     PageContainerModule,
-    MoreModule
+    MoreModule,
+    BreadCrumpModule
   ]
 })
 export class NewsPageModule { }
