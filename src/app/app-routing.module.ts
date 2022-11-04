@@ -28,6 +28,10 @@ const routes: Routes = [
     path: 'connection',
     loadChildren: () => import('./modules/connection-page/connection-page.module').then(m => m.ConnectionPageModule)
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+  },
   { path: "**", redirectTo: "/home" }
 ];
 

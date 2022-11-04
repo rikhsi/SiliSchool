@@ -21,12 +21,15 @@
     "adminstration": {
         "title": "Ma'muriyat"
     },
+    "teachers": {
+        "title": "Ustozlar"
+    },
     "directions": {
         "title": "Yo`nalishlar",
         "teachers": "Yo`nalish o`qituvchilari"
     },
     "faq": {
-        "title": "Ko'p so'raladigan savollar",
+        "title": "Faq",
         "info": "Ma`lumotlar"
     },
     "docs": {
@@ -40,6 +43,39 @@
     "connection": {
         "title": "Aloqaga chiqish"
     },
+    "admin": {
+        "tables": {
+            "faq": {
+               "answer": "Javob",
+               "question": "Savol",
+               "instruments": "Asboblar" 
+            }
+        },
+        "buttons": {
+          "save": "Saqlash",
+          "reset": "Tozalash",
+          "delete": "O`chirish",
+          "show": "Ko`rsatish/bekitish",
+          "reload": "Yangilash",
+          "lang": "Tilni o`zgartirish",
+          "add": "Yaratmoq"
+        },
+        "modal": {
+            "show": {
+                "title": {
+                    "hide": "Bekitishni hohlaysizmi?",
+                    "show": "Ko`rsatishni hohlaysizmi?"
+                },
+                "content": "OK tugmasini bosib, rozilik berasiz",
+                "cancel": "Qaytish"
+            },
+            "delete": {
+                "title": "O`chirishni hohlaysizmi",
+                "content": "OK tugmasini bosib, rozilik berasiz",
+                "cancel": "Qaytish"
+            }
+        }  
+      },  
     "form":  {
         "title": "Biz bilan bog'laning",
         "name": "FIO",

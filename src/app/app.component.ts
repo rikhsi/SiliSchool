@@ -1,5 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import { AfterViewInit, Component, OnInit} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { MainService } from './services/main.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,15 @@ import { NavigationEnd, Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   isLoading: boolean = false;
-
-  constructor(private router: Router){}
+  isDefaultPage: boolean = true;
   
+  constructor(private router: Router,private mainService: MainService){}
+
   ngOnInit(): void {
+    this.mainService.isDefaultPage.subscribe(data => {
+      this.isDefaultPage = data;
+    })
+    this.mainService.setPage(true)
     this.changeStatus();
     this.router.events.subscribe((event:any) => {
       if (!(event instanceof NavigationEnd)) {

@@ -5,13 +5,17 @@
   <sili-loading></sili-loading>
 </ng-template>
 <div class="sili__wrapper">
-  <header class="sili__header">
-    <sili-header (changeStatus)="changeStatus()"></sili-header>
-  </header>
-  <!-- <main class="sili__main">
+  <ng-container *ngIf="isDefaultPage">
+    <header class="sili__header">
+      <sili-header (changeStatus)="changeStatus()"></sili-header>
+    </header>
+  </ng-container>
+  <main class="sili__main">
     <router-outlet></router-outlet>
   </main> 
-  <footer>
-    <sili-footer></sili-footer>
-  </footer> -->
+  <ng-container *ngIf="isDefaultPage">
+    <footer>
+      <sili-footer></sili-footer>
+    </footer>
+  </ng-container>
 </div>
