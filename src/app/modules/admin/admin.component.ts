@@ -3,7 +3,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { MainService } from 'src/app/services/main.service';
 import { FaqComponent } from './components/faq/faq.component';
-import { messages } from './messages/messages';
 
 @Component({
   selector: 'sili-admin',
@@ -12,22 +11,21 @@ import { messages } from './messages/messages';
   providers: [NzMessageService]
 })
 export class AdminComponent implements OnInit {
-  messages = messages;
   isLoading = false;
   isTable: boolean = true;
-  modalTexts: any;
+  translateTexts: any;
   isRu!: boolean;
   pages = [
     {
       name: 'gallery.title',
       id: 1,
-      isShow: false,
+      isShow: true,
       component: FaqComponent
     },
     {
       name: 'faq.title',
       id: 2,
-      isShow: true
+      isShow: false
     },
     {
       name: 'news.title',
@@ -75,7 +73,7 @@ export class AdminComponent implements OnInit {
     }, 0);
   }
 
-  changePage(id:number){
+  changePage(id:number):void{
     this.pages.find(data => {
       if(data.id === id){
         data.isShow = true
@@ -85,37 +83,33 @@ export class AdminComponent implements OnInit {
     })
   }
 
-  getList():void {
+  refresh():void {
     this.isLoading = !this.isLoading;
     setTimeout(() => {
       this.isLoading = !this.isLoading;
     }, 1000);
-  }
-
-  reload():void{
-    this.msg.success(this.messages.reload.ru.success);
-    this.getList();
+    this.msg.success(this.translateTexts.reload.success);
   }
 
   changeLang():void{
     if(this.isRu){
       this.translate.use('ru')
-      this.msg.success(this.messages.lang.ru.success);
+      this.msg.success(this.translateTexts.lang.success);
       this.isRu = !this.isRu;
       this.getTranslate();
-      this.getList();
+      this.refresh();
     } else{
       this.translate.use('uz')
-      this.msg.success(this.messages.lang.uz.success);
+      this.msg.success(this.translateTexts.lang.success);
       this.isRu = !this.isRu;
       this.getTranslate();
-      this.getList();
+      this.refresh();
     }
   }
 
   getTranslate():void {
-    this.translate.get('admin.modal').subscribe(data => {
-      this.modalTexts = data;
+    this.translate.get('admin').subscribe(data => {
+      this.translateTexts = data;
     })
   }
 

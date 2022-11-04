@@ -18,6 +18,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzImageModule } from 'ng-zorro-antd/image';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NzInputModule,
     NzFormModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzImageModule
   ]
 })
 export class AdminModule { }

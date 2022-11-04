@@ -9,27 +9,33 @@ export class GalleryService {
   galleries: Gallery[] = [
     {
       id: 1,
-      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg'
+      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg',
+      data: '20-01-2001 - 14:00'
     },  
     {
-      id: 1,
-      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg'
+      id: 2,
+      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg',
+      data: '20-01-2001 - 14:00'
     }, 
     {
-      id: 1,
-      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg'
+      id: 3,
+      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg',
+      data: '20-01-2001 - 14:00'
     }, 
     {
-      id: 1,
-      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg'
+      id: 4,
+      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg',
+      data: '20-01-2001 - 14:00'
     }, 
     {
-      id: 1,
-      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg'
+      id: 5,
+      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg',
+      data: '20-01-2001 - 14:00'
     }, 
     {
-      id: 1,
-      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg'
+      id: 6,
+      img: 'http://studyinrussia.ru/upload/iblock/6ba/6badbac79123f90a84f996e05d666e19.jpg',
+      data: '20-01-2001 - 14:00'
     }, 
   ];
   

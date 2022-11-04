@@ -2,7 +2,7 @@
     <nz-sider>
         <div class="logo"></div>
         <ul nz-menu nzTheme="dark" nzMode="inline">
-            <li nz-menu-item [nzDisabled]="isLoading" [nzSelected]="data.id === 2" (click)="changePage(data.id)" *ngFor="let data of pages">
+            <li nz-menu-item [nzDisabled]="isLoading" [nzSelected]="data.id === 1" (click)="changePage(data.id)" *ngFor="let data of pages">
                 <span nz-icon nzType="file"></span>
                 <span>{{data.name| translate}}</span>
             </li>
@@ -24,7 +24,7 @@
                             </button>
                         </div>
                         <div nz-col>
-                            <button nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.buttons.reload' | translate" class="button" (click)="reload()">
+                            <button nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.buttons.reload' | translate" class="button" (click)="refresh()">
                                 <span nz-icon nzType="reload" nzTheme="outline" class="icon"></span>
                             </button>
                         </div>
@@ -40,7 +40,7 @@
                         <sili-gallery></sili-gallery>
                     </ng-container>
                     <ng-container *ngIf="pages[1].isShow">
-                        <sili-faq [isTable]="isTable" [isLoading]="isLoading"  [modalTexts]="modalTexts" (getList)="getList()"></sili-faq>
+                        <sili-faq [isTable]="isTable" [isLoading]="isLoading"  [translateTexts]="translateTexts" (refresh)="refresh()"></sili-faq>
                     </ng-container>
                 </div>
             </div>

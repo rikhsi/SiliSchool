@@ -46,19 +46,25 @@
     "admin": {
         "tables": {
             "faq": {
-               "answer": "Javob",
-               "question": "Savol",
-               "instruments": "Asboblar" 
+                "answer": "Javob",
+                "question": "Savol",
+                "instruments": "Asboblar",
+                "data": "Vaqt" 
+            },
+            "gallery": {
+                "img": "Rasm",
+                "data": "Vaqt",
+                "instruments": "Asboblar"
             }
         },
         "buttons": {
-          "save": "Saqlash",
-          "reset": "Tozalash",
-          "delete": "O`chirish",
-          "show": "Ko`rsatish/bekitish",
-          "reload": "Yangilash",
-          "lang": "Tilni o`zgartirish",
-          "add": "Yaratmoq"
+            "save": "Saqlash",
+            "reset": "Tozalash",
+            "delete": "O`chirish",
+            "show": "Ko`rsatish/bekitish",
+            "reload": "Yangilash",
+            "lang": "Tilni o`zgartirish",
+            "add": "Yaratmoq"
         },
         "modal": {
             "show": {
@@ -74,8 +80,34 @@
                 "content": "OK tugmasini bosib, rozilik berasiz",
                 "cancel": "Qaytish"
             }
-        }  
-      },  
+        },
+        "reload": {
+            "success":" Muvaffaqiyatli yangilandi",
+            "error": "Yangilab bo`lmadi"
+        },
+        "delete": {
+            "success": "Muvaffaqiyatli o`chirildi",
+            "error":" O`chirib bo`lmadi"
+        },
+        "lang": {
+            "success": "Hozirgi til O`zbekcha",
+            "error": "Tilni o`zgartirib bo`lmadi"
+        },
+        "add": {
+            "success": "Muvaffaqiyatli saqlandi",
+            "error": "Saqlab bo`lmadi"
+        },
+        "show": {
+            "inVisible": {
+                "success": "Muvaffaqiyatli bekitildi",
+                "error": "Bekitib bo`lmadi"
+            },
+            "visible": {
+                "success": "Muvaffaqiyatli faollashtirildi",
+                "error":" Faollashtirib bo`lmadi"
+            }
+        }
+    },  
     "form":  {
         "title": "Biz bilan bog'laning",
         "name": "FIO",

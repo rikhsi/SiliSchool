@@ -1,68 +1,56 @@
 <div nz-row [nzGutter]="[0,40]">
     <ng-container *ngIf="isTable">
         <div nz-col nzSpan="24">
-            <nz-table nzTableLayout="fixed" [nzLoading]="isLoading" [nzPageSize]="8" #basicTable [nzData]="faqs">
+            <nz-table nzTableLayout="fixed" [nzLoading]="isLoading" [nzPageSize]="10" #basicTable [nzData]="faqs">
                 <thead>
-                  <tr>
-                    <th [nzWidth]="'5%'">№</th>
-                    <th>{{'admin.tables.faq.question' | translate}}</th>
-                    <th>{{'admin.tables.faq.answer' | translate}}</th>
-                    <th [nzWidth]="'140px'">{{'admin.tables.faq.instruments' | translate}}</th>
-                  </tr>
+                    <tr>
+                        <th [nzWidth]="'5%'">№</th>
+                        <th [nzWidth]="'200px'">{{'admin.tables.faq.data' | translate}}</th>
+                        <th>{{'admin.tables.faq.question' | translate}}</th>
+                        <th>{{'admin.tables.faq.answer' | translate}}</th>
+                        <th [nzWidth]="'140px'">{{'admin.tables.faq.instruments' | translate}}</th>
+                    </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let data of basicTable.data; let i = index">
                     <td>{{i+1}}</td>
+                    <td>{{data.data}}</td>
                     <td>
                         <nz-collapse nzGhost>
                             <nz-collapse-panel 
-                              [nzHeader]="question"
+                                [nzHeader]="question"
                             >
-                              <ng-template #question>
-                                <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.question}}</p>
-                              </ng-template>
-                              <p style="margin:0;">
-                                {{data.question}}
-                              </p>
+                                <ng-template #question>
+                                    <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.question}}</p>
+                                </ng-template>
+                                <p style="margin:0;">
+                                    {{data.question}}
+                                </p>
                             </nz-collapse-panel>
-                          </nz-collapse>
+                        </nz-collapse>
                     </td>
                     <td>
                         <nz-collapse nzGhost>
                             <nz-collapse-panel
-                              [nzHeader]="answer"
+                                [nzHeader]="answer"
                             >
-                              <ng-template #answer>
-                                <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.answer}}</p>
-                              </ng-template>
-                              <p style="margin:0;">
-                                {{data.answer}}
-                              </p>
+                                <ng-template #answer>
+                                    <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.answer}}</p>
+                                </ng-template>
+                                <p style="margin:0;">
+                                    {{data.answer}}
+                                </p>
                             </nz-collapse-panel>
-                          </nz-collapse>
+                        </nz-collapse>
                     </td>
                     <td>
-                        <div nz-row [nzGutter]="10">
-                            <div nz-col>
-                                <button nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.buttons.delete' | translate" (click)="delete(data.id)">
-                                    <span nz-icon nzType="delete" nzTheme="outline"></span>
-                                </button>
-                            </div>
-                            <div nz-col>
-                                <button nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.buttons.show' | translate" (click)="checkVisibility(data.isShow, data.id)">
-                                    <ng-container *ngIf="!data.isShow">
-                                        <span nz-icon nzType="eye-invisible" nzTheme="outline"></span>
-                                    </ng-container>
-                                    <ng-container *ngIf="data.isShow">
-                                        <span nz-icon nzType="eye" nzTheme="outline"></span>
-                                    </ng-container>
-                                </button>
-                            </div>
-                        </div>
+                        <button nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.buttons.delete' | translate" (click)="delete(data.id)">
+                            <span nz-icon nzType="delete" nzTheme="outline"></span>
+                        </button>
                     </td>
-                  </tr>
+                </tr>
                 </tbody>
-              </nz-table>
+            </nz-table>
         </div>
     </ng-container>
     <ng-container *ngIf="!isTable">

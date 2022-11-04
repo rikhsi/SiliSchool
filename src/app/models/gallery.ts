@@ -1,4 +1,5 @@
 export interface Gallery {
     id: number,
-    img: string
+    img: string,
+    data: string
 }

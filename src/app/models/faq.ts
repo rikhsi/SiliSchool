@@ -2,5 +2,5 @@ export interface Faq{
     id: number,
     question: string,
     answer: string,
-    isShow: boolean
+    data: string
 }
