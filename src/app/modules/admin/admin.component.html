@@ -2,7 +2,7 @@
     <nz-sider>
         <div class="logo"></div>
         <ul nz-menu nzTheme="dark" nzMode="inline">
-            <li nz-menu-item [nzDisabled]="isLoading" [nzSelected]="data.id === 1" (click)="changePage(data.id)" *ngFor="let data of pages">
+            <li nz-menu-item [nzDisabled]="isLoading" [nzSelected]="data.id === 4" (click)="changePage(data.id)" *ngFor="let data of pages">
                 <span nz-icon nzType="file"></span>
                 <span>{{data.name| translate}}</span>
             </li>
@@ -37,10 +37,25 @@
                 </div>
                 <div nz-col nzSpan="24">
                     <ng-container *ngIf="pages[0].isShow">
-                        <sili-gallery></sili-gallery>
+                        <sili-gallery [isTable]="isTable" [isLoading]="isLoading"  [translateTexts]="translateTexts" (refresh)="refresh()"></sili-gallery>
                     </ng-container>
                     <ng-container *ngIf="pages[1].isShow">
                         <sili-faq [isTable]="isTable" [isLoading]="isLoading"  [translateTexts]="translateTexts" (refresh)="refresh()"></sili-faq>
+                    </ng-container>
+                    <ng-container *ngIf="pages[2].isShow">
+                        <sili-news [isTable]="isTable" [isLoading]="isLoading"  [translateTexts]="translateTexts" (refresh)="refresh()"></sili-news>
+                    </ng-container>
+                    <ng-container *ngIf="pages[3].isShow">
+                        <sili-info [isTable]="isTable" [isLoading]="isLoading"  [translateTexts]="translateTexts" (refresh)="refresh()"></sili-info>
+                    </ng-container>
+                    <ng-container *ngIf="pages[4].isShow">
+                        <sili-adminstration [isTable]="isTable" [isLoading]="isLoading"  [translateTexts]="translateTexts" (refresh)="refresh()"></sili-adminstration>
+                    </ng-container>
+                    <ng-container *ngIf="pages[5].isShow">
+                        <sili-teachers [isTable]="isTable" [isLoading]="isLoading"  [translateTexts]="translateTexts" (refresh)="refresh()"></sili-teachers>
+                    </ng-container>
+                    <ng-container *ngIf="pages[7].isShow">
+                        <sili-achievements [isTable]="isTable" [isLoading]="isLoading"  [translateTexts]="translateTexts" (refresh)="refresh()"></sili-achievements>
                     </ng-container>
                 </div>
             </div>

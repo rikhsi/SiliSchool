@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit {
     {
       name: 'gallery.title',
       id: 1,
-      isShow: true,
+      isShow: false,
       component: FaqComponent
     },
     {
@@ -33,9 +33,9 @@ export class AdminComponent implements OnInit {
       isShow: false
     },
     {
-      name: 'faq.info',
+      name: 'docs.title',
       id: 4,
-      isShow: false
+      isShow: true
     },
     {
       name: 'adminstration.title',
@@ -57,11 +57,6 @@ export class AdminComponent implements OnInit {
       id: 8,
       isShow: false
     },
-    {
-      name: 'docs.title',
-      id: 8,
-      isShow: false
-    }
   ]
 
   constructor(private mainService: MainService,private msg: NzMessageService,public translate: TranslateService) { }

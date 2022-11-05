@@ -19,12 +19,24 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzImageModule } from 'ng-zorro-antd/image';
-
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NewsComponent } from './components/news/news.component';
+import { TeachersComponent } from './components/teachers/teachers.component';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { AchievementsComponent } from './components/achievements/achievements.component';
+import { AdminstrationComponent } from './components/adminstration/adminstration.component';
+import { InfoComponent } from './components/info/info.component';
 @NgModule({
   declarations: [
     AdminComponent,
     FaqComponent,
-    GalleryComponent
+    GalleryComponent,
+    NewsComponent,
+    TeachersComponent,
+    AchievementsComponent,
+    AdminstrationComponent,
+    InfoComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +55,10 @@ import { NzImageModule } from 'ng-zorro-antd/image';
     NzFormModule,
     FormsModule,
     ReactiveFormsModule,
-    NzImageModule
+    NzImageModule,
+    NzUploadModule,
+    NzModalModule,
+    NzSelectModule
   ]
 })
 export class AdminModule { }

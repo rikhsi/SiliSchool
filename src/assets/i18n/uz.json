@@ -55,16 +55,39 @@
                 "img": "Rasm",
                 "data": "Vaqt",
                 "instruments": "Asboblar"
+            },
+            "news": {
+                "title": "Sarlavha",
+                "description": "Tavsif",
+                "img": "Rasm",
+                "data": "Vaqt",
+                "instruments": "Asboblar"
+            },
+            "teachers": {
+                "name": "FIO",
+                "file": "Jadval",
+                "department": "Yo`nalish",
+                "img": "Rasm",
+                "instruments": "Asboblar",
+                "role": "Lavozim"
             }
         },
         "buttons": {
             "save": "Saqlash",
+            "upload": {
+                "photo": "Rasmni tanglang",
+                "loading": "Yuklanmoqa"
+            },
+            "download": "Yuklash",
             "reset": "Tozalash",
             "delete": "O`chirish",
             "show": "Ko`rsatish/bekitish",
             "reload": "Yangilash",
             "lang": "Tilni o`zgartirish",
-            "add": "Yaratmoq"
+            "add": "Yaratmoq",
+            "select": "Yo`nalishni tanlang",
+            "role": "Lavozimni tanlang",
+            "document": "Hujjat"
         },
         "modal": {
             "show": {
@@ -105,6 +128,12 @@
             "visible": {
                 "success": "Muvaffaqiyatli faollashtirildi",
                 "error":" Faollashtirib bo`lmadi"
+            }
+        },
+        "upload": {
+            "errors": {
+                "size": "Faylning hajmi 2mb oshmasligi kerak",
+                "format": "Faqat JPG va PNG formatdagi fayllarni yuklash mumkin"
             }
         }
     },  

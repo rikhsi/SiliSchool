@@ -2,31 +2,31 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NzImageService } from 'ng-zorro-antd/image';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { Gallery } from 'src/app/models/gallery';
-import { GalleryService } from 'src/app/services/gallery.service';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { Achievements } from 'src/app/models/achievement';
+import { AchievementsService } from 'src/app/services/achievements.service';
 
 @Component({
-  selector: 'sili-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.less'],
+  selector: 'sili-achievements',
+  templateUrl: './achievements.component.html',
+  styleUrls: ['./achievements.component.less'],
   providers: [NzMessageService, NzModalService,NzImageService]
 })
-export class GalleryComponent implements OnInit {
+export class AchievementsComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
-  @Output() refresh = new EventEmitter;
+  @Output() getList = new EventEmitter;
   uploading = false;
   fileList: NzUploadFile[] = [];
-  gallery!: Gallery[];
+  achievements!: Achievements[];
   confirmModal?: NzModalRef;
   fallback:string = '../../../../../assets/img/fallback.png';
 
-  constructor(private galleryService: GalleryService,private msg: NzMessageService,private modalService: NzModalService,private nzImageService: NzImageService) { }
+  constructor(private achievementsService: AchievementsService,private msg: NzMessageService,private modalService: NzModalService,private nzImageService: NzImageService) { }
 
   ngOnInit(): void {
-    this.gallery = this.galleryService.galleries;
+    this.achievements = this.achievementsService.achievements;
   }
 
   delete(id: number): void {
@@ -40,9 +40,9 @@ export class GalleryComponent implements OnInit {
       nzOkDanger: true,
       nzAutofocus: null,
       nzOnOk: () => {
-        this.gallery = this.gallery.filter(data => data.id !== id);
+        this.achievements = this.achievements.filter(data => data.id !== id);
         this.msg.success(this.translateTexts.delete.success);
-        this.refresh.emit();
+        this.getList.emit();
       }
     })
   }
@@ -83,4 +83,5 @@ export class GalleryComponent implements OnInit {
       this.uploading = false;
     }, 1000);
   }
+
 }

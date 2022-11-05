@@ -1,4 +1,5 @@
 export interface Achievements{
     id: number,
-    img: string
+    img: string,
+    data: string
 }

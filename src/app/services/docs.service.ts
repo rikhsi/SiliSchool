@@ -8,29 +8,41 @@ export class DocsService {
 
   docs: Docs[] = [
     {
+      id: 1,
       title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
-      file: ''
+      file: '',
+      data: '20.01.2001 - 14:00'
     },
     {
-      title: 'Barone LLC.',
-      file: ''
+      id: 2,
+      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
+      file: '',
+      data: '20.01.2001 - 14:00'
     },
     {
-      title: 'Barone LLC.',
-      file: ''
+      id: 3,
+      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
+      file: '',
+      data: '20.01.2001 - 14:00'
     },
     {
-      title: 'Barone LLC.',
-      file: ''
+      id: 4,
+      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
+      file: '',
+      data: '20.01.2001 - 14:00'
     },
     {
-      title: 'Barone LLC.',
-      file: ''
+      id: 5,
+      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
+      file: '',
+      data: '20.01.2001 - 14:00'
     },
     {
-      title: 'Barone LLC.',
-      file: ''
-    }
+      id: 6,
+      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
+      file: '',
+      data: '20.01.2001 - 14:00'
+    },
   ]
 
   constructor() { }

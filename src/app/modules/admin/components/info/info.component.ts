@@ -2,31 +2,38 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NzImageService } from 'ng-zorro-antd/image';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
-import { Gallery } from 'src/app/models/gallery';
-import { GalleryService } from 'src/app/services/gallery.service';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { DocsService } from 'src/app/services/docs.service';
+import { Docs } from 'src/app/models/docs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'sili-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.less'],
+  selector: 'sili-info',
+  templateUrl: './info.component.html',
+  styleUrls: ['./info.component.less'],
   providers: [NzMessageService, NzModalService,NzImageService]
 })
-export class GalleryComponent implements OnInit {
+export class InfoComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
   @Output() refresh = new EventEmitter;
   uploading = false;
   fileList: NzUploadFile[] = [];
-  gallery!: Gallery[];
+  docs!: Docs[];
+  createForm!: FormGroup;
   confirmModal?: NzModalRef;
   fallback:string = '../../../../../assets/img/fallback.png';
 
-  constructor(private galleryService: GalleryService,private msg: NzMessageService,private modalService: NzModalService,private nzImageService: NzImageService) { }
+  constructor(private docsService: DocsService,private msg: NzMessageService,private modalService: NzModalService,private fb: FormBuilder) { 
+    this.createForm = this.fb.group({
+      titleUz: [null, [Validators.required]],
+      titleRu: [null, [Validators.required]]
+    })
+  }
 
   ngOnInit(): void {
-    this.gallery = this.galleryService.galleries;
+    this.docs = this.docsService.docs;
   }
 
   delete(id: number): void {
@@ -40,22 +47,11 @@ export class GalleryComponent implements OnInit {
       nzOkDanger: true,
       nzAutofocus: null,
       nzOnOk: () => {
-        this.gallery = this.gallery.filter(data => data.id !== id);
+        this.docs = this.docs.filter(data => data.id !== id);
         this.msg.success(this.translateTexts.delete.success);
         this.refresh.emit();
       }
     })
-  }
-
-  preview(id: number,img: string):void{
-    const images = [
-      {
-        src: img,
-        width: 'auto',
-        height: '60%'
-      }
-    ]
-    this.nzImageService.preview(images);
   }
 
   beforeUpload = (file: NzUploadFile): boolean => {
@@ -74,13 +70,23 @@ export class GalleryComponent implements OnInit {
   };
 
   submit(): void {
-    const formData = new FormData();
-    this.fileList.forEach((file: any) => {
-      formData.append('file', file);
-    });
-    this.uploading = true;
-    setTimeout(() => {
-      this.uploading = false;
-    }, 1000);
+    if (this.createForm.valid && this.fileList.length > 0) {
+      const formData = new FormData();
+      this.fileList.forEach((file: any) => {
+        formData.append('file', file);
+      });
+      this.createForm.reset();
+      this.fileList = [];
+      this.refresh.emit();
+      this.msg.success(this.translateTexts.add.success)
+    } else {
+      Object.values(this.createForm.controls).forEach(control => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    }
   }
+
 }
