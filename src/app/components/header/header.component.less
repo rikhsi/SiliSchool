@@ -74,14 +74,6 @@
     }
 }
 
-// .list{
-//     @media (max-width:1199px) {
-//         & li:nth-child(2){
-//             display: none;
-//         }
-//     }
-// }
-
 .hide{
     @media (max-width:1199px) {
         display: none;
@@ -95,10 +87,21 @@
         border: none;
         background: inherit;
         color: blue;
+        max-height: 22px;
+    }
 
-        span{
-            font-size: 18px;
-        }
+    &__icon{
+        font-size: 22px;
+        max-height: 22px;
+        color: @mainBlack;
+    }
+
+    &__burger{
+        max-height: 22px;
+        font-size: 22px;
+        color: @mainBlack;
     }
 }
+
+
 

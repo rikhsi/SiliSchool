@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
+export const api = 'http://192.168.1.3:5000/';
+
 @Injectable({
   providedIn: 'root'
 })

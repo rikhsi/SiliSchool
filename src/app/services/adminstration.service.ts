@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Adminstration } from '../models/adminstration';
+import { api } from './main.service';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +41,17 @@ export class AdminstrationService {
     },
   ]
 
-  constructor() { }
+  get() {
+    return this.http.get<Adminstration[]>(api + 'getAdministrations');
+  }
+
+  delete(id: number){
+    return this.http.delete(api + 'deleteAdministration' + `/${id}`)
+  }
+
+  post(data: FormData){
+    return this.http.post(api + 'addAdministration', data )
+  }
+
+  constructor(private http: HttpClient) { }
 }

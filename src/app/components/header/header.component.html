@@ -71,17 +71,29 @@
                         </button>       
                     </div>
                     <div nzcol>
-                        <div nz-row [nzGutter]="32">
+                        <div nz-row [nzGutter]="24" nzAlign="middle">
                             <div nz-col>
+                                <button nz-button nzType="primary" nz-dropdown [nzDropdownMenu]="menu" nzTrigger="click" class="header__button">
+                                    <span>{{currentLang}}</span>
+                                    <span nz-icon nzType="down" style="font-size: 10px;"></span>
+                                </button>
+                                <nz-dropdown-menu #menu="nzDropdownMenu">
+                                    <ul nz-menu nz-row [nzGutter]="[0,10]" [nzSelectable]="false">
+                                        <li nz-menu-item nz-col nzSpan="24" (click)="changeLang('ru')">Ру</li>
+                                        <li nz-menu-item nz-col nzSpan="24" (click)="changeLang('uz')">Uz</li>
+                                    </ul>
+                                </nz-dropdown-menu>
+                            </div>
+                            <div nz-col style="max-height: 22px;">
                                 <button nz-button nzType="primary" class="adaptive__button">
-                                    <span nz-icon nzType="phone" nzTheme="outline" [nzRotate]="90"></span>
+                                    <span nz-icon nzType="phone" nzTheme="outline" [nzRotate]="90" class="adaptive__icon"></span>
                                 </button>
                             </div>
-                            <div nz-col>
+                            <div nz-col style="max-height: 22px;">
                                 <button nz-button nzType="primary" class="adaptive__button">
                                     <span nz-icon nzType="menu" nzTheme="outline" class="adaptive__burger"></span>
                                 </button>
-                            </div>
+                            </div>                      
                         </div>   
                     </div>
                 </div>

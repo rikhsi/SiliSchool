@@ -18,6 +18,7 @@ export class InfoComponent implements OnInit {
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
   @Output() refresh = new EventEmitter;
+  button: boolean = false;
   uploading = false;
   fileList: NzUploadFile[] = [];
   docs!: Docs[];
@@ -69,6 +70,19 @@ export class InfoComponent implements OnInit {
     return false;
   };
 
+  reset(e: MouseEvent): void {
+    e.preventDefault();
+    this.createForm.reset();
+    this.fileList = [];
+    this.button = false;
+    for (const key in this.createForm.controls) {
+      if (this.createForm.controls.hasOwnProperty(key)) {
+        this.createForm.controls[key].markAsPristine();
+        this.createForm.controls[key].updateValueAndValidity();
+      }
+    }
+  }
+
   submit(): void {
     if (this.createForm.valid && this.fileList.length > 0) {
       const formData = new FormData();
@@ -77,6 +91,7 @@ export class InfoComponent implements OnInit {
       });
       this.createForm.reset();
       this.fileList = [];
+      this.button = false;
       this.refresh.emit();
       this.msg.success(this.translateTexts.add.success)
     } else {
@@ -85,8 +100,10 @@ export class InfoComponent implements OnInit {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
         }
+        if(this.fileList.length === 0){
+          this.button = true;
+        }
       });
     }
   }
-
 }

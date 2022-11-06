@@ -70,6 +70,9 @@
                 "img": "Rasm",
                 "instruments": "Asboblar",
                 "role": "Lavozim"
+            },
+            "docs": {
+                "button": "Faylni tanlang"
             }
         },
         "buttons": {

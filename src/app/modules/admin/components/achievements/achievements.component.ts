@@ -26,7 +26,11 @@ export class AchievementsComponent implements OnInit {
   constructor(private achievementsService: AchievementsService,private msg: NzMessageService,private modalService: NzModalService,private nzImageService: NzImageService) { }
 
   ngOnInit(): void {
-    this.achievements = this.achievementsService.achievements;
+    // this.achievementsService.get().subscribe({
+    //   next: data => {
+    //     console.log(data)
+    //   }
+    // })
   }
 
   delete(id: number): void {
