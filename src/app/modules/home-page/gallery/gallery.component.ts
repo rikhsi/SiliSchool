@@ -16,7 +16,7 @@ export class GalleryComponent implements OnInit {
   fallback:string = '../../../../assets/img/fallback.png';
   galleries!: Gallery[];
   config: SwiperOptions = {
-    slidesPerView: 2,
+    slidesPerView: 'auto',
     spaceBetween: 24,
     touchEventsTarget: 'container',
     grabCursor: true,
@@ -29,6 +29,29 @@ export class GalleryComponent implements OnInit {
       loadPrevNextAmount: 2,
       checkInView: true,
       loadOnTransitionStart: true
+    },
+    breakpoints: {
+      1199: {
+        slidesPerView: 2,
+      },
+      991: {
+        slidesPerView: 2,
+      },
+      767: {
+        slidesPerView: 1.7,
+      },
+      575: {
+        slidesPerView: 1.5,
+      },
+      450: {
+        slidesPerView: 1.3,
+      },
+      400: {
+        slidesPerView: 1.1
+      },
+      300: {
+        slidesPerView: 1,
+      },
     }
   };
 

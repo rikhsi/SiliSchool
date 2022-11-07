@@ -1,5 +1,5 @@
 <div class="gallery__wrapper">
-    <div nz-row nzAlign="middle" [nzGutter]="[0,32]" class="gallery__container">
+    <div nz-row nzAlign="middle" [nzGutter]="[0,{xl:32,lg:4,md:4,sm:4,xs:4}]" class="gallery__container">
         <div nz-col nzSpan="24">
             <sili-title [title]="title" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
         </div>
@@ -15,7 +15,11 @@
                     </swiper>
                 </ng-container>
                 <ng-container *ngIf="isLoading">
-                    <sili-gallery-skeleton [counter]="2"></sili-gallery-skeleton>
+                    <swiper #swiper [config]="config">
+                        <ng-template swiperSlide *ngFor="let data of [1,2,3,4]">
+                            <sili-gallery-skeleton [counter]="1"></sili-gallery-skeleton>
+                        </ng-template>
+                    </swiper>
                 </ng-container>
             </div>
         </div>

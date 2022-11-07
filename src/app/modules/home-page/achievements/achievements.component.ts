@@ -28,8 +28,34 @@ export class AchievementsComponent implements OnInit {
       loadPrevNextAmount: 3,
       checkInView: true,
       loadOnTransitionStart: true
-    }
-  };
+    },
+    breakpoints: {
+      1199: {
+        slidesPerView: 3,
+      },
+      991: {
+        slidesPerView: 2.8,
+      },
+      767: {
+        slidesPerView: 2.2,
+      },
+      691: {
+        slidesPerView: 2,
+      },
+      575: {
+        slidesPerView: 1.7,
+      },
+      480: {
+        slidesPerView: 1.4,
+      },
+      410: {
+        slidesPerView: 1.2
+      },
+      300: {
+        slidesPerView: 1,
+      },
+  }
+} 
   
   constructor(private achievementsService: AchievementsService) { 
     SwiperCore.use([Autoplay]);

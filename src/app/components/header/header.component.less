@@ -5,11 +5,19 @@
 .header{
     &__wrapper{
         padding: 0 24px;
+
+        @media (max-width:575px) {
+            padding: 0 16px;
+        }
     }
     &__container{
         padding: 36px 0;
         max-width: 1312px;
         margin: 0 auto;
+
+        @media (max-width:1199px) {
+            padding: 20px 0;
+        }
     }
     &__logo{
         width: auto;
@@ -21,6 +29,10 @@
         .mainText(600,32px,41px,@mainBlue);
         cursor: pointer;
 
+        @media (max-width:1199px) {
+            font-size: 24px;
+        }
+
         @media (max-width: 767px) {
             .mainText(900,24px,36px,@mainBlue);
         }
@@ -29,6 +41,10 @@
         transition: 0.3s;
         .mainText(600,16px,20px,@mainBlack);
 
+        @media (max-width:1199px) {
+            font-size: 14px;
+        }
+
         &:hover{
             transition: 0.3s;
             color: @mainRed;
@@ -36,6 +52,15 @@
         
         &-hover{
             cursor: pointer;
+        }
+    }
+
+    &__phone{
+        @media (max-width:1199px) {
+            svg{
+                width: 16px;
+                height: 16px;
+            }
         }
     }
 
@@ -51,6 +76,16 @@
         box-shadow: none !important;
         padding: 0 8px;
         .text(500,16px,20px,@white);
+
+        @media (max-width:1199px) {
+            font-size: 14px;
+            padding: 6px;
+        }
+
+        @media (max-width:767px) {
+            font-weight: 400;
+            padding: 4px;
+        }
     }
 
     &__list{
@@ -75,8 +110,19 @@
 }
 
 .hide{
-    @media (max-width:1199px) {
+    @media (max-width:767px) {
         display: none;
+    }
+
+    &__clock{
+        @media (max-width:1199px) {
+            display: none;
+        }
+    }
+    &__phone{
+        @media (max-width:991px) {
+            display: none;
+        }
     }
 }
 

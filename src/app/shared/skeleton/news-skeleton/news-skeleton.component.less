@@ -5,10 +5,30 @@
         padding: 36px;
         background: @newsBg;
         box-shadow: @cardShadow;
+
+        @media (max-width:1199px) {
+            padding: 24px;
+        }
     }
 
     &__img{
         height: 400px;
         cursor: pointer;
+
+        @media (max-width:991px) {
+            height: 350px;
+        }
+
+        @media (max-width:767px) {
+            height: 264px;
+        }
+
+        @media (max-width:575px) {
+            height: 220px;
+        }
+
+        @media (max-width:470px) {
+            height: 190px;
+        }
     }
 }

@@ -9,12 +9,8 @@ export class DirectionSkeletonComponent implements OnInit {
   @Input() counter!: number;
   @Input() span: number = 8;
   @Input() height!: boolean;
-  skeleton: any[] = [];
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.skeleton = this.skeleton.concat(...Array(this.counter))
-  }
-
+  ngOnInit(): void {}
 }

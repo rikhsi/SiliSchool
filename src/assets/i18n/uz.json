@@ -8,6 +8,7 @@
     },
     "news": {
         "title": "Yangiliklar",
+        "title__2": "Yangilik",
         "pageTitle": "Maktab yangiliklari",
         "more-news": "Boshqa yangiliklar"
     },

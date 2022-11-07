@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //ngZorroModules
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
 //translateModule and service
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -56,6 +57,7 @@ import { AnimationModule } from './shared/animation/animation.module';
     NzDropDownModule,
     NzSpinModule,
     AnimationModule,
+    NzDrawerModule,
     NgxMaskModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

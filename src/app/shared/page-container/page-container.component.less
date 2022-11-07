@@ -3,8 +3,17 @@
 
 .page{
     &__wrapper{
+        padding: 0 24px;
         height: 240px;
         background: linear-gradient(101.24deg, #4845DF 0%, #4579DF 100%), #4845DF;
+
+        @media (max-width:1199px) {
+            height: 128px;
+        }
+
+        @media (max-width:575px) {
+            padding: 0 16px;
+        }
     }
     &__container{
         max-width: 1312px;
@@ -13,5 +22,13 @@
     }
     &__title{
         .mainText(700,64px,80px,@white);
+
+        @media (max-width:1199px) {
+            font-size: 32px;
+        }
+
+        @media (max-width:767px) {
+            font-size: 28px;
+        }
     }
 }

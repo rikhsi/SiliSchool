@@ -6,16 +6,33 @@
     background: @newsBg;
     box-shadow: @cardShadow;
     cursor: pointer;
+
+    @media (max-width:1199px) {
+        padding: 24px;
+    }
+
     &__data{
         .text(500,20px,150%,@grey);
+
+        @media (max-width:1199px) {
+            font-size: 16px;
+        }
     }
 
     &__title{
         .text(700,30px,150%,@grey);
+
+        @media (max-width:1199px) {
+            font-size: 20px;
+        }
     }
 
     &__info{
         .text(400,24px,36px,@grey);
+
+        @media (max-width:1199px) {
+            font-size: 16px;
+        }
     }
 
     &__img{
@@ -23,6 +40,22 @@
         overflow: hidden;
         background-color: @skeleton;
         cursor: pointer;
+
+        @media (max-width:1199px) {
+            height: 350px;
+        }
+
+        @media (max-width:767px) {
+            height: 264px;
+        }
+
+        @media (max-width:575px) {
+            height: 220px;
+        }
+
+        @media (max-width:470px) {
+            height: 190px;
+        }
 
         img{
             pointer-events:none;

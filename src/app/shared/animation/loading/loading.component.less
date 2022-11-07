@@ -1,7 +1,14 @@
 .notes{
     position: fixed;
     width: 100%;
-    top: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width:575px) {
+        margin-top: 150px;
+    }
 
     &__box {
         position: relative;

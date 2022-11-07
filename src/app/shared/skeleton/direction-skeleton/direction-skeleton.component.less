@@ -2,9 +2,14 @@
 
 .skeleton{
     &__card{
+        width: 100%;
         background: @white;
         box-shadow: @cardShadow;
         padding: 36px;
+
+        @media (max-width:1199px) {
+            padding: 24px;
+        }
     }
     &__img{
         height: 160px;

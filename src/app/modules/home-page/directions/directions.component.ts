@@ -16,7 +16,7 @@ export class DirectionsComponent implements OnInit {
   fallback:string = '../../../../assets/img/fallback.png';
   directions!: Direction[];
   config: SwiperOptions = {
-    slidesPerView: 3,
+    slidesPerView: 'auto',
     spaceBetween: 24,
     touchEventsTarget: 'container',
     grabCursor: true,
@@ -29,6 +29,29 @@ export class DirectionsComponent implements OnInit {
       loadPrevNextAmount: 3,
       checkInView: true,
       loadOnTransitionStart: true
+    },
+    breakpoints: {
+      1199: {
+        slidesPerView: 3,
+      },
+      991: {
+        slidesPerView: 2.8,
+      },
+      767: {
+        slidesPerView: 2.4,
+      },
+      575: {
+        slidesPerView: 2,
+      },
+      450: {
+        slidesPerView: 1.5,
+      },
+      400: {
+        slidesPerView: 1.2,
+      },
+      300: {
+        slidesPerView: 1,
+      },
     }
   };
 

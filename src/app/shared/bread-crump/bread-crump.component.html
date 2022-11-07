@@ -1,8 +1,8 @@
 <div nz-row>
     <div nz-col nzSpan="24">
-        <div nz-row [nzGutter]="24">
+        <div nz-row [nzGutter]="[{xL:24,lg:24,md:16,sm:16,xs:16},10]">
             <div nz-col *ngFor="let data of breadCrump" class="bread">
-                <div nz-row [nzGutter]="24" nzAlign="middle">
+                <div nz-row [nzGutter]="{xL:24,lg:24,md:16,sm:16,xs:16}" nzAlign="middle">
                     <div nz-col>
                         <div class="bread__title" (click)="navigate(data.path)">{{data.title | translate}}</div>
                     </div>

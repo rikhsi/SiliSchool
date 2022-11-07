@@ -1,22 +1,29 @@
-<div class="achievements__container">
-    <div nz-row [nzGutter]="[0,64]">
-        <div nz-col nzSpan="24">
-            <sili-title [title]="title" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
-        </div>
-        <div nz-col nzSpan="24">
-            <ng-container *ngIf="!isLoading">
-                <swiper #swiper [config]="config">
-                    <ng-template swiperSlide *ngFor="let data of achievements">
-                        <div class="achievements__img">
-                            <img nz-image [nzSrc]="data.img" [nzFallback]="fallback" alt="news"> 
-                        </div>
-                    </ng-template>
-                </swiper>
-            </ng-container>
-            <ng-container *ngIf="isLoading">
-                <sili-achievement-skeleton [counter]="3"></sili-achievement-skeleton>
-            </ng-container>
+<div class="achievements__wrapper">
+    <div class="achievements__container">
+        <div nz-row [nzGutter]="[0,{xl:32,lg:4,md:4,sm:4,xs:4}]">
+            <div nz-col nzSpan="24">
+                <sili-title [title]="title" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
+            </div>
+            <div nz-col nzSpan="24">
+                <ng-container *ngIf="!isLoading">
+                    <swiper #swiper [config]="config" class="achievements__swiper">
+                        <ng-template swiperSlide *ngFor="let data of achievements">
+                            <div class="achievements__img">
+                                <img nz-image [nzSrc]="data.img" [nzFallback]="fallback" alt="news"> 
+                            </div>
+                        </ng-template>
+                    </swiper>
+                </ng-container>
+                <ng-container *ngIf="isLoading">
+                    <swiper #swiper [config]="config" class="achievements__swiper">
+                        <ng-template swiperSlide *ngFor="let data of [1,2,3,4]">
+                            <sili-achievement-skeleton [counter]="1"></sili-achievement-skeleton>
+                        </ng-template>
+                    </swiper>
+                </ng-container>
+            </div>
         </div>
     </div>
 </div>
+
 

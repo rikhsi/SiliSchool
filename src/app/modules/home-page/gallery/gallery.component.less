@@ -2,8 +2,16 @@
 
 .gallery{
     &__wrapper{
-        padding: 128px 0;
-        background-color: @yellow;
+        padding: 128px 24px 128px 24px;
+        background: @yellow;
+
+        @media (max-width:1199px) {
+            padding: 48px 24px 48px 24px;
+        }
+
+        @media (max-width:575px) {
+            padding: 48px 16px 48px 16px;
+        }
     }  
     
     &__container{
@@ -16,9 +24,13 @@
         overflow: hidden;
         background-color: @skeleton;
 
+        @media (max-width:1199px) {
+            height: 310px;
+        }
+
         img{
             pointer-events:none;
-            object-fit: cover;
+            object-fit: fill;
         }
     }
 

@@ -3,8 +3,16 @@
 
 .faq{
     &__wrapper{
-        padding: 128px 0;
-        background-color: @yellow;
+        padding: 128px 24px 128px 24px;
+        background: @yellow;
+
+        @media (max-width:1199px) {
+            padding: 48px 24px 8px 24px;
+        }
+
+        @media (max-width:575px) {
+            padding: 48px 16px 8px 16px;
+        }
     }  
     
     &__container{
@@ -14,18 +22,31 @@
 
     &__title{
         max-width: 1130px;
+        padding-right: 16px;
         .text(700,30px,150%,@grey) !important;
+
+        @media (max-width:1199px) {
+            font-size: 20px !important;
+        }
     }
 
     &__answer{
         max-width: 1130px;
         padding-top: 20px;
         .text(400,24px,150%,@grey);
+
+        @media (max-width:1199px) {
+            font-size: 16px;
+        }
     }
 
     &__icon{
         font-size: 24px;
         color: @faqButton;
+
+        @media (max-width:1199px) {
+            font-size: 16px;
+        }
     }
 
     &__button{
@@ -33,6 +54,15 @@
         height: 64px;
         border: 1px solid @faqButton;
         background: inherit;
+
+        @media (max-width:1199px) {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
 }
 

@@ -15,7 +15,7 @@ export class AdministrationComponent implements OnInit {
   isLoading: boolean = true;
   administrations!: Adminstration[];
   config: SwiperOptions = {
-    slidesPerView: 4,
+    slidesPerView: 'auto',
     spaceBetween: 24,
     loop: true,
     touchEventsTarget: 'container',
@@ -28,6 +28,29 @@ export class AdministrationComponent implements OnInit {
       loadPrevNextAmount: 4,
       checkInView: true,
       loadOnTransitionStart: true
+    },
+    breakpoints: {
+      1199: {
+        slidesPerView: 4,
+      },
+      991: {
+        slidesPerView: 3.1,
+      },
+      767: {
+        slidesPerView: 2.5,
+      },
+      575: {
+        slidesPerView: 1.8,
+      },
+      450: {
+        slidesPerView: 1.4,
+      },
+      400: {
+        slidesPerView: 1.1,
+      },
+      300: {
+        slidesPerView: 1,
+      },
     }
   };
 

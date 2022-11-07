@@ -2,8 +2,16 @@
 
 .gallery{
     &__wrapper{
-        padding: 128px 0;
+        padding: 128px 24px 128px 24px;
         background: @adminstration;
+
+        @media (max-width:1199px) {
+            padding: 48px 24px 48px 24px;
+        }
+
+        @media (max-width:575px) {
+            padding: 48px 16px 48px 16px;
+        }
     }  
     
     &__container{

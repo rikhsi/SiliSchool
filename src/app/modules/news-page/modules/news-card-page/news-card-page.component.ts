@@ -26,7 +26,7 @@ export class NewsCardPageComponent implements OnInit {
       path: '/news'
     },
     {
-      title: 'Текущая страница',
+      title: 'news.title__2',
       path: '/news'
     }
   ];

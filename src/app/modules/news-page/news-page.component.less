@@ -1,6 +1,10 @@
 .news{
     &__wrapper{
-        padding-bottom: 120px;
+        padding: 0 24px 120px 24px;
+
+        @media (max-width:575px) {
+            padding: 0 16px 48px 16px;
+        }
     }
     &__container{
         max-width: 1312px;

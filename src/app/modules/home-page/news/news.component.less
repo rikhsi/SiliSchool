@@ -1,12 +1,25 @@
 @import '../../../styles/colors.less';
 
 .news{
+    &__wrapper{
+        padding: 128px 24px 128px 24px;
+        background: inherit;
+
+        @media (max-width:1199px) {
+            padding: 48px 24px 48px 24px;
+        }
+
+        @media (max-width:575px) {
+            padding: 48px 16px 48px 16px;
+        }
+    }  
+    
     &__container{
         max-width: 1312px;
         margin: 0 auto;
     }
 
     &__swiper{
-        box-shadow: @cardShadow;
+        padding: 32px 0;
     }
 }

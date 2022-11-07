@@ -1,74 +1,85 @@
-<div class="card__wrapper">
-    <div nz-row [nzGutter]="[0,64]">
-        <div nz-col nzSpan="24">
-            <sili-page-container [title]="'news.title'"></sili-page-container>
-        </div>  
-        <div nz-col nzSpan="24">
-            <div class="card__container">
-                <div nz-row [nzGutter]="[0,120]">
-                    <div nz-col nzSpan="24">
-                        <div nz-row [nzGutter]="[0,64]">
+<div nz-row [nzGutter]="[0,{xL:64,lg:64,md:32,sm:32,xs:32}]">
+    <div nz-col nzSpan="24">
+        <sili-page-container [title]="'news.title'"></sili-page-container>
+    </div>  
+    <div nz-col nzSpan="24">
+        <div class="card__wrapper">
+            <div nz-row [nzGutter]="[0,64]">
+                <div nz-col nzSpan="24">
+                    <div class="card__container">
+                        <div nz-row [nzGutter]="[0,{xL:120,lg:100,md:64,sm:64,xs:64}]">
                             <div nz-col nzSpan="24">
-                                <sili-bread-crump [breadCrump]="breadCrump"></sili-bread-crump>
-                            </div>
-                            <ng-container *ngIf="!isLoading">
-                                <div nz-col nzSpan="24">
-                                    <div class="card__box">
-                                        <div nz-row [nzGutter]="[0,48]">
-                                            <div nz-col nzSpan="24">
-                                                <h1 class="card__title">{{advert.title}}</h1>
-                                            </div>
-                                            <div nz-col nzSpan="24">
-                                                <div class="card__img">
-                                                    <img nz-image [nzSrc]="advert.img" [nzFallback]="fallback">
-                                                </div>       
-                                            </div>
-                                            <div nz-col nzSpan="24">
-                                                <h2 class="card__info">{{advert.info}}</h2>
-                                            </div>
-                                        </div>
-                                    </div>               
-                                </div>
-                            </ng-container>        
-                            <ng-container *ngIf="isLoading">
-                                <div nz-col nzSpan="24">
-                                    <div class="card__box">
-                                        <div nz-row [nzGutter]="[0,48]">
-                                            <div nz-col nzSpan="24">
-                                                <div class="card__img">
-                                                    <nz-skeleton-element [nzActive]="true" nzType="button" [nzSize]="'default'"></nz-skeleton-element>  
-                                                </div>       
-                                            </div>
-                                            <div nz-col nzSpan="24">
-                                                <nz-skeleton [nzActive]="true"></nz-skeleton> 
-                                            </div>
-                                        </div>
-                                    </div>                          
-                                </div>                           
-                            </ng-container>     
-                        </div>
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <div nz-row [nzGutter]="[0,64]">
-                            <div nz-col nzSpan="24">
-                                <sili-title [isShow]="false" [title]="title"></sili-title>
-                            </div>
-                            <div nz-col nzSpan="24" *ngIf="!isLoading">
-                                <div nz-row [nzGutter]="[0,64]">
-                                    <div nz-col nzSpan="24" *ngFor="let data of news;">
-                                        <sili-advert [advert]="data"></sili-advert>
+                                <div nz-row [nzGutter]="[0,{xL:64,lg:64,md:32,sm:32,xs:32}]">
+                                    <div nz-col nzSpan="24">
+                                        <sili-bread-crump [breadCrump]="breadCrump"></sili-bread-crump>
                                     </div>
+                                    <ng-container *ngIf="!isLoading">
+                                        <div nz-col nzSpan="24">
+                                            <div class="card__box">
+                                                <div nz-row [nzGutter]="[0,{xl:24,lg:16,md:16,sm:16,xs:16}]">
+                                                    <div nz-col nzSpan="24">
+                                                        <h3 class="card__data">{{advert.data}}</h3>
+                                                    </div>
+                                                    <div nz-col nzSpan="24">
+                                                        <div nz-row [nzGutter]="[0,{xl:48,lg:24,md:24,sm:24,xs:24}]" nzJustify="center">                                           
+                                                            <div nz-col nzSpan="24">                                              
+                                                                <h1 class="card__title">{{advert.title}}</h1>
+                                                            </div>
+                                                            <div nz-col nzLg="18" nzMd="22" nzXs="24">
+                                                                <div class="card__img">
+                                                                    <img nz-image [nzSrc]="advert.img" [nzFallback]="fallback">
+                                                                </div>   
+                                                            </div>                                              
+                                                            <div nz-col nzSpan="24">
+                                                                <h2 class="card__info">{{advert.info}}</h2>
+                                                            </div>                       
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>               
+                                        </div>
+                                    </ng-container>        
+                                    <ng-container *ngIf="isLoading">
+                                        <div nz-col nzSpan="24">
+                                            <div class="card__box">
+                                                <div nz-row [nzGutter]="[0,{xL:64,lg:48,md:48,sm:48,xs:48}]">
+                                                    <div nz-col nzSpan="24">
+                                                        <div class="card__img">
+                                                            <nz-skeleton-element [nzActive]="true" nzType="button" [nzSize]="'default'"></nz-skeleton-element>  
+                                                        </div>       
+                                                    </div>
+                                                    <div nz-col nzSpan="24">
+                                                        <nz-skeleton [nzActive]="true"></nz-skeleton> 
+                                                    </div>
+                                                </div>
+                                            </div>                          
+                                        </div>                           
+                                    </ng-container>     
                                 </div>
                             </div>
-                            <ng-container *ngIf="isLoading">
-                                <div nz-col nzSpan="24">
-                                    <sili-news-skeleton [counter]="3"></sili-news-skeleton>
-                                </div>           
-                            </ng-container>     
+                            <div nz-col nzSpan="24">
+                                <div nz-row [nzGutter]="[0,{xL:64,lg:32,md:32,sm:32,xs:32}]">
+                                    <div nz-col nzSpan="24">
+                                        <sili-title [isShow]="false" [title]="title"></sili-title>
+                                    </div>
+                                    <div nz-col nzSpan="24" *ngIf="!isLoading">
+                                        <div nz-row [nzGutter]="[0,{xL:64,lg:48,md:48,sm:48,xs:48}]">
+                                            <div nz-col nzSpan="24" *ngFor="let data of news;">
+                                                <sili-advert [advert]="data"></sili-advert>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ng-container *ngIf="isLoading">
+                                        <div nz-col nzSpan="24">
+                                            <sili-news-skeleton [counter]="3"></sili-news-skeleton>
+                                        </div>           
+                                    </ng-container>     
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
-    </div> 
+    </div>
 </div>

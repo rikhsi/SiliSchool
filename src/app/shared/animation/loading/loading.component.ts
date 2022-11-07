@@ -12,6 +12,6 @@ export class LoadingComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.list = this.list.concat(...Array(3));
+    this.list = this.list.concat(...Array(2));
   }
 }

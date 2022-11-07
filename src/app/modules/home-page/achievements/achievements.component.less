@@ -1,6 +1,18 @@
 @import '../../../styles/colors.less';
 
 .achievements{
+    &__wrapper{
+        padding: 128px 24px 128px 24px;
+        background: inherit;
+
+        @media (max-width:1199px) {
+            padding: 48px 24px 16px 24px;
+        }
+
+        @media (max-width:575px) {
+            padding: 48px 16px 16px 16px;
+        }
+    }  
     &__container{
         max-width: 1312px;
         margin: 0 auto;
@@ -10,9 +22,17 @@
         background: @skeleton;
         height: 500px;
 
+        @media (max-width:1199px) {
+            height: 420px;
+        }
+
         img{
             pointer-events:none;
             object-fit: fill;
         }
+    }
+
+    &__swiper{
+        padding: 32px 0;
     }
 }
