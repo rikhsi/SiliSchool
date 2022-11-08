@@ -85,9 +85,9 @@
                                 </nz-dropdown-menu>
                             </div>
                             <div nz-col style="max-height: 22px;">
-                                <a [href]="'tel:' + schoolNumber" nz-button nzType="primary" class="adaptive__button">
+                                <button nz-button nzType="primary" class="adaptive__button" (click)="call()">
                                     <span nz-icon nzType="phone" nzTheme="outline" [nzRotate]="90" class="adaptive__icon"></span>
-                                </a>
+                                </button>
                             </div>
                             <div nz-col style="max-height: 22px;">
                                 <button nz-button nzType="primary" class="adaptive__button">

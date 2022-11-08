@@ -8,6 +8,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { DirectionComponent } from './direction/direction.component';
 import { AdminstrationComponent } from './adminstration/adminstration.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -23,13 +24,14 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzGridModule,
     NzImageModule,
     NzTypographyModule,
-    NzButtonModule
+    NzButtonModule,
+    TranslateModule
   ],
   exports: [
     TeacherComponent,
     AdvertComponent,
     DirectionComponent,
-    AdminstrationComponent,
+    AdminstrationComponent
   ]
 })
 export class CardsModule { }

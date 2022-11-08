@@ -1,13 +1,18 @@
 <div class="direction__card" (click)="navigate()">
     <div nz-row [nzGutter]="[0,20]">
         <div nz-col nzSpan="24">
-            <ng-container *ngIf="!height">
+            <ng-container *ngIf="!height && !isMain">
                 <div class="direction__img" >
                     <img nz-image [nzSrc]="direction.img" [nzFallback]="fallback">
                 </div>
             </ng-container>
-           <ng-container *ngIf="height">
+            <ng-container *ngIf="height">
                 <div class="direction__img height" >
+                    <img nz-image [nzSrc]="direction.img" [nzFallback]="fallback">
+                </div>
+            </ng-container>
+            <ng-container *ngIf="isMain">
+                <div class="direction__img adaptive">
                     <img nz-image [nzSrc]="direction.img" [nzFallback]="fallback">
                 </div>
             </ng-container>

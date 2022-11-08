@@ -9,6 +9,7 @@ import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
 import { TitleModule } from 'src/app/shared/title/title.module';
 import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module';
 import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
+import { NzImageModule } from 'ng-zorro-antd/image';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PageContainerModule } from 'src/app/shared/page-container/page-containe
     SkeletonModule,
     TitleModule,
     BreadCrumpModule,
-    PageContainerModule
+    PageContainerModule,
+    NzImageModule,
   ]
 })
 export class DirectionsCardPageModule { }

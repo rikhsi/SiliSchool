@@ -3,7 +3,7 @@
         <div nz-row>
             <div nz-col nzSpan="24">
                 <div nz-row nzJustify="space-between">
-                    <div nz-col nzSpan="12">
+                    <div nz-col nzSpan="24">
                         <div nz-row>
                             <div nz-col nzSpan="24">
                                 <div nz-row [nzGutter]="[0,24]">
@@ -34,7 +34,7 @@
                                     </div>
                                     <div nz-col nzSpan="24">
                                         <a [href]="locationLink" target="_blank">
-                                            <div nz-row [nzGutter]="[8]" nzAlign="middle">
+                                            <div nz-row [nzGutter]="[8]" nzAlign="middle" style="flex-wrap: nowrap;">
                                                 <div nz-col>  
                                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" preserveAspectRatio="none" style="margin-left: -4;">
                                                         <path d="M19.5 12C19.5 17.018 14.0117 20.4027 12.4249 21.2764C12.1568 21.424 11.8432 21.424 11.5751 21.2764C9.98831 20.4027 4.5 17.018 4.5 12C4.5 7.5 8.13401 4.5 12 4.5C16 4.5 19.5 7.5 19.5 12Z" stroke="#FF6551" stroke-width="1.5"/>
@@ -42,7 +42,7 @@
                                                     </svg>                            
                                                 </div>
                                                 <div nz-col>
-                                                    <span class="footer__text">{{schoolLocation}}</span>
+                                                    <p class="footer__text" style="max-width: 370px;">{{schoolLocation}}</p>
                                                 </div>  
                                             </div>   
                                         </a>                                   

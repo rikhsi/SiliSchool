@@ -17,7 +17,7 @@
                 <ng-container *ngIf="isLoading">
                     <swiper #swiper [config]="config">
                         <ng-template swiperSlide *ngFor="let data of [1,2,3,4]">
-                            <sili-gallery-skeleton [counter]="1"></sili-gallery-skeleton>
+                            <sili-gallery-skeleton [counter]="1" [span]="24" [isMain]="true"></sili-gallery-skeleton>
                         </ng-template>
                     </swiper>
                 </ng-container>

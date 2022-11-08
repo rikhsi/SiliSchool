@@ -71,4 +71,10 @@ export class HeaderComponent implements OnInit {
   backHome():void{
     this.router.navigate(['/home'])
   }
+
+  call():void{
+    setTimeout(() => {
+      window.open('tel:' + this.schoolPhone, "_self");
+    }, 200);
+  }
 }

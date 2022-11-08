@@ -6,8 +6,6 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./direction-skeleton.component.less']
 })
 export class DirectionSkeletonComponent implements OnInit {
-  @Input() counter!: number;
-  @Input() span: number = 8;
   @Input() height!: boolean;
 
   constructor() { }

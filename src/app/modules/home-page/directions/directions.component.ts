@@ -41,10 +41,10 @@ export class DirectionsComponent implements OnInit {
         slidesPerView: 2.4,
       },
       575: {
-        slidesPerView: 2,
+        slidesPerView: 1.7,
       },
       450: {
-        slidesPerView: 1.5,
+        slidesPerView: 1.3,
       },
       400: {
         slidesPerView: 1.2,

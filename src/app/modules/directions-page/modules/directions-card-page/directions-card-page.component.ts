@@ -12,6 +12,7 @@ import { TeachersService } from 'src/app/services/teachers.service';
   styleUrls: ['./directions-card-page.component.less']
 })
 export class DirectionsCardPageComponent implements OnInit {
+  fallback:string = '../../../../../assets/img/fallback.png';
   title: string = 'directions.teachers';
   routeId!: number;
   isLoading: boolean = true;

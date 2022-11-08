@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GallerySkeletonComponent implements OnInit {
   @Input() counter!: number;
+  @Input() span!: number;
+  @Input() isMain: boolean = false;
   skeleton: any[] = []
 
   constructor() { }

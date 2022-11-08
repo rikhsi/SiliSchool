@@ -9,7 +9,7 @@ export class DocsService {
   docs: Docs[] = [
     {
       id: 1,
-      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
+      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
       file: '',
       data: '20.01.2001 - 14:00'
     },

@@ -3,8 +3,15 @@
 
 .directions{
     &__wrapper{
-        background: @docsBg;
-        padding-bottom: 120px;
+        padding: 0 24px 120px 24px;
+
+        @media (max-width:991px) {
+            padding: 0 24px 48px 24px;
+        }
+
+        @media (max-width:575px) {
+            padding: 0 16px 48px 16px;
+        }
     }
     &__container{
         max-width: 1312px;
@@ -14,4 +21,8 @@
         padding: 24px;
         background: @white;
     }
+}
+
+.bg{
+    background: @docsBg;
 }

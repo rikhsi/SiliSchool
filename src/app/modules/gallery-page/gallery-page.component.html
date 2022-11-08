@@ -1,30 +1,36 @@
-<div nz-row [nzGutter]="[0,64]">
+<div nz-row [nzGutter]="[0,{xl:64,lg:32,md:32,sm:32,xs:32}]">
     <div nz-col nzSpan="24">
         <sili-page-container [title]="title"></sili-page-container>
-    </div>  
+    </div> 
     <div nz-col nzSpan="24">
-        <div class="gallery__container">
-            <div nz-row [nzGutter]="[0,64]">
-                <div nz-col nzSpan="24">
-                    <sili-bread-crump [breadCrump]="breadCrump"></sili-bread-crump>
-                </div>
-                <div nz-col nzSpan="24">
-                    <div nz-row [nzGutter]="[24,24]">
-                        <div nz-col nzSpan="12" *ngFor="let data of paginatedList">
-                            <div class="gallery__img">
-                                <img nz-image [nzSrc]="data.img" [nzFallback]="fallback">
-                            </div>                      
-                        </div>
-                        <ng-container *ngIf="isLoading">
+        <div nz-row>
+            <div nz-col nzSpan="24">
+                <div class="gallery__wrapper">
+                    <div class="gallery__container">
+                        <div nz-row [nzGutter]="[0,{xl:64,lg:32,md:32,sm:32,xs:32}]">
                             <div nz-col nzSpan="24">
-                                <sili-gallery-skeleton [counter]="pageSize"></sili-gallery-skeleton>
-                            </div>           
-                        </ng-container>
+                                <sili-bread-crump [breadCrump]="breadCrump"></sili-bread-crump>
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <div nz-row [nzGutter]="[{xl:24,lg:24,md:24,sm:16,xs:16},{xl:24,lg:24,md:24,sm:16,xs:16}]">
+                                    <div nz-col nzSpan="12" *ngFor="let data of paginatedList">
+                                        <div class="gallery__img">
+                                            <img nz-image [nzSrc]="data.img" [nzFallback]="fallback">
+                                        </div>                      
+                                    </div>
+                                    <ng-container *ngIf="isLoading">
+                                        <div nz-col nzSpan="24">
+                                            <sili-gallery-skeleton [counter]="pageSize"></sili-gallery-skeleton>
+                                        </div>           
+                                    </ng-container>
+                                </div>
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <sili-more (loadMore)="loadMore()"></sili-more>
+                            </div>  
+                        </div>
                     </div>
-                </div>
-                <div nz-col nzSpan="24">
-                    <sili-more (loadMore)="loadMore()"></sili-more>
-                </div>  
+                </div>         
             </div>
         </div>
     </div>

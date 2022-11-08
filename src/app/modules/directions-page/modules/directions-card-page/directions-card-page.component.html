@@ -1,43 +1,71 @@
-<div class="card__wrapper">
-    <div nz-row [nzGutter]="[0,64]">
-        <div nz-col nzSpan="24">
-            <sili-page-container [title]="'directions.title'"></sili-page-container>
-        </div>  
-        <div nz-col nzSpan="24">
-            <div class="card__container">
-                <div nz-row [nzGutter]="[0,120]">
-                    <div nz-col nzSpan="24">
-                        <div nz-row [nzGutter]="[0,64]">
+<div nz-row [nzGutter]="[0,{xl:64,lg:32,md:32,sm:32,xs:32}]" class="bg">
+    <div nz-col nzSpan="24">
+        <sili-page-container [title]="'directions.title'"></sili-page-container>
+    </div>  
+    <div nz-col nzSpan="24">
+        <div class="card__wrapper bg">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <div class="card__container">
+                        <div nz-row [nzGutter]="[0,{xl:120,lg:100,md:64,sm:64,xs:64}]">
                             <div nz-col nzSpan="24">
-                                <sili-bread-crump [breadCrump]="breadCrump"></sili-bread-crump>
-                            </div>
-                            <div nz-col nzSpan="24" style="pointer-events: none;" *ngIf="!isLoading">
-                                <sili-direction [direction]="direction" [height]="true"></sili-direction>
-                            </div>
-                            <ng-container *ngIf="isLoading">
-                                <div nz-col nzSpan="24">
-                                    <sili-direction-skeleton [counter]="1" [span]="24" [height]="true"></sili-direction-skeleton>
-                                </div>           
-                            </ng-container>     
-                        </div>
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <div nz-row [nzGutter]="[0,64]">
-                            <div nz-col nzSpan="24">
-                                <sili-title [isShow]="false" [title]="title"></sili-title>
-                            </div>
-                            <div nz-col nzSpan="24" *ngIf="!isLoading">
-                                <div nz-row [nzGutter]="[24,24]">
-                                    <div nz-col nzSpan="6" *ngFor="let data of teachers">
-                                        <sili-teacher [teacher]="data"></sili-teacher>
+                                <div nz-row [nzGutter]="[0,{xl:64,lg:32,md:32,sm:32,xs:32}]">
+                                    <div nz-col nzSpan="24">
+                                        <sili-bread-crump [breadCrump]="breadCrump"></sili-bread-crump>
                                     </div>
+                                    <div nz-col nzSpan="24" style="pointer-events: none;" *ngIf="!isLoading">
+                                        <div class="direction__card">
+                                            <div nz-row [nzGutter]="[0,20]">
+                                                <div nz-col nzSpan="24">
+                                                    <div class="direction__img" >
+                                                        <img nz-image [nzSrc]="direction.img" [nzFallback]="fallback">
+                                                    </div>
+                                                </div>
+                                                <div nz-col nzSpan="24">
+                                                    <h1 class="direction__title">{{direction.title}}</h1>
+                                                </div>
+                                                <div nz-col nzSpan="24">
+                                                    <div class="direction__spacer"></div>
+                                                </div>
+                                                <div nz-col nzSpan="24">
+                                                    <h2 class="direction__info">{{direction.info}}</h2>
+                                                </div>
+                                            </div>
+                                        </div>                               
+                                    </div>
+                                    <ng-container *ngIf="isLoading">
+                                        <div nz-col nzSpan="24">
+                                            <sili-direction-skeleton [height]="true"></sili-direction-skeleton>
+                                        </div>           
+                                    </ng-container>     
                                 </div>
                             </div>
-                            <ng-container *ngIf="isLoading">
-                                <div nz-col nzSpan="24">
-                                    <sili-adminstration-skeleton [counter]="4"></sili-adminstration-skeleton>
-                                </div>           
-                            </ng-container>     
+                            <div nz-col nzSpan="24">
+                                <div nz-row [nzGutter]="[0,{xl:64,lg:32,md:32,sm:32,xs:32}]">
+                                    <div nz-col nzSpan="24">
+                                        <sili-title [isShow]="false" [title]="title"></sili-title>
+                                    </div>
+                                    <div nz-col nzSpan="24" *ngIf="!isLoading">
+                                        <div nz-row [nzGutter]="[{xl:24,lg:24,md:16,sm:16,xs:0},24]">
+                                            <div nz-col nzXl="6" nzLg="8" nzMd="12" nzSm="12" nzXs="24" *ngFor="let data of teachers">
+                                                <sili-teacher [teacher]="data"></sili-teacher>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ng-container *ngIf="isLoading">
+                                        <div nz-col nzSpan="24">
+                                            <div nz-row [nzGutter]="[{xl:24,lg:24,md:16,sm:16,xs:0},24]">
+                                                <div nz-col nzXl="6" nzLg="0" nzMd="12" nzSm="12" nzXs="24" *ngFor="let data of [1,2,3,4]">
+                                                    <sili-adminstration-skeleton [counter]="1"></sili-adminstration-skeleton>
+                                                </div>
+                                                <div nz-col nzXl="0" nzLg="8" nzXs="0" *ngFor="let data of [1,2,3,4,5,6]">
+                                                    <sili-adminstration-skeleton [counter]="1"></sili-adminstration-skeleton>
+                                                </div>
+                                            </div>                                    
+                                        </div>         
+                                    </ng-container>     
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -45,3 +73,4 @@
         </div>
     </div>
 </div>
+

@@ -23,14 +23,35 @@
         height: 400px;
         overflow: hidden;
         background-color: @skeleton;
+        cursor: pointer;
 
         @media (max-width:1199px) {
+            height: 350px;
+        }
+
+        @media (max-width:991px) {
             height: 310px;
         }
 
+        @media (max-width:767px) {
+            height: 264px;
+        }
+
+        @media (max-width:575px) {
+            height: 240px;
+        }
+
+        @media (max-width:480px) {
+            height: 220px;
+        }
+
+        @media (max-width:420px) {
+            height: 210px;
+        }
+
         img{
-            pointer-events:none;
-            object-fit: fill;
+            vertical-align: middle;
+            object-fit: cover;
         }
     }
 

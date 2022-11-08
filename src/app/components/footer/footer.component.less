@@ -3,8 +3,16 @@
 
 .footer{
     &__wrapper{
-        padding: 64px 0;
+        padding: 64px 24px;
         background: @mainBlack;
+
+        @media (max-width:1199px) {
+            padding: 24px;
+        }
+
+        @media (max-width:575px) {
+            padding: 24px 16px;
+        }
     }
     &__container{
         max-width: 1312px;

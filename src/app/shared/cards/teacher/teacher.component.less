@@ -2,7 +2,7 @@
 @import '../../../styles/fonts.less';
 
 .teacher{
-    padding-bottom: 30px;
+    padding-bottom: 24px;
     background: @white;
     box-shadow: @cardShadow;
     
@@ -20,19 +20,17 @@
     &__name{
         text-align: center;
         text-transform: uppercase;
+        padding: 0 16px;
         .mainText(700,24px,150%,@grey);
+
+        @media (max-width:767px) {
+            font-size: 20px;
+        }
     }
     &__button{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 10px;
-        align-items: center;
-        padding: 0;
-        height: 61px;
+        height: 40px;
         border: none;
-        background: inherit;
-        box-shadow: none;
-        .mainText(400,14px,150%,@mainRed);
+        background: @mainRed;
+        .mainText(400,14px,150%,@white);
     }
 }

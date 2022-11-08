@@ -1,10 +1,10 @@
-<div nz-row [nzGutter]="[0,{xL:64,lg:64,md:32,sm:32,xs:32}]">
+<div nz-row [nzGutter]="[0,{xl:64,lg:32,md:32,sm:32,xs:32}]">
     <div nz-col nzSpan="24">
         <sili-page-container [title]="title"></sili-page-container>
     </div>
     <div nz-col nzSpan="24">
         <div class="news__wrapper">
-            <div nz-row [nzGutter]="[0,{xL:64,lg:64,md:32,sm:32,xs:32}]">
+            <div nz-row [nzGutter]="[0,{xl:64,lg:32,md:32,sm:32,xs:32}]">
                 <div nz-col nzSpan="24">
                     <div class="news__container">
                         <sili-bread-crump [breadCrump]="breadCrump"></sili-bread-crump>
@@ -14,7 +14,7 @@
                     <div class="news__container">
                         <div nz-row>
                             <div nz-col nzSpan="24">
-                                <div nz-row [nzGutter]="[0,{xL:64,lg:64,md:48,sm:48,xs:48}]">
+                                <div nz-row [nzGutter]="[0,{xl:64,lg:32,md:48,sm:48,xs:48}]">
                                     <div nz-col nzSpan="24" *ngFor="let data of paginatedList">
                                         <sili-advert [advert]="data"></sili-advert>
                                     </div>
