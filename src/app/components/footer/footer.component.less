@@ -25,7 +25,13 @@
         border: none !important;
         box-shadow: none;
         padding: 0;
+        transition: 0.3s;
         .text(900,32px,39px,@mainRed);
+
+        &:hover{
+            transform: scale(103%);
+            transition: 0.3s;
+        }
     }
     &__text{
         transition: 0.3s;
@@ -50,6 +56,14 @@
         border-radius: 50%;
         border: 1px solid @mainRed;
         background: inherit;
+
+        &:hover{
+            box-shadow: 0 8px 10px 0 rgba(122, 117, 117, 0.71);
+            background-position: 100% 0;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+        }
 
         &-icon{
             max-height: 18px;
