@@ -20,6 +20,6 @@ export class FaqComponent implements OnInit {
   constructor(private faqsService: FaqService) { }
 
   ngOnInit(): void {
-    this.faqs = this.faqsService.faqs;
+    // this.faqs = this.faqsService.faqs;
   }
 }

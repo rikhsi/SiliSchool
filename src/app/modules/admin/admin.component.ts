@@ -11,7 +11,6 @@ import { FaqComponent } from './components/faq/faq.component';
   providers: [NzMessageService]
 })
 export class AdminComponent implements OnInit {
-  isLoading = false;
   isTable: boolean = true;
   translateTexts: any;
   isRu!: boolean;
@@ -19,7 +18,7 @@ export class AdminComponent implements OnInit {
     {
       name: 'gallery.title',
       id: 1,
-      isShow: false,
+      isShow: true,
       component: FaqComponent
     },
     {
@@ -35,7 +34,7 @@ export class AdminComponent implements OnInit {
     {
       name: 'docs.title',
       id: 4,
-      isShow: true
+      isShow: false
     },
     {
       name: 'adminstration.title',
@@ -78,27 +77,25 @@ export class AdminComponent implements OnInit {
     })
   }
 
-  refresh():void {
-    this.isLoading = !this.isLoading;
-    setTimeout(() => {
-      this.isLoading = !this.isLoading;
-    }, 1000);
-    this.msg.success(this.translateTexts.reload.success);
-  }
-
-  changeLang():void{
+  changeLang(){
     if(this.isRu){
-      this.translate.use('ru')
-      this.msg.success(this.translateTexts.lang.success);
-      this.isRu = !this.isRu;
-      this.getTranslate();
-      this.refresh();
+      this.translate.use('ru').subscribe({
+        next: () => {
+          this.getTranslate();
+          this.msg.success(this.translateTexts.lang.success);
+          this.isRu = !this.isRu;
+        }
+      })
+      return 'ru'
     } else{
-      this.translate.use('uz')
-      this.msg.success(this.translateTexts.lang.success);
-      this.isRu = !this.isRu;
-      this.getTranslate();
-      this.refresh();
+      this.translate.use('uz').subscribe({
+        next: () => {
+          this.getTranslate();
+          this.msg.success(this.translateTexts.lang.success);
+          this.isRu = !this.isRu;
+        }
+      })
+      return 'uz'
     }
   }
 

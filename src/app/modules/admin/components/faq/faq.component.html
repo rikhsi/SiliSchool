@@ -5,7 +5,6 @@
                 <thead>
                     <tr>
                         <th [nzWidth]="'5%'">№</th>
-                        <th [nzWidth]="'200px'">{{'admin.tables.faq.data' | translate}}</th>
                         <th>{{'admin.tables.faq.question' | translate}}</th>
                         <th>{{'admin.tables.faq.answer' | translate}}</th>
                         <th [nzWidth]="'140px'">{{'admin.tables.faq.instruments' | translate}}</th>
@@ -14,7 +13,6 @@
                 <tbody>
                   <tr *ngFor="let data of basicTable.data; let i = index">
                     <td>{{i+1}}</td>
-                    <td>{{data.data}}</td>
                     <td>
                         <nz-collapse nzGhost>
                             <nz-collapse-panel 
@@ -66,14 +64,14 @@
                                             <div nz-col nzSpan="24">
                                                 <nz-form-item>
                                                     <nz-form-control [nzErrorTip]="'To`liq kiriting'" nzHasFeedback>
-                                                        <input nz-input [placeholder]="'Savolni kiriting'" formControlName="questionUz" class="faq__input"/>
+                                                        <input nz-input [placeholder]="'Savolni kiriting'" formControlName="question_uz" class="faq__input"/>
                                                     </nz-form-control>
                                                 </nz-form-item>
                                             </div>
                                             <div nz-col nzSpan="24">
                                                 <nz-form-item>
                                                     <nz-form-control [nzErrorTip]="'To`liq kiriting'" nzHasFeedback>
-                                                        <textarea nz-input [placeholder]="'Javobni kiriting'" formControlName="answerUz" class="faq__area"></textarea>
+                                                        <textarea nz-input [placeholder]="'Javobni kiriting'" formControlName="answer_uz" class="faq__area"></textarea>
                                                     </nz-form-control>
                                                 </nz-form-item>
                                             </div>
@@ -88,14 +86,14 @@
                                             <div nz-col nzSpan="24">
                                                 <nz-form-item>
                                                     <nz-form-control [nzErrorTip]="'Заполните поле'" nzHasFeedback>
-                                                        <input nz-input [placeholder]="'Введите вопрос'" formControlName="questionRu" class="faq__input"/>
+                                                        <input nz-input [placeholder]="'Введите вопрос'" formControlName="question_ru" class="faq__input"/>
                                                     </nz-form-control>
                                                 </nz-form-item>
                                             </div>
                                             <div nz-col nzSpan="24">
                                                 <nz-form-item>
                                                     <nz-form-control [nzErrorTip]="'Заполните поле'" nzHasFeedback>
-                                                        <textarea nz-input [placeholder]="'Введите ответ'" formControlName="answerRu" class="faq__area"></textarea>
+                                                        <textarea nz-input [placeholder]="'Введите ответ'" formControlName="answer_ru" class="faq__area"></textarea>
                                                     </nz-form-control>
                                                 </nz-form-item>
                                             </div>

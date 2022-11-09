@@ -3,34 +3,34 @@
         <div nz-col nzSpan="24">
             <ng-container *ngIf="!height && !isMain">
                 <div class="direction__img" >
-                    <img nz-image [nzSrc]="direction.img" [nzFallback]="fallback">
+                    <img nz-image [nzSrc]="direction.photo" [nzFallback]="fallback">
                 </div>
             </ng-container>
             <ng-container *ngIf="height">
                 <div class="direction__img height" >
-                    <img nz-image [nzSrc]="direction.img" [nzFallback]="fallback">
+                    <img nz-image [nzSrc]="direction.photo" [nzFallback]="fallback">
                 </div>
             </ng-container>
             <ng-container *ngIf="isMain">
                 <div class="direction__img adaptive">
-                    <img nz-image [nzSrc]="direction.img" [nzFallback]="fallback">
+                    <img nz-image [nzSrc]="direction.photo" [nzFallback]="fallback">
                 </div>
             </ng-container>
         </div>
         <div nz-col nzSpan="24">
-            <h1 class="direction__title">{{direction.title}}</h1>
+            <h1 class="direction__title">{{direction.name}}</h1>
         </div>
         <div nz-col nzSpan="24">
             <div class="direction__spacer"></div>
         </div>
         <ng-container *ngIf="!height">
             <div nz-col nzSpan="24">
-                <h2 nz-typography nzEllipsis [nzEllipsisRows]="3" class="direction__info">{{direction.info}}</h2>
+                <h2 nz-typography nzEllipsis [nzEllipsisRows]="3" class="direction__info">{{direction.description}}</h2>
             </div>
         </ng-container>
         <ng-container *ngIf="height">
             <div nz-col nzSpan="24">
-                <h2 class="direction__info line">{{direction.info}}</h2>
+                <h2 class="direction__info line">{{direction.description}}</h2>
             </div>
         </ng-container>
     </div>

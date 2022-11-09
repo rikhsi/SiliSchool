@@ -36,8 +36,8 @@ export class NewsCardPageComponent implements OnInit {
   ngOnInit(): void {
     this.activedRoute.params.subscribe((params: Params) => this.routeId = +params['id']);
     setTimeout(() => {
-      this.advert = this.newsService.adverts[this.routeId-1];
-      this.news = this.newsService.adverts.filter(data => data.id !== this.advert.id ).slice(0,3);
+      // this.advert = this.newsService.adverts[this.routeId-1];
+      // this.news = this.newsService.adverts.filter(data => data.id !== this.advert.id ).slice(0,3);
       this.isLoading = false;
     }, 2000);
   }

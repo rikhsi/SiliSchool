@@ -34,9 +34,8 @@ export class DirectionsCardPageComponent implements OnInit {
   ngOnInit(): void {
     this.activedRoute.params.subscribe((params: Params) => this.routeId = +params['id']);
     setTimeout(() => {
-      this.direction = this.directionsService.directions[this.routeId-1];
-      this.breadCrump.push({title: `${this.direction.title}`, path: `directions/${this.direction.id}`})
-      this.teachers = this.teachersService.teachers;
+      // this.direction = this.directionsService.directions[this.routeId-1];
+      this.breadCrump.push({title: `${this.direction.name}`, path: `directions/${this.direction.id}`})
       this.isLoading = false;
     }, 2000);
   }

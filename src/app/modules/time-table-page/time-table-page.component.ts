@@ -26,7 +26,6 @@ export class TimeTablePageComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.teachers = this.teachersService.teachers;
       this.isLoading = false;
     }, 2000);
   }

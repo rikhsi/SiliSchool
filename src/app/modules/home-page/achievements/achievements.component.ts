@@ -63,7 +63,6 @@ export class AchievementsComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.achievements = this.achievementsService.achievements;
       this.isLoading = false;
     }, 2000);
   }

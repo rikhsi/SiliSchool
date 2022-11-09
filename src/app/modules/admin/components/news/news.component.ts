@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
@@ -17,7 +17,6 @@ export class NewsComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
-  @Output() refresh = new EventEmitter;
   button: boolean = false;
   uploading: boolean = false;
   fileList: NzUploadFile[] = [];
@@ -28,15 +27,29 @@ export class NewsComponent implements OnInit {
 
   constructor(private newsService: NewsService, private msg: NzMessageService,private fb: FormBuilder,private modalService: NzModalService,private nzImageService: NzImageService) { 
     this.createForm = this.fb.group({
-      titleUz: [null, [Validators.required]],
-      descriptionUz: [null, [Validators.required]],
-      titleRu: [null, [Validators.required]],
-      descriptionRu: [null, [Validators.required]]
+      name_uz: [null, [Validators.required]],
+      description_uz: [null, [Validators.required]],
+      name_ru: [null, [Validators.required]],
+      description_ru: [null, [Validators.required]]
     })
   }
 
   ngOnInit(): void {
-    this.news = this.newsService.adverts;
+    this.get();
+  }
+
+  get():void{
+    this.isLoading = true;
+    this.newsService.get().subscribe({
+      next: data => {
+        this.news = data
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        this.msg.error(this.translateTexts.reload.error);
+      }
+    })
   }
 
   delete(id: number): void {
@@ -50,9 +63,33 @@ export class NewsComponent implements OnInit {
       nzOkDanger: true,
       nzAutofocus: null,
       nzOnOk: () => {
-        this.news = this.news.filter(data => data.id !== id);
-        this.msg.success(this.translateTexts.delete.success);
-        this.refresh.emit();
+        this.newsService.delete(id).subscribe({
+          next: () => {
+            this.news = this.news.filter(data => data.id !== id);
+            this.msg.success(this.translateTexts.delete.success);
+            this.get();
+          },
+          error: () => {
+            this.msg.error(this.translateTexts.delete.error);
+          }
+        })
+      }
+    })
+  }
+
+  post(formdata: FormData):void{
+    this.uploading = true;
+    this.newsService.post(formdata).subscribe({
+      next: () => {
+        this.uploading = false;
+        this.createForm.reset();
+        this.fileList = [];
+        this.get();
+        this.msg.success(this.translateTexts.add.success)
+      },
+      error: () => {
+        this.uploading = false;
+        this.msg.error(this.translateTexts.add.error)
       }
     })
   }
@@ -63,15 +100,9 @@ export class NewsComponent implements OnInit {
       this.fileList.forEach((file: any) => {
         formData.append('file', file);
       });
-      this.uploading = true;
-      setTimeout(() => {
-        this.uploading = false;
-      }, 1000);
+      formData.append('data', JSON.stringify(this.createForm.value))
       this.button = false;
-      this.createForm.reset();
-      this.fileList = [];
-      this.refresh.emit();
-      this.msg.success(this.translateTexts.add.success)
+      this.post(formData)
     } else {
       Object.values(this.createForm.controls).forEach(control => {
         if (control.invalid) {
@@ -112,11 +143,13 @@ export class NewsComponent implements OnInit {
   beforeUpload = (file: NzUploadFile): boolean => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
+      this.button = true;
       this.msg.error(this.translateTexts?.upload.errors.format);
       return false;
     }
     const isLt2M = file.size! / 1024 / 1024 < 2;
     if (!isLt2M) {
+      this.button = true;
       this.msg.error(this.translateTexts?.upload.errors.size);
       return false;
     }

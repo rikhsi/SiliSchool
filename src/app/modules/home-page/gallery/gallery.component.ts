@@ -61,7 +61,7 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.galleries = this.galleryService.galleries;
+      // this.galleries = this.galleryService.galleries;
       this.isLoading = false;
     }, 2000);
   }

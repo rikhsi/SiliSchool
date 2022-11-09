@@ -56,7 +56,7 @@
                                                 <nz-form-item>
                                                     <nz-form-control [nzSpan]="24" nzHasFeedback>
                                                         <nz-select  [nzPlaceHolder]="'admin.buttons.role' | translate" formControlName="role">
-                                                            <nz-option [nzValue]="data.id" [nzLabel]="data.title" *ngFor="let data of directions"></nz-option>
+                                                            <nz-option [nzValue]="data.id" [nzLabel]="data.name" *ngFor="let data of directions"></nz-option>
                                                         </nz-select>
                                                     </nz-form-control>
                                                 </nz-form-item>

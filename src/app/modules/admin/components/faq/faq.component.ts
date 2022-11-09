@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { Faq } from 'src/app/models/faq';
 import { FaqService } from 'src/app/services/faq.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -15,22 +15,34 @@ export class FaqComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
-  @Output() refresh = new EventEmitter;
   createForm!: FormGroup;
   faqs!: Faq[];
   confirmModal?: NzModalRef;
 
   constructor(private faqsService: FaqService, private msg: NzMessageService,private fb: FormBuilder,private modal: NzModalService) { 
     this.createForm = this.fb.group({
-      questionUz: [null, [Validators.required]],
-      answerUz: [null, [Validators.required]],
-      questionRu: [null, [Validators.required]],
-      answerRu: [null, [Validators.required]]
+      question_uz: [null, [Validators.required]],
+      answer_uz: [null, [Validators.required]],
+      question_ru: [null, [Validators.required]],
+      answer_ru: [null, [Validators.required]]
     })
   }
 
   ngOnInit(): void {
-    this.faqs = this.faqsService.faqs;
+    this.get();
+  }
+
+  get():void{
+    this.faqsService.get().subscribe({
+      next: data => {
+        this.faqs = data;
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        this.msg.error(this.translateTexts.reload.error);
+      }
+    })
   }
 
   delete(id: number): void {
@@ -44,17 +56,39 @@ export class FaqComponent implements OnInit {
       nzOkDanger: true,
       nzAutofocus: null,
       nzOnOk: () => {
-        this.faqs = this.faqs.filter(data => data.id !== id);
-        this.msg.success(this.translateTexts.delete.success);
-        this.refresh.emit();
+        this.faqsService.delete(id).subscribe({
+          next: () => {
+            this.faqs = this.faqs.filter(data => data.id !== id);
+            this.msg.success(this.translateTexts.delete.success);
+            this.get();
+          },
+          error: () => {
+            this.msg.error(this.translateTexts.delete.error);
+          }
+        })
+      }
+    })
+  }
+
+  post(data:JSON):void{
+    this.isLoading = true;
+    this.faqsService.post(data).subscribe({
+      next: () => {
+        this.isLoading = false;
+        this.createForm.reset();
+        this.get();
+        this.msg.success(this.translateTexts.add.success)
+      },
+      error: () => {
+        this.isLoading = false;
+        this.msg.error(this.translateTexts.add.error)
       }
     })
   }
 
   submit(): void {
     if (this.createForm.valid) {
-      this.refresh.emit();
-      this.msg.success(this.translateTexts.add.success)
+        this.post(this.createForm.value);
     } else {
       Object.values(this.createForm.controls).forEach(control => {
         if (control.invalid) {

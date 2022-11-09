@@ -1,6 +1,5 @@
 export interface Docs{
-    title: string,
+    name: string,
     file: string,
     id: number,
-    data: string
 }

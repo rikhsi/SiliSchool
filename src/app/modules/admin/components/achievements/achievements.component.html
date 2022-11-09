@@ -4,19 +4,17 @@
             <nz-table #basicTable nzTableLayout="fixed" [nzData]="achievements" [nzLoading]="isLoading" [nzPageSize]="5">
                 <thead>
                     <tr>
-                        <th [nzWidth]="'5%'">№</th>
-                        <th>{{'admin.tables.gallery.data' | translate}}</th>
+                        <th [nzWidth]="'5%'">ID</th>
                         <th>{{'admin.tables.gallery.img' | translate}}</th>
                         <th [nzWidth]="'140px'">{{'admin.tables.gallery.instruments' | translate}}</th>
                     </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let data of basicTable.data; let i = index">
-                    <td>{{i+1}}</td>
-                    <td>{{data.data}}</td>
+                  <tr *ngFor="let data of basicTable.data">
+                    <td>{{data.id}}</td>
                     <td>
-                        <div class="gallery__img" (click)="preview(data.id,data.img)">
-                            <img nz-image [nzSrc]="data.img" [nzFallback]="fallback">
+                        <div class="gallery__img" (click)="preview(data.id,data.photo)">
+                            <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback">
                         </div>
                     </td>
                     <td>

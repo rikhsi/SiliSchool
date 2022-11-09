@@ -26,7 +26,6 @@ export class DocsPageComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.docs = this.docsService.docs;
       this.isLoading = false;
     }, 2000);
   }

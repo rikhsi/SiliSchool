@@ -1,7 +1,7 @@
 export interface Advert{
     id: number,
-    data: string,
-    title: string,
-    info: string,
-    img: string
+    datetime_posted: string,
+    name: string,
+    description: string,
+    photo: string
 }

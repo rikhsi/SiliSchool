@@ -16,7 +16,6 @@ export class GalleryComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
-  @Output() refresh = new EventEmitter;
   uploading = false;
   fileList: NzUploadFile[] = [];
   gallery!: Gallery[];
@@ -26,7 +25,37 @@ export class GalleryComponent implements OnInit {
   constructor(private galleryService: GalleryService,private msg: NzMessageService,private modalService: NzModalService,private nzImageService: NzImageService) { }
 
   ngOnInit(): void {
-    this.gallery = this.galleryService.galleries;
+    this.get();
+  }
+
+  get():void{
+    this.isLoading = true;
+    this.galleryService.get().subscribe({
+      next: data => {
+        this.gallery = data;
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        this.msg.error(this.translateTexts.reload.error);
+      }
+    })
+  }
+
+  post(formdata:FormData):void{
+    this.uploading = true;
+    this.galleryService.post(formdata).subscribe({
+      next: () => {
+        this.uploading = false;
+        this.fileList = [];
+        this.get();
+        this.msg.success(this.translateTexts.add.success);
+      },
+      error: () => {
+        this.uploading = false;
+        this.msg.error(this.translateTexts.add.error);
+      }
+    })
   }
 
   delete(id: number): void {
@@ -40,9 +69,16 @@ export class GalleryComponent implements OnInit {
       nzOkDanger: true,
       nzAutofocus: null,
       nzOnOk: () => {
-        this.gallery = this.gallery.filter(data => data.id !== id);
-        this.msg.success(this.translateTexts.delete.success);
-        this.refresh.emit();
+        this.galleryService.delete(id).subscribe({
+          next: () => {
+            this.gallery = this.gallery.filter(data => data.id !== id);
+            this.msg.success(this.translateTexts.delete.success);
+            this.get();
+          },
+          error: () => {
+            this.msg.error(this.translateTexts.delete.error)
+          }
+        })
       }
     })
   }
@@ -78,9 +114,6 @@ export class GalleryComponent implements OnInit {
     this.fileList.forEach((file: any) => {
       formData.append('file', file);
     });
-    this.uploading = true;
-    setTimeout(() => {
-      this.uploading = false;
-    }, 1000);
+    this.post(formData);
   }
 }

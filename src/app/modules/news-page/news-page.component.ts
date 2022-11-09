@@ -34,14 +34,14 @@ export class NewsPageComponent implements OnInit {
   }
 
   getData():void{
-    this.news = this.newsService.adverts;
-    this.paginatedList = this.newsService.adverts;
+    // this.news = this.newsService.adverts;
+    // this.paginatedList = this.newsService.adverts;
   }
 
   loadMore():void{
     this.isLoading = true
     setTimeout(() => {
-      this.paginatedList = this.paginatedList.concat(this.newsService.adverts);
+      // this.paginatedList = this.paginatedList.concat(this.newsService.adverts);
       this.news = [...this.paginatedList];
       this.isLoading = false
     }, 2000);

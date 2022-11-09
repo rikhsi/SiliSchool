@@ -9,7 +9,7 @@
                     <swiper #swiper [config]="config" class="achievements__swiper">
                         <ng-template swiperSlide *ngFor="let data of achievements">
                             <div class="achievements__img">
-                                <img nz-image [nzSrc]="data.img" [nzFallback]="fallback" alt="news"> 
+                                <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback" alt="news"> 
                             </div>
                         </ng-template>
                     </swiper>

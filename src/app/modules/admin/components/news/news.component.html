@@ -15,10 +15,10 @@
                 <tbody>
                   <tr *ngFor="let data of basicTable.data; let i = index">
                     <td>{{i+1}}</td>
-                    <td>{{data.data}}</td>
+                    <td>{{data.datetime_posted}}</td>
                     <td>
-                        <div class="news__img" (click)="preview(data.id,data.img)">
-                            <img nz-image [nzSrc]="data.img" [nzFallback]="fallback">
+                        <div class="news__img" (click)="preview(data.id,data.photo)">
+                            <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback">
                         </div>
                     </td>
                     <td>
@@ -27,10 +27,10 @@
                                 [nzHeader]="question"
                             >
                                 <ng-template #question>
-                                    <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.title}}</p>
+                                    <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.name}}</p>
                                 </ng-template>
                                 <p style="margin:0;">
-                                    {{data.title}}
+                                    {{data.name}}
                                 </p>
                             </nz-collapse-panel>
                         </nz-collapse>
@@ -41,10 +41,10 @@
                                 [nzHeader]="answer"
                             >
                                 <ng-template #answer>
-                                    <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.info}}</p>
+                                    <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.description}}</p>
                                 </ng-template>
                                 <p style="margin:0;">
-                                    {{data.info}}
+                                    {{data.description}}
                                 </p>
                             </nz-collapse-panel>
                         </nz-collapse>
@@ -74,14 +74,14 @@
                                                     <div nz-col nzSpan="24">
                                                         <nz-form-item>
                                                             <nz-form-control [nzErrorTip]="'To`liq kiriting'" nzHasFeedback>
-                                                                <input nz-input [placeholder]="'Sarlavhani kiriting'" formControlName="titleUz" class="news__input"/>
+                                                                <input nz-input [placeholder]="'Sarlavhani kiriting'" formControlName="name_uz" class="news__input"/>
                                                             </nz-form-control>
                                                         </nz-form-item>
                                                     </div>
                                                     <div nz-col nzSpan="24">
                                                         <nz-form-item>
                                                             <nz-form-control [nzErrorTip]="'To`liq kiriting'" nzHasFeedback>
-                                                                <textarea nz-input [placeholder]="'Tavsif kiriting'" formControlName="descriptionUz" class="news__area"></textarea>
+                                                                <textarea nz-input [placeholder]="'Tavsif kiriting'" formControlName="description_uz" class="news__area"></textarea>
                                                             </nz-form-control>
                                                         </nz-form-item>
                                                     </div>
@@ -96,14 +96,14 @@
                                                     <div nz-col nzSpan="24">
                                                         <nz-form-item>
                                                             <nz-form-control [nzErrorTip]="'Заполните поле'" nzHasFeedback>
-                                                                <input nz-input [placeholder]="'Введите заголовок'" formControlName="titleRu" class="news__input"/>
+                                                                <input nz-input [placeholder]="'Введите заголовок'" formControlName="name_ru" class="news__input"/>
                                                             </nz-form-control>
                                                         </nz-form-item>
                                                     </div>
                                                     <div nz-col nzSpan="24">
                                                         <nz-form-item>
                                                             <nz-form-control [nzErrorTip]="'Заполните поле'" nzHasFeedback>
-                                                                <textarea nz-input [placeholder]="'Введите описание'" formControlName="descriptionRu" class="news__area"></textarea>
+                                                                <textarea nz-input [placeholder]="'Введите описание'" formControlName="description_ru" class="news__area"></textarea>
                                                             </nz-form-control>
                                                         </nz-form-item>
                                                     </div>

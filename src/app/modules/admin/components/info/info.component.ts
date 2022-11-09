@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component,Input, OnInit} from '@angular/core';
 import { NzImageService } from 'ng-zorro-antd/image';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
@@ -17,7 +17,6 @@ export class InfoComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
-  @Output() refresh = new EventEmitter;
   button: boolean = false;
   uploading = false;
   fileList: NzUploadFile[] = [];
@@ -28,13 +27,45 @@ export class InfoComponent implements OnInit {
 
   constructor(private docsService: DocsService,private msg: NzMessageService,private modalService: NzModalService,private fb: FormBuilder) { 
     this.createForm = this.fb.group({
-      titleUz: [null, [Validators.required]],
-      titleRu: [null, [Validators.required]]
+      name_uz: [null, [Validators.required]],
+      name_ru: [null, [Validators.required]]
     })
   }
 
   ngOnInit(): void {
-    this.docs = this.docsService.docs;
+    this.get();
+  }
+
+  get():void{
+    this.isLoading = true;
+    this.docsService.get().subscribe({
+      next: data => {
+        this.docs = data;
+        this.isLoading = false;
+        console.log(data)
+      },
+      error: () => {
+        this.isLoading = false;
+        this.msg.error(this.translateTexts.reload.error);
+      }
+    })
+  }
+
+  post(formData: FormData):void{
+    this.uploading = true;
+    this.docsService.post(formData).subscribe({
+      next: () => {
+        this.uploading = false;
+        this.createForm.reset();
+        this.fileList = [];
+        this.get();
+        this.msg.success(this.translateTexts.add.success)
+      },
+      error: () => {
+        this.uploading = false;
+        this.msg.error(this.translateTexts.add.error)
+      }
+    })
   }
 
   delete(id: number): void {
@@ -48,21 +79,30 @@ export class InfoComponent implements OnInit {
       nzOkDanger: true,
       nzAutofocus: null,
       nzOnOk: () => {
-        this.docs = this.docs.filter(data => data.id !== id);
-        this.msg.success(this.translateTexts.delete.success);
-        this.refresh.emit();
+        this.docsService.delete(id).subscribe({
+          next: () => {
+            this.docs = this.docs.filter(data => data.id !== id);
+            this.msg.success(this.translateTexts.delete.success);
+            this.get();
+          },
+          error: () => {
+            this.msg.error(this.translateTexts.delete.error);
+          }
+        })
       }
     })
   }
 
   beforeUpload = (file: NzUploadFile): boolean => {
-    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    const isJpgOrPng = file.type === 'application/pdf' || file.type === 'application/msword' || file.type === 'application/vnd.ms-excel';
     if (!isJpgOrPng) {
+      this.button = true;
       this.msg.error(this.translateTexts?.upload.errors.format);
       return false;
     }
     const isLt2M = file.size! / 1024 / 1024 < 2;
     if (!isLt2M) {
+      this.button = true;
       this.msg.error(this.translateTexts?.upload.errors.size);
       return false;
     }
@@ -89,11 +129,9 @@ export class InfoComponent implements OnInit {
       this.fileList.forEach((file: any) => {
         formData.append('file', file);
       });
-      this.createForm.reset();
-      this.fileList = [];
+      formData.append('data', JSON.stringify(this.createForm.value))
       this.button = false;
-      this.refresh.emit();
-      this.msg.success(this.translateTexts.add.success)
+      this.post(formData)
     } else {
       Object.values(this.createForm.controls).forEach(control => {
         if (control.invalid) {

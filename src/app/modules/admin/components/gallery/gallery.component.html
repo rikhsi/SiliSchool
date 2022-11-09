@@ -5,7 +5,6 @@
                 <thead>
                     <tr>
                         <th [nzWidth]="'5%'">№</th>
-                        <th>{{'admin.tables.gallery.data' | translate}}</th>
                         <th>{{'admin.tables.gallery.img' | translate}}</th>
                         <th [nzWidth]="'140px'">{{'admin.tables.gallery.instruments' | translate}}</th>
                     </tr>
@@ -13,10 +12,9 @@
                 <tbody>
                   <tr *ngFor="let data of basicTable.data; let i = index">
                     <td>{{i+1}}</td>
-                    <td>{{data.data}}</td>
                     <td>
-                        <div class="gallery__img" (click)="preview(data.id,data.img)">
-                            <img nz-image [nzSrc]="data.img" [nzFallback]="fallback">
+                        <div class="gallery__img" (click)="preview(data.id,data.photo)">
+                            <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback">
                         </div>
                     </td>
                     <td>
@@ -31,7 +29,7 @@
     </ng-container>
     <ng-container *ngIf="!isTable">
         <div nz-col nzSpan="6">
-            <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload" [nzMultiple]="true">
+            <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
                 <button nz-button>
                     <span nz-icon nzType="upload"></span>
                     {{'admin.buttons.upload.photo' | translate}}

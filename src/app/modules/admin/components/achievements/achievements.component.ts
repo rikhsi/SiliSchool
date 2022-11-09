@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import { NzImageService } from 'ng-zorro-antd/image';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
@@ -15,20 +15,47 @@ import { AchievementsService } from 'src/app/services/achievements.service';
 export class AchievementsComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
-  @Input() isLoading!: boolean;
-  @Output() getList = new EventEmitter;
+  @Input() achievements!: Achievements[];
+  isLoading: boolean = false;
   uploading = false;
   fileList: NzUploadFile[] = [];
-  achievements!: Achievements[];
   confirmModal?: NzModalRef;
   fallback:string = '../../../../../assets/img/fallback.png';
 
   constructor(private achievementsService: AchievementsService,private msg: NzMessageService,private modalService: NzModalService,private nzImageService: NzImageService) { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.get();
+    }, 0);
+  }
+
+  get():void{
+    this.isLoading = true;
     this.achievementsService.get().subscribe({
       next: data => {
-        console.log(data)
+          this.achievements = data;
+          this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        this.msg.error(this.translateTexts.reload.error);
+      }
+    })
+  }
+
+  post(formData: FormData):void {
+    this.uploading = true;
+    this.achievementsService.post(formData).subscribe({
+      next: () => {
+          this.uploading = false;
+          this.fileList = [];
+          this.get();
+          this.msg.success(this.translateTexts.add.success);
+      },
+      error: () => {
+        this.uploading = false;
+        this.msg.error(this.translateTexts.add.error);
       }
     })
   }
@@ -44,9 +71,16 @@ export class AchievementsComponent implements OnInit {
       nzOkDanger: true,
       nzAutofocus: null,
       nzOnOk: () => {
-        this.achievements = this.achievements.filter(data => data.id !== id);
-        this.msg.success(this.translateTexts.delete.success);
-        this.getList.emit();
+        this.achievementsService.delete(id).subscribe({
+          next: () => {
+            this.achievements = this.achievements.filter(data => data.id !== id);
+            this.msg.success(this.translateTexts.delete.success);
+            this.get();
+          },
+          error: () => {
+            this.msg.error(this.translateTexts.delete.error)
+          }
+        })
       }
     })
   }
@@ -82,10 +116,6 @@ export class AchievementsComponent implements OnInit {
     this.fileList.forEach((file: any) => {
       formData.append('file', file);
     });
-    this.uploading = true;
-    setTimeout(() => {
-      this.uploading = false;
-    }, 1000);
+    this.post(formData);
   }
-
 }

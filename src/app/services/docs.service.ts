@@ -1,49 +1,26 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Docs } from '../models/docs';
+import { api } from './main.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DocsService {
 
-  docs: Docs[] = [
-    {
-      id: 1,
-      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
-      file: '',
-      data: '20.01.2001 - 14:00'
-    },
-    {
-      id: 2,
-      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
-      file: '',
-      data: '20.01.2001 - 14:00'
-    },
-    {
-      id: 3,
-      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
-      file: '',
-      data: '20.01.2001 - 14:00'
-    },
-    {
-      id: 4,
-      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
-      file: '',
-      data: '20.01.2001 - 14:00'
-    },
-    {
-      id: 5,
-      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
-      file: '',
-      data: '20.01.2001 - 14:00'
-    },
-    {
-      id: 6,
-      title: 'Barone LLC. Barone LLC. Barone LLC. Barone LLC. Barone LLC.',
-      file: '',
-      data: '20.01.2001 - 14:00'
-    },
-  ]
+  get(){
+    return this.http.get<Docs[]>(api + 'getDocuments?=lang=ru')
+  }
 
-  constructor() { }
+  post(formData: FormData){
+    return this.http.post(api + 'addDocument', formData)
+  }
+
+  delete(id:number){
+    return this.http.post(api + `deleteDocument/${id}`,'')
+  }
+
+  constructor(private http: HttpClient) { }
+
+
 }

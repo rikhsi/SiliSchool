@@ -15,7 +15,7 @@
                                 <div nz-row [nzGutter]="[{xl:24,lg:24,md:24,sm:16,xs:16},{xl:24,lg:24,md:24,sm:16,xs:16}]">
                                     <div nz-col nzSpan="12" *ngFor="let data of paginatedList">
                                         <div class="gallery__img">
-                                            <img nz-image [nzSrc]="data.img" [nzFallback]="fallback">
+                                            <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback">
                                         </div>                      
                                     </div>
                                     <ng-container *ngIf="isLoading">

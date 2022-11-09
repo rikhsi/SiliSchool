@@ -37,7 +37,6 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.adverts = this.newsService.adverts;
       this.isLoading = false;
     }, 2000);
   }

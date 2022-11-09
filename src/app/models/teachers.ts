@@ -1,7 +1,7 @@
 export interface Teacher{
     id: number,
-    img: string,
+    photo: string,
     name: string,
     file: string,
-    department: string
+    department_id: number
 }

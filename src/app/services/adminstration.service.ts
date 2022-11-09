@@ -42,11 +42,11 @@ export class AdminstrationService {
   ]
 
   get() {
-    return this.http.get<Adminstration[]>(api + 'getAdministrations');
+    return this.http.get<Adminstration[]>(api + 'getAdministrations?=lang=ru&page=0');
   }
 
   delete(id: number){
-    return this.http.delete(api + 'deleteAdministration' + `/${id}`)
+    return this.http.post(api + `deleteAdministration/${id}`,'')
   }
 
   post(data: FormData){

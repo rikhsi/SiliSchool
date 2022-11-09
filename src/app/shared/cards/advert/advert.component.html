@@ -3,19 +3,19 @@
         <div nz-col nzXl="12" nzLg="11" nzMd="24" nzXs="24">
             <div nz-row [nzGutter]="[0,{xl:16,lg:12,md:12,sm:16,xs:16}]">
                 <div nz-col nzSpan="24">
-                    <h3 class="card__data">{{advert.data}}</h3>
+                    <h3 class="card__data">{{advert.datetime_posted}}</h3>
                 </div>
                 <div nz-col nzSpan="24">
-                    <h1 nz-typography nzEllipsis [nzEllipsisRows]="2" class="card__title">{{advert.title}}</h1>
+                    <h1 nz-typography nzEllipsis [nzEllipsisRows]="2" class="card__title">{{advert.name}}</h1>
                 </div>
                 <div nz-col nzSpan="24">
                     <div nz-row [nzGutter]="[0,{xl:0,lg:0,md:0,sm:30,xs:20}]">
                         <div nz-col nzSpan="24">
-                            <h2 nz-typography nzEllipsis [nzEllipsisRows]="7" class="card__info">{{advert.info}}</h2>
+                            <h2 nz-typography nzEllipsis [nzEllipsisRows]="7" class="card__info">{{advert.description}}</h2>
                         </div>
                         <div nz-col nzLg="0" nzXs="24">
                             <div class="card__img">
-                                <img nz-image [nzSrc]="advert.img" [nzFallback]="fallback" alt="news">
+                                <img nz-image [nzSrc]="advert.photo" [nzFallback]="fallback" alt="news">
                             </div>
                         </div>
                     </div>            
@@ -24,7 +24,7 @@
         </div>
         <div nz-col nzXl="12" nzLg="13" nzMd="0" nzXs="0">
             <div class="card__img">
-                <img nz-image [nzSrc]="advert.img" [nzFallback]="fallback" alt="news">
+                <img nz-image [nzSrc]="advert.photo" [nzFallback]="fallback" alt="news">
             </div>
         </div>
     </div>  

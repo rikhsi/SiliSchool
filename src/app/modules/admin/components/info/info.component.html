@@ -4,21 +4,19 @@
             <nz-table #basicTable nzTableLayout="fixed" [nzData]="docs" [nzLoading]="isLoading" [nzPageSize]="5">
                 <thead>
                     <tr>
-                        <th [nzWidth]="'5%'">№</th>
-                        <th [nzWidth]="'200px'">{{'admin.tables.gallery.data' | translate}}</th>
+                        <th [nzWidth]="'5%'">ID</th>
                         <th>{{'admin.tables.news.title' | translate}}</th>
                         <th [nzWidth]="'140px'">{{'admin.tables.gallery.instruments' | translate}}</th>
                     </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let data of basicTable.data; let i = index">
-                    <td>{{i+1}}</td>
-                    <td>{{data.data}}</td>
-                    <td>{{data.title}}</td>
+                    <td>{{data.id}}</td>
+                    <td>{{data.name}}</td>
                     <td>
                         <div nz-row [nzGutter]="10">
                             <div nz-col>
-                                <a [href]="data.file" target="_blank" nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.buttons.document' | translate">
+                                <a [href]="'http://192.168.43.156:5000/getDocumentFile/' + data.id" target="_blank" nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.buttons.document' | translate">
                                     <span nz-icon nzType="file" nzTheme="outline"></span>
                                 </a>
                             </div> 
@@ -45,14 +43,14 @@
                                     <div nz-col nzSpan="12">
                                         <nz-form-item>
                                             <nz-form-control [nzErrorTip]="'To`liq kiriting'" nzHasFeedback>
-                                                <input nz-input [placeholder]="'Sarlavhani kiriting'" formControlName="titleUz" class="gallery__input"/>
+                                                <input nz-input [placeholder]="'Sarlavhani kiriting'" formControlName="name_uz" class="gallery__input"/>
                                             </nz-form-control>
                                         </nz-form-item>
                                     </div>
                                     <div nz-col nzSpan="12">
                                         <nz-form-item>
                                             <nz-form-control [nzErrorTip]="'Заполните поле'" nzHasFeedback>
-                                                <input nz-input [placeholder]="'Введите название'" formControlName="titleRu" class="gallery__input"/>
+                                                <input nz-input [placeholder]="'Введите название'" formControlName="name_ru" class="gallery__input"/>
                                             </nz-form-control>
                                         </nz-form-item>
                                     </div>

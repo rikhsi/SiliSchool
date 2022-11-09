@@ -36,14 +36,14 @@ export class GalleryPageComponent implements OnInit {
   }
 
   getData():void{
-    this.gallery = this.galleryService.galleries;
-    this.paginatedList = this.galleryService.galleries;
+    // this.gallery = this.galleryService.galleries;
+    // this.paginatedList = this.galleryService.galleries;
   }
 
   loadMore():void{
     this.isLoading = true
     setTimeout(() => {
-      this.paginatedList = this.paginatedList.concat(this.galleryService.galleries);
+      // this.paginatedList = this.paginatedList.concat(this.galleryService.galleries);
       this.gallery = [...this.paginatedList];
       this.isLoading = false
     }, 2000);

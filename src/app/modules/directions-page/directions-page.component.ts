@@ -27,7 +27,7 @@ export class DirectionsPageComponent implements OnInit {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.directions = this.DirectionsService.directions;
+
       this,this.isLoading = false;
     }, 2000);
   }

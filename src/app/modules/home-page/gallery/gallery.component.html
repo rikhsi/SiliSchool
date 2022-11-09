@@ -9,7 +9,7 @@
                     <swiper #swiper [config]="config">
                         <ng-template swiperSlide *ngFor="let data of galleries">
                             <div class="gallery__img">
-                                <img nz-image [nzSrc]="data.img" [nzFallback]="fallback" alt="news">
+                                <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback" alt="news">
                             </div>
                         </ng-template>
                     </swiper>
