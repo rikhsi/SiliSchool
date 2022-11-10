@@ -6,6 +6,7 @@ import { NewsService } from 'src/app/services/news.service';
 import { Advert } from 'src/app/models/advert';
 import { NzImageService } from 'ng-zorro-antd/image';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-news',
@@ -17,6 +18,7 @@ export class NewsComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
+  lang!:string;
   button: boolean = false;
   uploading: boolean = false;
   fileList: NzUploadFile[] = [];
@@ -25,7 +27,7 @@ export class NewsComponent implements OnInit {
   confirmModal?: NzModalRef;
   fallback:string = '../../../../../assets/img/fallback.png';
 
-  constructor(private newsService: NewsService, private msg: NzMessageService,private fb: FormBuilder,private modalService: NzModalService,private nzImageService: NzImageService) { 
+  constructor(private mainService: MainService,private newsService: NewsService, private msg: NzMessageService,private fb: FormBuilder,private modalService: NzModalService,private nzImageService: NzImageService) { 
     this.createForm = this.fb.group({
       name_uz: [null, [Validators.required]],
       description_uz: [null, [Validators.required]],
@@ -35,12 +37,17 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.get();
+    this.mainService.message.subscribe({
+      next: data => {
+        this.lang = data;
+        this.get();
+      }
+    })
   }
 
   get():void{
     this.isLoading = true;
-    this.newsService.get().subscribe({
+    this.newsService.get(0,this.lang).subscribe({
       next: data => {
         this.news = data
         this.isLoading = false;

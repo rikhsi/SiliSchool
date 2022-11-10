@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DirectionsResolver } from 'src/app/services/directions.resolver';
 import { DirectionsPageComponent } from './directions-page.component';
 
 const routes: Routes = [
@@ -9,6 +10,7 @@ const routes: Routes = [
   },
   {
     path: ':id',
+    resolve: { data: DirectionsResolver },
     loadChildren: () => import('./modules/directions-card-page/directions-card-page.module').then(m => m.DirectionsCardPageModule)
   }
 ];

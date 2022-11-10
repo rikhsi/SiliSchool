@@ -1,7 +1,8 @@
 {
     "header": {
         "logo": "BMSM",
-        "time": "Du-Sha"
+        "time": "Du-Sha",
+        "title": "Bolalar musiqa va san'at maktabi №33"
     },
     "home": {
         "title": "Kirish"
@@ -92,7 +93,6 @@
             "download": "Yuklash",
             "reset": "Tozalash",
             "delete": "O`chirish",
-            "show": "Ko`rsatish/bekitish",
             "reload": "Yangilash",
             "lang": "Tilni o`zgartirish",
             "add": "Yaratmoq",

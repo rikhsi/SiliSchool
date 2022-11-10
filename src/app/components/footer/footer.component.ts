@@ -21,8 +21,6 @@ export class FooterComponent implements OnInit {
     this.schoolNumber = this.mainService.schoolNumber;
     this.schoolPhone = this.mainService.schoolPhone;
     this.schoolLocation = this.mainService.schoolLocation;
-    this.youTube = this.mainService.youTube;
-    this.instagram = this.mainService.instagram;
     this.locationLink = this.mainService.locationLink;
   }
 

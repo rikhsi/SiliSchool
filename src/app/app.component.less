@@ -5,10 +5,21 @@
         height: auto;
         display: flex;
         flex-direction: column;
+
+        @media (max-width:991px) {
+            padding-top: 80px;
+        }
     }
     &__header{
         position: relative;
-        z-index: 1000;
+        z-index: 2000;
+        
+        @media (max-width:991px) {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: auto;
+        }
     }
     &__main{
         flex: 1 1 auto;

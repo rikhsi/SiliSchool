@@ -6,6 +6,7 @@ import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { DocsService } from 'src/app/services/docs.service';
 import { Docs } from 'src/app/models/docs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { api, MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-info',
@@ -17,6 +18,8 @@ export class InfoComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
+  lang!:string;
+  api = api;
   button: boolean = false;
   uploading = false;
   fileList: NzUploadFile[] = [];
@@ -25,7 +28,7 @@ export class InfoComponent implements OnInit {
   confirmModal?: NzModalRef;
   fallback:string = '../../../../../assets/img/fallback.png';
 
-  constructor(private docsService: DocsService,private msg: NzMessageService,private modalService: NzModalService,private fb: FormBuilder) { 
+  constructor(private mainService: MainService,private docsService: DocsService,private msg: NzMessageService,private modalService: NzModalService,private fb: FormBuilder) { 
     this.createForm = this.fb.group({
       name_uz: [null, [Validators.required]],
       name_ru: [null, [Validators.required]]
@@ -33,16 +36,20 @@ export class InfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.get();
+    this.mainService.message.subscribe({
+      next: data => {
+        this.lang = data;
+        this.get();
+      }
+    })
   }
 
   get():void{
     this.isLoading = true;
-    this.docsService.get().subscribe({
+    this.docsService.get(this.lang).subscribe({
       next: data => {
         this.docs = data;
         this.isLoading = false;
-        console.log(data)
       },
       error: () => {
         this.isLoading = false;

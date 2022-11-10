@@ -29,7 +29,7 @@
     </ng-container>
     <ng-container *ngIf="!isTable">
         <div nz-col nzSpan="6">
-            <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
+            <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload" [nzDisabled]="fileList.length === 1">
                 <button nz-button>
                     <span nz-icon nzType="upload"></span>
                     {{'admin.buttons.upload.photo' | translate}}
@@ -40,7 +40,7 @@
                 [nzType]="'primary'"
                 [nzLoading]="uploading"
                 (click)="submit()"
-                [disabled]="fileList.length === 0"
+                [disabled]="fileList.length === 0 "
                 style="margin-top: 16px"
             >
                 <span *ngIf="uploading">{{'admin.buttons.upload.loading' | translate}}</span>

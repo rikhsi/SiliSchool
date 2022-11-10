@@ -16,7 +16,7 @@
                     <td>
                         <div nz-row [nzGutter]="10">
                             <div nz-col>
-                                <a [href]="'http://192.168.43.156:5000/getDocumentFile/' + data.id" target="_blank" nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.buttons.document' | translate">
+                                <a [href]="api + '/getDocumentFile/' + data.id" target="_blank" nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.buttons.document' | translate">
                                     <span nz-icon nzType="file" nzTheme="outline"></span>
                                 </a>
                             </div> 

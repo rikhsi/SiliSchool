@@ -4,6 +4,7 @@ import SwiperCore, {SwiperOptions, Autoplay} from "swiper";
 import { Direction } from 'src/app/models/direction';
 import { DirectionsService } from 'src/app/services/directions.service';
 import { Router } from '@angular/router';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-directions',
@@ -55,15 +56,26 @@ export class DirectionsComponent implements OnInit {
     }
   };
 
-  constructor(private directionsService: DirectionsService,private router: Router) { 
+  constructor(private directionsService: DirectionsService,private router: Router,private mainService: MainService) { 
     SwiperCore.use([Autoplay]);
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      // this.directions = this.directionsService.directions;
-      this.isLoading = false;
-    }, 2000);
+    this.mainService.message.subscribe({
+      next: data => {
+        this.getData(data);
+      }
+    })
+  }
+
+  getData(lang:string):void{
+    this.isLoading = true;
+    this.directionsService.get(lang).subscribe({
+      next: data => {
+        this.directions = data;
+        this.isLoading = false;
+      }
+    })
   }
 
   navigate(): void{

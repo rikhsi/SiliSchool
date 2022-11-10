@@ -8,8 +8,12 @@ import { api } from './main.service';
 })
 export class NewsService {
   
-  get(){
-    return this.http.get<Advert[]>(api + `getNews?lang=ru&page=0`)
+  get(page:number,lang:string){
+    return this.http.get<Advert[]>(api + `getNews?lang=${lang}&page=${page}`)
+  }
+
+  getID(id:number){
+    return this.http.get<Advert>('');
   }
 
   delete(id:number){

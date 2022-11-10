@@ -17,7 +17,7 @@
                 <div nz-col nzSpan="24">
                     <div nz-row nzAlign="middle">
                         <div nz-col nzSpan="12">
-                            <button nz-button nzType="primary" [title]="'admin.buttons.lang' | translate" class="button" (click)="this.isTable = true" *ngIf="isDirection && isTable === false">
+                            <button nz-button nzType="primary" [title]="'admin.buttons.lang' | translate" class="button" (click)="this.isTable = true" *ngIf="!isTable">
                                 <span nz-icon nzType="rollback" nzTheme="outline" class="icon"></span>
                             </button>
                         </div>
@@ -62,7 +62,7 @@
                         <sili-teachers [isTable]="isTable"  [translateTexts]="translateTexts"></sili-teachers>
                     </ng-container>
                     <ng-container *ngIf="pages[6].isShow">
-                        <sili-directions [isTable]="isTable"  [translateTexts]="translateTexts"></sili-directions>
+                        <sili-directions [isTable]="isTable" (isDirection)="isDirection = true" (changeToEdit)="handleEdit()"  [translateTexts]="translateTexts"></sili-directions>
                     </ng-container>
                     <ng-container *ngIf="pages[7].isShow">
                         <sili-achievements [isTable]="isTable" [translateTexts]="translateTexts"></sili-achievements>

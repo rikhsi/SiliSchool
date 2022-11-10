@@ -88,6 +88,7 @@ export class AdminComponent implements OnInit {
 
   changeLang(){
     if(this.isRu){
+      this.mainService.setLang('ru');
       this.translate.use('ru').subscribe({
         next: () => {
           this.getTranslate();
@@ -97,6 +98,7 @@ export class AdminComponent implements OnInit {
       })
       return 'ru'
     } else{
+      this.mainService.setLang('uz');
       this.translate.use('uz').subscribe({
         next: () => {
           this.getTranslate();
@@ -135,5 +137,9 @@ export class AdminComponent implements OnInit {
         }, 0)
       }
     })
+  }
+
+  handleEdit():void{
+    this.isTable = !this.isTable;
   }
 }

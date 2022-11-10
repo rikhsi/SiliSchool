@@ -62,9 +62,17 @@ export class AchievementsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
+    this.getData();
+  }
+
+  getData():void{
+    this.isLoading = true;
+    this.achievementsService.get().subscribe({
+      next: data => {
+        this.achievements = data;
+        this.isLoading = false;
+      }
+    })
   }
   
   @ViewChild(SwiperComponent) swiper?: SwiperComponent;

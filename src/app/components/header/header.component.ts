@@ -9,10 +9,12 @@ import { MainService } from 'src/app/services/main.service';
   styleUrls: ['./header.component.less']
 })
 export class HeaderComponent implements OnInit {
+  @Output() animate = new EventEmitter();
+  @Output() lang = new EventEmitter();
+  isBurger: boolean = false;
   schoolNumber!: number;
   schoolPhone!: string;
   currentLang: string = 'Ру';
-  @Output() changeStatus = new EventEmitter();
 
   constructor(private mainService: MainService,public translateService: TranslateService, private router: Router) { }
 
@@ -34,34 +36,44 @@ export class HeaderComponent implements OnInit {
       next: () => {
         if(data === 'ru'){
           this.currentLang = 'Ру'
-          this.changeStatus.emit()
+          this.animate.emit();
+          this.lang.emit();
+          this.mainService.setLang('ru');
         } else{
           this.currentLang = 'Uz'
-          this.changeStatus.emit()
+          this.animate.emit();
+          this.lang.emit();
+          this.mainService.setLang('uz');
         }
       }
     })
   }
 
   navigate(id: number):void{
-    switch(id){
-      case 1: {
-        this.router.navigate(['/directions'])
-        break
+    setTimeout(() => {
+      switch(id){
+        case 1: {
+          this.router.navigate(['/directions'])
+          this.isBurger = false;
+          break
+        }
+        case 2: {
+          this.router.navigate(['/docs'])
+          this.isBurger = false;
+          break
+        }
+        case 3: {
+          this.router.navigate(['/gallery'])
+          this.isBurger = false;
+          break
+        }
+        case 4: {
+          this.router.navigate(['/news'])
+          this.isBurger = false;
+          break
+        }
       }
-      case 2: {
-        this.router.navigate(['/docs'])
-        break
-      }
-      case 3: {
-        this.router.navigate(['/gallery'])
-        break
-      }
-      case 4: {
-        this.router.navigate(['/news'])
-        break
-      }
-    }
+    }, 700);
   }
 
   backHome():void{

@@ -28,7 +28,7 @@
                     <td>
                         <div nz-row [nzGutter]="24">
                             <div nz-col>
-                                <a [href]="'http://192.168.43.156:5000/getTeacherTimetable/' + data.id" target="_blank" target="_blank" nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.tables.teachers.file' | translate">
+                                <a [href]="api + '/getTeacherTimetable/' + data.id" target="_blank" target="_blank" nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.tables.teachers.file' | translate">
                                     <span nz-icon nzType="table" nzTheme="outline"></span>
                                 </a>
                             </div>

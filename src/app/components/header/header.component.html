@@ -89,9 +89,10 @@
                                     <span nz-icon nzType="phone" nzTheme="outline" [nzRotate]="90" class="adaptive__icon"></span>
                                 </button>
                             </div>
-                            <div nz-col style="max-height: 22px;">
+                            <div nz-col style="max-height: 22px;" (click)="isBurger = !isBurger">
                                 <button nz-button nzType="primary" class="adaptive__button">
-                                    <span nz-icon nzType="menu" nzTheme="outline" class="adaptive__burger"></span>
+                                    <span nz-icon nzType="menu" nzTheme="outline" class="adaptive__burger" *ngIf="!isBurger"></span>
+                                    <span nz-icon nzType="close" nzTheme="outline" class="adaptive__burger" *ngIf="isBurger"></span>
                                 </button>
                             </div>                      
                         </div>   
@@ -101,3 +102,21 @@
         </div>
     </div>
 </div>
+<ng-container *ngIf="isBurger"> 
+    <div class="burger">
+        <div nz-row [nzGutter]="[0,14]">
+            <div nz-col nzSpan="24">
+                <button nz-button nzType="primary" class="burger__button" (click)="navigate(1)">{{'directions.title' | translate}}</button>
+            </div>
+            <div nz-col nzSpan="24">
+                <button nz-button nzType="primary" class="burger__button" (click)="navigate(2)">{{'faq.info' | translate}}</button>
+            </div>
+            <div nz-col nzSpan="24">
+                <button nz-button nzType="primary" class="burger__button" (click)="navigate(3)">{{'gallery.title' | translate}}</button>
+            </div>
+            <div nz-col nzSpan="24">
+                <button nz-button nzType="primary" class="burger__button" (click)="navigate(4)">{{'news.title' | translate}}</button>
+            </div>
+        </div>
+    </div>
+</ng-container>

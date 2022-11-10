@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Faq } from 'src/app/models/faq';
 import { FaqService } from 'src/app/services/faq.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-faq',
@@ -17,9 +18,21 @@ export class FaqComponent implements OnInit {
     border: '0px 0px 1px 0px solid #CFD3D8'
   }
 
-  constructor(private faqsService: FaqService) { }
+  constructor(private faqsService: FaqService, private mainService: MainService) { }
 
   ngOnInit(): void {
-    // this.faqs = this.faqsService.faqs;
+    this.mainService.message.subscribe({
+      next: data => {
+        this.getData(data);
+      }
+    })
+  }
+
+  getData(lang:string):void{
+    this.faqsService.get(lang).subscribe({
+      next: data => {
+        this.faqs = data;
+      }
+    })
   }
 }

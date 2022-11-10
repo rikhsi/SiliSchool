@@ -30,7 +30,7 @@ export class GalleryComponent implements OnInit {
 
   get():void{
     this.isLoading = true;
-    this.galleryService.get().subscribe({
+    this.galleryService.get(0).subscribe({
       next: data => {
         this.gallery = data;
         this.isLoading = false;

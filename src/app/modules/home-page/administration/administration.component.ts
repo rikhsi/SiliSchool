@@ -3,6 +3,7 @@ import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, {SwiperOptions, Autoplay} from "swiper";
 import { Adminstration } from 'src/app/models/adminstration';
 import { AdminstrationService } from 'src/app/services/adminstration.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-administration',
@@ -54,15 +55,26 @@ export class AdministrationComponent implements OnInit {
     }
   };
 
-  constructor(private teachersService: AdminstrationService) { 
+  constructor(private adminstrationService: AdminstrationService,private mainService: MainService) { 
     SwiperCore.use([Autoplay]);
   }
 
   ngOnInit(): void {    
-    setTimeout(() => {
-      this.administrations = this.teachersService.teachers;
-      this.isLoading = false;
-    }, 2000);
+    this.mainService.message.subscribe({
+      next: data => {
+        this.getData(data);
+      }
+    })
+  }
+
+  getData(lang:string):void{
+    this.isLoading = true;
+    this.adminstrationService.get(lang).subscribe({
+      next: data => {
+        this.administrations = data;
+        this.isLoading = false;
+      }
+    })
   }
 
   @ViewChild(SwiperComponent) swiper?: SwiperComponent;

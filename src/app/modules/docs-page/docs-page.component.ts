@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreadCrump } from 'src/app/models/breadCrump';
 import { Docs } from 'src/app/models/docs';
 import { DocsService } from 'src/app/services/docs.service';
+import { api, MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-docs-page',
@@ -9,6 +10,7 @@ import { DocsService } from 'src/app/services/docs.service';
   styleUrls: ['./docs-page.component.less']
 })
 export class DocsPageComponent implements OnInit {
+  api = api;
   title: string = 'faq.info';
   isLoading: boolean = true;
   docs!: Docs[];
@@ -22,11 +24,27 @@ export class DocsPageComponent implements OnInit {
       path: '/docs'
     }
   ];
-  constructor(private docsService: DocsService) { }
+  constructor(private docsService: DocsService,private mainService: MainService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
+    this.mainService.message.subscribe({
+      next: data => {
+        this.getData(data);
+      }
+    })
+  }
+  
+  getData(lang:string):void{
+    this.isLoading = true;
+    this.docsService.get(lang).subscribe({
+      next: data => {
+        this.docs = data;
+        this.isLoading = false;
+      }
+    })
+  }
+
+  open(id:number){
+    window.open(api + `/getDocumentFile/${id}`, '_blank')
   }
 }

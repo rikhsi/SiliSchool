@@ -10,7 +10,15 @@ export class DirectionsService {
 
   constructor(private http: HttpClient) { }
 
-  get(){
-    return this.http.get<Direction[]>(api + 'getDepartments?lang=ru')
+  get(lang:string){
+    return this.http.get<Direction[]>(api + `getDepartments?lang=${lang}`)
+  }
+
+  getID(id:number){
+    return this.http.get<Direction>('');
+  }
+
+  edit(id:number,data: JSON){
+    return this.http.post(api + `updateDepartmentDescription/${id}`,data)
   }
 }

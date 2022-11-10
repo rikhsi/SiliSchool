@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreadCrump } from 'src/app/models/breadCrump';
 import { Direction } from 'src/app/models/direction';
 import { DirectionsService } from 'src/app/services/directions.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-directions-page',
@@ -23,12 +24,23 @@ export class DirectionsPageComponent implements OnInit {
     }
   ];
 
-  constructor(private DirectionsService: DirectionsService) { }
+  constructor(private directionsService: DirectionsService,private mainService: MainService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
+    this.mainService.message.subscribe({
+      next: data => {
+        this.getData(data);
+      }
+    })
+  }
 
-      this,this.isLoading = false;
-    }, 2000);
+  getData(lang:string):void{
+    this.isLoading = true;
+    this.directionsService.get(lang).subscribe({
+      next: data => {
+        this.directions = data;
+        this.isLoading = false;
+      }
+    })
   }
 }

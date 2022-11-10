@@ -60,16 +60,23 @@ export class GalleryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      // this.galleries = this.galleryService.galleries;
-      this.isLoading = false;
-    }, 2000);
+    this.getData();
   }
 
   navigate(): void{
     setTimeout(() => {
       this.router.navigate(['/gallery'])
     }, 300);
+  }
+
+  getData():void{
+    this.isLoading = true;
+    this.galleryService.get(0).subscribe({
+      next: data => {
+        this.galleries = data;
+        this.isLoading = false;
+      }
+    })
   }
 
   @ViewChild(SwiperComponent) swiper?: SwiperComponent;

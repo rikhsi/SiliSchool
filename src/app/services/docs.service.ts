@@ -8,8 +8,8 @@ import { api } from './main.service';
 })
 export class DocsService {
 
-  get(){
-    return this.http.get<Docs[]>(api + 'getDocuments?=lang=ru')
+  get(lang:string){
+    return this.http.get<Docs[]>(api + `getDocuments?lang=${lang}`)
   }
 
   post(formData: FormData){
@@ -21,6 +21,4 @@ export class DocsService {
   }
 
   constructor(private http: HttpClient) { }
-
-
 }

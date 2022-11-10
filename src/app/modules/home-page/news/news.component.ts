@@ -4,6 +4,7 @@ import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, { EffectFade,SwiperOptions, Autoplay} from "swiper";
 import { NewsService } from 'src/app/services/news.service';
 import { Router } from '@angular/router';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-news',
@@ -31,14 +32,26 @@ export class NewsComponent implements OnInit {
     }
   };
 
-  constructor(private newsService: NewsService, private router: Router) { 
+  constructor(private newsService: NewsService, private router: Router,private mainService: MainService) { 
     SwiperCore.use([Autoplay, EffectFade]);
   }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
+    this.mainService.message.subscribe({
+      next: data => {
+        this.getData(data);
+      }
+    })
+  }
+
+  getData(lang:string):void{
+    this.isLoading = true;
+    this.newsService.get(0,lang).subscribe({
+      next: data => {
+        this.adverts = data;
+        this.isLoading = false;
+      }
+    })
   }
 
   navigate(): void{

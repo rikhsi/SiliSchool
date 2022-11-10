@@ -34,10 +34,16 @@
         background: @mainRed;
     }
     &__title{
+        height: 50px;
         letter-spacing: 0.1px;
         .text(700,24px,32px,@directionTitle);
+
+        @media (max-width:1199px) {
+            font-size: 21px;
+        }
     }
     &__info{
+        height: 60px;
         .text(400,14px,20px,@directionInfo);
     }
 }

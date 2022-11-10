@@ -4,6 +4,7 @@ import { FaqService } from 'src/app/services/faq.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-faq',
@@ -15,12 +16,13 @@ export class FaqComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
+  lang!:string;
   uploading: boolean = false;
   createForm!: FormGroup;
   faqs!: Faq[];
   confirmModal?: NzModalRef;
 
-  constructor(private faqsService: FaqService, private msg: NzMessageService,private fb: FormBuilder,private modal: NzModalService) { 
+  constructor(private mainService: MainService,private faqsService: FaqService, private msg: NzMessageService,private fb: FormBuilder,private modal: NzModalService) { 
     this.createForm = this.fb.group({
       question_uz: [null, [Validators.required]],
       answer_uz: [null, [Validators.required]],
@@ -30,12 +32,17 @@ export class FaqComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.get();
+    this.mainService.message.subscribe({
+      next: data => {
+        this.lang = data;
+        this.get(data);
+      }
+    })
   }
 
-  get():void{
+  get(lang:string):void{
     this.isLoading = true;
-    this.faqsService.get().subscribe({
+    this.faqsService.get(lang).subscribe({
       next: data => {
         this.faqs = data;
         this.isLoading = false;
@@ -62,7 +69,7 @@ export class FaqComponent implements OnInit {
           next: () => {
             this.faqs = this.faqs.filter(data => data.id !== id);
             this.msg.success(this.translateTexts.delete.success);
-            this.get();
+            this.get(this.lang);
           },
           error: () => {
             this.msg.error(this.translateTexts.delete.error);
@@ -78,7 +85,7 @@ export class FaqComponent implements OnInit {
       next: () => {
         this.uploading = false;
         this.createForm.reset();
-        this.get();
+        this.get(this.lang);
         this.msg.success(this.translateTexts.add.success)
       },
       error: () => {

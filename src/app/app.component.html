@@ -7,7 +7,7 @@
 <div class="sili__wrapper">
   <ng-container *ngIf="isDefaultPage">
     <header class="sili__header">
-      <sili-header (changeStatus)="changeStatus()"></sili-header>
+      <sili-header (animate)="animate()" (lang)="getTranslate()"></sili-header>
     </header>
   </ng-container>
   <main class="sili__main">

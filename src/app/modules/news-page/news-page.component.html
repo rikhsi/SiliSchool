@@ -23,7 +23,7 @@
                                             <sili-news-skeleton [counter]="5"></sili-news-skeleton>
                                         </div>           
                                     </ng-container>
-                                    <div nz-col nzSpan="24">
+                                    <div nz-col nzSpan="24" *ngIf="button">
                                         <sili-more (loadMore)="loadMore()"></sili-more>
                                     </div>  
                                 </div>

@@ -4,10 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { NzImageService } from 'ng-zorro-antd/image';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
-import { Direction } from 'src/app/models/direction';
-import { DirectionsService } from 'src/app/services/directions.service';
-import { Adminstration } from 'src/app/models/adminstration';
+import { Adminstration, Profession } from 'src/app/models/adminstration';
 import { AdminstrationService } from 'src/app/services/adminstration.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-adminstration',
@@ -20,27 +19,65 @@ export class AdminstrationComponent implements OnInit {
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
   @Output() refresh = new EventEmitter;
+  lang!:string;
   button: boolean = false;
   uploading: boolean = false;
   fileList: NzUploadFile[] = [];
   createForm!: FormGroup;
   adminstrations!: Adminstration[];
-  directions!: Direction[];
+  professions!: Profession[];
   confirmModal?: NzModalRef;
   fallback:string = '../../../../../assets/img/fallback.png';
 
-  constructor(private adminstrationsService: AdminstrationService, private directionsService: DirectionsService, private msg: NzMessageService,private fb: FormBuilder,private modalService: NzModalService,private nzImageService: NzImageService) { 
+  constructor(private adminstrationsService: AdminstrationService,private mainService: MainService, private msg: NzMessageService,private fb: FormBuilder,private modalService: NzModalService,private nzImageService: NzImageService) { 
     this.createForm = this.fb.group({
-      nameUz: [null, [Validators.required]],
-      nameRu: [null, [Validators.required]],
-      role: [null,[Validators.required]]
+      name_uz: [null, [Validators.required]],
+      name_ru: [null, [Validators.required]],
+      profession_id: [null,[Validators.required]]
     })
   }
 
   ngOnInit(): void {
-    this.adminstrationsService.get().subscribe({
+    this.adminstrationsService.getProfession('ru').subscribe({
       next: data => {
-        console.log(data)
+        this.professions = data;
+      }
+    })
+    this.mainService.message.subscribe({
+      next: data => {
+        this.lang = data;
+        this.get(data);
+      }
+    })
+  }
+
+  get(lang:string):void{
+    this.isLoading = true;
+    this.adminstrationsService.get(lang).subscribe({
+      next: data => {
+        this.adminstrations = data
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        this.msg.error(this.translateTexts.reload.error);
+      }
+    })
+  }
+
+  post(formData: FormData):void{
+    this.uploading = true;
+    this.adminstrationsService.post(formData).subscribe({
+      next: () => {
+        this.uploading = false;
+        this.createForm.reset();
+        this.fileList = [];
+        this.get(this.lang);
+        this.msg.success(this.translateTexts.add.success)
+      },
+      error: () => {
+        this.uploading = false;
+        this.msg.error(this.translateTexts.add.error)
       }
     })
   }
@@ -56,9 +93,16 @@ export class AdminstrationComponent implements OnInit {
       nzOkDanger: true,
       nzAutofocus: null,
       nzOnOk: () => {
-        this.adminstrations = this.adminstrations.filter(data => data.id !== id);
-        this.msg.success(this.translateTexts.delete.success);
-        this.refresh.emit();
+        this.adminstrationsService.delete(id).subscribe({
+          next: () => {
+            this.adminstrations = this.adminstrations.filter(data => data.id !== id);
+            this.msg.success(this.translateTexts.delete.success);
+            this.get(this.lang);
+          },
+          error: () => {
+            this.msg.error(this.translateTexts.delete.error);
+          }
+        })
       }
     })
   }
@@ -69,15 +113,9 @@ export class AdminstrationComponent implements OnInit {
       this.fileList.forEach((file: any) => {
         formData.append('file', file);
       });
-      this.uploading = true;
-      setTimeout(() => {
-        this.uploading = false;
-      }, 1000);
+      formData.append('data', JSON.stringify(this.createForm.value))
       this.button = false;
-      this.createForm.reset();
-      this.fileList = [];
-      this.refresh.emit();
-      this.msg.success(this.translateTexts.add.success)
+      this.post(formData)
     } else {
       Object.values(this.createForm.controls).forEach(control => {
         if (control.invalid) {

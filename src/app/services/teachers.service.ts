@@ -10,8 +10,8 @@ export class TeachersService {
 
   constructor(private http: HttpClient) { }
 
-  get(){
-    return this.http.get<Teacher[]>(api + 'getTeachers?lang=ru')
+  get(lang:string){
+    return this.http.get<Teacher[]>(api + `getTeachers?lang=${lang}`)
   }
 
   post(formData: FormData){

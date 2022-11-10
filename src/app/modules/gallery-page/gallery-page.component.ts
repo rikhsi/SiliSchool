@@ -11,8 +11,10 @@ import { GalleryService } from 'src/app/services/gallery.service';
 export class GalleryPageComponent implements OnInit {
   title: string = 'gallery.title';
   fallback:string = '../../../../assets/img/fallback.png';
+  button: boolean = true;
+  page: number = 1;
   pageSize: number = 6;
-  isLoading: boolean = true;
+  isLoading!: boolean;
   gallery!: Gallery[];
   paginatedList!: Gallery[];
   breadCrump: BreadCrump[] = [
@@ -29,23 +31,34 @@ export class GalleryPageComponent implements OnInit {
   constructor(private galleryService: GalleryService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.getData();
-      this.isLoading = !this.isLoading;
-    }, 2000);
+    this.getData(0);
   }
 
-  getData():void{
-    // this.gallery = this.galleryService.galleries;
-    // this.paginatedList = this.galleryService.galleries;
+  getData(page:number):void{
+    this.isLoading = true;
+    this.galleryService.get(0).subscribe({
+      next: data => {
+        this.gallery = data;
+        this.paginatedList = data;
+        this.isLoading = false;
+      }
+    })
   }
 
   loadMore():void{
-    this.isLoading = true
-    setTimeout(() => {
-      // this.paginatedList = this.paginatedList.concat(this.galleryService.galleries);
-      this.gallery = [...this.paginatedList];
-      this.isLoading = false
-    }, 2000);
+    this.page = this.page + 1;
+    this.isLoading = true;
+    this.galleryService.get(this.page).subscribe({
+      next: data => {
+        if(data.length === 0){
+          this.button = false;
+          this.isLoading = false;
+        } else{
+          this.paginatedList = this.paginatedList.concat(data);
+          this.gallery = [...this.paginatedList];
+          this.isLoading = false;
+        }
+      }
+    })
   }
 }

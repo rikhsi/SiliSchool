@@ -16,6 +16,8 @@ export class BreadCrumpComponent implements OnInit {
   }
 
   navigate(path: string):void{
-    this.router.navigate([`${path}`])
+    setTimeout(() => {
+      this.router.navigate([`${path}`])
+    }, 300);
   }
 }

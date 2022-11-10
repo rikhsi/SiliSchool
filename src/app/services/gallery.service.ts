@@ -8,8 +8,8 @@ import { api } from './main.service';
 })
 export class GalleryService {
 
-  get(){
-    return this.http.get<Gallery[]>(api + 'getGalleries?page=0')
+  get(page:number){
+    return this.http.get<Gallery[]>(api + `getGalleries?page=${page}`)
   }
 
   post(formData: FormData){

@@ -5,17 +5,20 @@
     &:last-child{
         & div{
             color: #999999;
-        pointer-events: none;
+            pointer-events: none;
         }
         .bread__svg{
             display: none;
         }
     }
     &__title{
+        transition: 0.2s;
         cursor: pointer;
+        .text(500,16px,20px,@mainBlack);
+        
         &:hover{
+            transition: 0.2s;
             color: @mainRed;
         }
-        .text(500,16px,20px,@mainBlack);
     }
 }

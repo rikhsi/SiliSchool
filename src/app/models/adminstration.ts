@@ -1,6 +1,11 @@
 export interface Adminstration{
     id: number,
-    img: string,
+    photo: string,
     name: string,
-    role: string
+    profession: string;
+}
+
+export interface Profession{
+    id: number,
+    name: string
 }
