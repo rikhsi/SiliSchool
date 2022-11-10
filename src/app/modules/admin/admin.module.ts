@@ -27,6 +27,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { AchievementsComponent } from './components/achievements/achievements.component';
 import { AdminstrationComponent } from './components/adminstration/adminstration.component';
 import { InfoComponent } from './components/info/info.component';
+import { DirectionsComponent } from './components/directions/directions.component';
 @NgModule({
   declarations: [
     AdminComponent,
@@ -36,7 +37,8 @@ import { InfoComponent } from './components/info/info.component';
     TeachersComponent,
     AchievementsComponent,
     AdminstrationComponent,
-    InfoComponent
+    InfoComponent,
+    DirectionsComponent
   ],
   imports: [
     CommonModule,

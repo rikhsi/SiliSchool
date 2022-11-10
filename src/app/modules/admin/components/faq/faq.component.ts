@@ -15,6 +15,7 @@ export class FaqComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
   @Input() isLoading!: boolean;
+  uploading: boolean = false;
   createForm!: FormGroup;
   faqs!: Faq[];
   confirmModal?: NzModalRef;
@@ -33,6 +34,7 @@ export class FaqComponent implements OnInit {
   }
 
   get():void{
+    this.isLoading = true;
     this.faqsService.get().subscribe({
       next: data => {
         this.faqs = data;
@@ -71,16 +73,16 @@ export class FaqComponent implements OnInit {
   }
 
   post(data:JSON):void{
-    this.isLoading = true;
+    this.uploading = true;
     this.faqsService.post(data).subscribe({
       next: () => {
-        this.isLoading = false;
+        this.uploading = false;
         this.createForm.reset();
         this.get();
         this.msg.success(this.translateTexts.add.success)
       },
       error: () => {
-        this.isLoading = false;
+        this.uploading = false;
         this.msg.error(this.translateTexts.add.error)
       }
     })

@@ -38,9 +38,6 @@ export class AdminstrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.adminstrations = this.adminstrationsService.teachers;;
-    // this.directions = this.directionsService.directions;
-
     this.adminstrationsService.get().subscribe({
       next: data => {
         console.log(data)

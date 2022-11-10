@@ -23,15 +23,16 @@ export class AppComponent implements OnInit {
       if (!(event instanceof NavigationEnd)) {
           return;
       }
+      this.changeStatus();
       window.scrollTo(0, 0)
       this.changeStatus();
     });
   }
 
   changeStatus():void{
-    this.isLoading = !this.isLoading;
+    this.isLoading = true;
     setTimeout(() => {
-      this.isLoading = !this.isLoading;
+      this.isLoading = false;
     }, 1000);
   }  
 }

@@ -1,8 +1,8 @@
 <div class="connection__wrapper">
     <div class="connection__container">
         <div nz-row>
-            <div nz-col nzSpan="12">
-                <div nz-row [nzGutter]="[0,48]">
+            <div nz-col nzXs="24" nzMd="12">
+                <div nz-row [nzGutter]="[0,{xl:48,lg:15,md:15,sm:15,xs:15}]">
                     <div nz-col nzSpan="24">
                         <h1 class="connection__title">{{'form.title' | translate}}</h1>
                     </div>
@@ -58,4 +58,26 @@
             </div>
         </div>
     </div>
+    <div class="img__container display" style="z-index: 900;">
+        <div class="img__box">
+            <div nz-row nzJustify="end" nzAlign="bottom">
+                <div nz-col>
+                    <div class="img__img">
+                        <img src="../../../assets/img/main.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div class="img__container vector">
+        <div class="img__box">
+            <div nz-row nzJustify="end" nzAlign="bottom">
+                <div nz-col>
+                    <div class="img__img">
+                        <img src="../../../assets/img/vector.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
 </div>

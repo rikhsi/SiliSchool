@@ -62,10 +62,10 @@ export class TeachersComponent implements OnInit {
   }
 
   post(formData: FormData):void{
+    this.uploading = true;
     this.teachersService.post(formData).subscribe({
       next: () => {
         this.uploading = false;
-        this.button = false;
         this.createForm.reset();
         this.fileList = [];
         this.timeTableList = [];
@@ -107,6 +107,7 @@ export class TeachersComponent implements OnInit {
 
   submit(): void {
     if (this.createForm.valid && this.fileList.length > 0) {
+      this.button = false;
       const formData = new FormData();
       this.fileList.forEach((file: any) => {
         formData.append('file', file);

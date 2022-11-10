@@ -74,6 +74,13 @@
             },
             "docs": {
                 "button": "Faylni tanlang"
+            },
+            "directions": {
+                "title": "Sarlavha",
+                "img": "Rasm",
+                "description": "Tavsif",
+                "instruments": "Asboblar",
+                "change": "O`zgartirish"
             }
         },
         "buttons": {
@@ -91,7 +98,8 @@
             "add": "Yaratmoq",
             "select": "Yo`nalishni tanlang",
             "role": "Lavozimni tanlang",
-            "document": "Hujjat"
+            "document": "Hujjat",
+            "exit": "Chiqish"
         },
         "modal": {
             "show": {
@@ -104,6 +112,16 @@
             },
             "delete": {
                 "title": "O`chirishni hohlaysizmi",
+                "content": "OK tugmasini bosib, rozilik berasiz",
+                "cancel": "Qaytish"
+            },
+            "change": {
+                "title":"O`zgartirishni hohlaysizmi?",
+                "content": "OK tugmasini bosib, rozilik berasiz",
+                "cancel": "Qaytish"
+            },
+            "exit": {
+                "title": "Chiqishni hohlaysizmi?",
                 "content": "OK tugmasini bosib, rozilik berasiz",
                 "cancel": "Qaytish"
             }

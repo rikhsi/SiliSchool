@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { MainService } from 'src/app/services/main.service';
 import { FaqComponent } from './components/faq/faq.component';
 
@@ -12,7 +14,9 @@ import { FaqComponent } from './components/faq/faq.component';
 })
 export class AdminComponent implements OnInit {
   isTable: boolean = true;
+  isDirection: boolean = false;
   translateTexts: any;
+  confirmModal?: NzModalRef;
   isRu!: boolean;
   pages = [
     {
@@ -58,7 +62,7 @@ export class AdminComponent implements OnInit {
     },
   ]
 
-  constructor(private mainService: MainService,private msg: NzMessageService,public translate: TranslateService) { }
+  constructor(private mainService: MainService,private msg: NzMessageService,public translate: TranslateService,private router:Router, private modalService: NzModalService) { }
 
   ngOnInit(): void {
     this.getTranslate();
@@ -68,6 +72,11 @@ export class AdminComponent implements OnInit {
   }
 
   changePage(id:number):void{
+    if(id === 7){
+      this.isDirection = true;
+    } else{
+      this.isDirection = false;
+    }
     this.pages.find(data => {
       if(data.id === id){
         data.isShow = true
@@ -107,5 +116,24 @@ export class AdminComponent implements OnInit {
 
   handleTable():void{
     this.isTable = !this.isTable;
+  }
+
+  navigate():void{
+    this.confirmModal = this.modalService.confirm({
+      nzTitle: `${this.translateTexts.modal.exit.title}`,
+      nzContent: `${this.translateTexts.modal.exit.content}`,
+      nzCancelText: `${this.translateTexts.modal.exit.cancel}`,
+      nzOkText: "OK",
+      nzCentered: true,
+      nzClosable: false,
+      nzOkDanger: true,
+      nzAutofocus: null,
+      nzOnOk: () => {
+        setTimeout(() => {
+          this.mainService.setPage(true)
+          this.router.navigate(['home'])
+        }, 0)
+      }
+    })
   }
 }

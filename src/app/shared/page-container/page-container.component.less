@@ -3,6 +3,9 @@
 
 .page{
     &__wrapper{
+        position: relative;
+        overflow: hidden;
+        z-index: 1000;
         padding: 0 24px;
         height: 240px;
         background: linear-gradient(101.24deg, #4845DF 0%, #4579DF 100%), #4845DF;
@@ -30,5 +33,62 @@
         @media (max-width:767px) {
             font-size: 28px;
         }
+    }
+}
+
+
+.img{
+    &__container{
+        position: absolute;
+        top: 5%;
+        width: 100%;
+        height: 100%;
+    }
+    &__box{
+        position: relative;
+        max-width: 1312px;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    &__img{
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        @media (max-width: 1199px) {
+            width: 60%;
+            right: -30%;
+        }
+
+        img{
+            object-fit: cover;
+            pointer-events: none;
+        }
+    }
+}
+
+.vector{
+    opacity: 0.4;
+    top: 24%;
+    right: -20%;
+
+    @media (max-width: 991px) {
+        top:30%;
+        left: 10%;
+        width: 120%;
+        
+    }
+    @media (max-width: 767px) {
+        left: 5%;
+        width: 150%;
+    }
+}
+
+.model_3{
+    @media (max-width:767px) {
+        right: -33%;
     }
 }

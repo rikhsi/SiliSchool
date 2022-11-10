@@ -46,22 +46,18 @@ export class HeaderComponent implements OnInit {
   navigate(id: number):void{
     switch(id){
       case 1: {
-        this.changeStatus.emit();
         this.router.navigate(['/directions'])
         break
       }
       case 2: {
-        this.changeStatus.emit();
         this.router.navigate(['/docs'])
         break
       }
       case 3: {
-        this.changeStatus.emit();
         this.router.navigate(['/gallery'])
         break
       }
       case 4: {
-        this.changeStatus.emit();
         this.router.navigate(['/news'])
         break
       }
@@ -69,7 +65,10 @@ export class HeaderComponent implements OnInit {
   }
 
   backHome():void{
-    this.router.navigate(['/home'])
+    setTimeout(() => {
+      this.router.navigate(['/home'])
+    }, 20);
+  
   }
 
   call():void{

@@ -3,10 +3,39 @@
 
 .main{
     &__wrapper{
+        position: relative;
+        overflow: hidden;
+        padding: 120px 24px;
         background-color: @mainBlue;
+
+        @media (max-width:991px) {
+            padding: 64px 16px 120px 16px;
+        }
+
+        @media (max-width:767px) {
+            padding: 64px 16px 240px 16px;
+        }
+
+        @media (max-width:710px) {
+            padding: 64px 16px 220px 16px;
+        }
+
+        @media (max-width:660px) {
+            padding: 64px 16px 200px 16px;
+        }
+
+        @media (max-width:600px) {
+            padding: 64px 16px 170px 16px;
+        }
+
+        @media (max-width:499px) {
+            padding: 64px 16px 130px 16px;
+        }
     }  
-    
+
     &__container{
+        position: relative;
+        z-index: 1000;
         max-width: 1312px;
         margin: 0 auto;
     }
@@ -15,6 +44,11 @@
         letter-spacing: 0.2px;
         text-transform: uppercase;
         .mainText(700,64px,80px,@white);
+
+        @media (max-width:1199px) {
+            font-size: 48px;
+            line-height: 64px;
+        }
     }
 
     &__info{
@@ -22,6 +56,10 @@
         letter-spacing: 0.2px;
         text-transform: uppercase;
         .mainText(400,20px,30px,@white);
+
+        @media (max-width:1199px) {
+            font-size: 16px;
+        }
     }
 
     &__buttons{
@@ -53,10 +91,59 @@
     }
 
     &__img{
-        padding-top: 75px;
+
+        img{
+            object-fit: cover;
+        }
+    }
+}
+
+
+.img{
+    &__container{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+    &__box{
+        max-width: 1360px;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+    &__img{
+        position: relative;
+        right: -3.5%;
+        width: 100%;
+        height: 100%;
+
+        @media (max-width: 575px) {
+            width: 110%;
+            right: -5%;
+        }
         
         img{
             object-fit: cover;
         }
+    }
+}
+
+
+.vector{
+    opacity: 0.4;
+    top: 10%;
+    right: -200px;
+
+    @media (max-width: 991px) {
+        top: 8%;
+        width: 120%;
+        
+    }
+    @media (max-width: 767px) {
+        top: 8%;
+        width: 150%;
     }
 }

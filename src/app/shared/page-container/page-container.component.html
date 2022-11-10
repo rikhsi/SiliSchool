@@ -6,4 +6,59 @@
             </div>
         </div>
     </div>
+    <div class="img__container" style="z-index: 900;" *ngIf="photos.model_1">
+        <div class="img__box">
+            <div nz-row nzJustify="end" nzAlign="bottom">
+                <div nz-col>
+                    <div class="img__img">
+                        <img nz-image nzSrc="../../../assets/img/gallery.png" [nzFallback]="''">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div class="img__container" style="z-index: 900;" *ngIf="photos.model_2">
+        <div class="img__box">
+            <div nz-row nzJustify="end" nzAlign="bottom">
+                <div nz-col>
+                    <div class="img__img">
+                        <img nz-image nzSrc="../../../assets/img/news.png" [nzFallback]="''">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div class="img__container" style="z-index: 900;" *ngIf="photos.model_3">
+        <div class="img__box">
+            <div nz-row nzJustify="end" nzAlign="bottom">
+                <div nz-col>
+                    <div class="img__img model_3">
+                        <img nz-image nzSrc="../../../assets/img/docs.png" [nzFallback]="''">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div class="img__container" style="z-index: 900;" *ngIf="photos.model_4">
+        <div class="img__box">
+            <div nz-row nzJustify="end" nzAlign="bottom">
+                <div nz-col>
+                    <div class="img__img">
+                        <img nz-image nzSrc="../../../assets/img/model_4.png" [nzFallback]="''">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div class="img__container vector">
+        <div class="img__box">
+            <div nz-row nzJustify="end" nzAlign="bottom">
+                <div nz-col>
+                    <div class="img__img">
+                        <img src="../../../assets/img/vector.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
 </div> 
