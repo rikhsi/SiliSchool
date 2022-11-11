@@ -71,10 +71,11 @@
         .mainText(700,16px,22px,@white);
 
         &:hover{
-            transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-            outline: 1px solid;
-            outline-color: rgba(255, 255, 255, 0);
-            outline-offset: 15px;
+            box-shadow: 0 8px 10px 0 rgba(122, 113, 113, 0.71);
+            background-position: 100% 0;
+            -o-transition: all .4s ease-in-out;
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
         }
 
         &-red{

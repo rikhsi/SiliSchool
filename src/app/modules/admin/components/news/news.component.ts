@@ -49,7 +49,7 @@ export class NewsComponent implements OnInit {
     this.isLoading = true;
     this.newsService.get(0,this.lang).subscribe({
       next: data => {
-        this.news = data
+        this.news = data.data
         this.isLoading = false;
       },
       error: () => {

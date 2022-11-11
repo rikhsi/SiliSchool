@@ -73,7 +73,7 @@ export class HeaderComponent implements OnInit {
           break
         }
       }
-    }, 700);
+    }, 200);
   }
 
   backHome():void{

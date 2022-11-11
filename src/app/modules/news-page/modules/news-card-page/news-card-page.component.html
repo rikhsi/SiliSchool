@@ -57,25 +57,27 @@
                                     </ng-container>     
                                 </div>
                             </div>
-                            <div nz-col nzSpan="24">
-                                <div nz-row [nzGutter]="[0,{xL:64,lg:32,md:32,sm:32,xs:32}]">
-                                    <div nz-col nzSpan="24">
-                                        <sili-title [isShow]="false" [title]="title"></sili-title>
-                                    </div>
-                                    <div nz-col nzSpan="24" *ngIf="!isLoading">
-                                        <div nz-row [nzGutter]="[0,{xL:64,lg:48,md:48,sm:48,xs:48}]">
-                                            <div nz-col nzSpan="24" *ngFor="let data of news;">
-                                                <sili-advert [advert]="data"></sili-advert>
+                            <ng-container *ngIf="news.length != 0">
+                                <div nz-col nzSpan="24">
+                                    <div nz-row [nzGutter]="[0,{xL:64,lg:32,md:32,sm:32,xs:32}]">
+                                        <div nz-col nzSpan="24">
+                                            <sili-title [isShow]="false" [title]="title"></sili-title>
+                                        </div>
+                                        <div nz-col nzSpan="24" *ngIf="!isLoading">
+                                            <div nz-row [nzGutter]="[0,{xL:64,lg:48,md:48,sm:48,xs:48}]">
+                                                <div nz-col nzSpan="24" *ngFor="let data of news;">
+                                                    <sili-advert [advert]="data" (click)="navigateToCard(data.id)"></sili-advert>
+                                                </div>
                                             </div>
                                         </div>
+                                        <ng-container *ngIf="isLoading">
+                                            <div nz-col nzSpan="24">
+                                                <sili-news-skeleton [counter]="3"></sili-news-skeleton>
+                                            </div>           
+                                        </ng-container>     
                                     </div>
-                                    <ng-container *ngIf="isLoading">
-                                        <div nz-col nzSpan="24">
-                                            <sili-news-skeleton [counter]="3"></sili-news-skeleton>
-                                        </div>           
-                                    </ng-container>     
                                 </div>
-                            </div>
+                            </ng-container>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreadCrump } from 'src/app/models/breadCrump';
 import { Gallery } from 'src/app/models/gallery';
 import { GalleryService } from 'src/app/services/gallery.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-gallery-page',
@@ -12,7 +13,7 @@ export class GalleryPageComponent implements OnInit {
   title: string = 'gallery.title';
   fallback:string = '../../../../assets/img/fallback.png';
   button: boolean = true;
-  page: number = 1;
+  page: number = 0;
   pageSize: number = 6;
   isLoading!: boolean;
   gallery!: Gallery[];
@@ -28,37 +29,41 @@ export class GalleryPageComponent implements OnInit {
     }
   ];
 
-  constructor(private galleryService: GalleryService) { }
+  constructor(private galleryService: GalleryService,private mainService: MainService) { }
 
+  
   ngOnInit(): void {
-    this.getData(0);
+    this.getData();
   }
 
-  getData(page:number):void{
+  getData():void{
     this.isLoading = true;
-    this.galleryService.get(0).subscribe({
+    this.galleryService.get(this.page).subscribe({
       next: data => {
-        this.gallery = data;
-        this.paginatedList = data;
+        this.gallery = data.data;
+        this.paginatedList = data.data;
+        this.page = this.page + 1;
         this.isLoading = false;
       }
     })
   }
 
   loadMore():void{
-    this.page = this.page + 1;
     this.isLoading = true;
     this.galleryService.get(this.page).subscribe({
       next: data => {
-        if(data.length === 0){
-          this.button = false;
-          this.isLoading = false;
-        } else{
-          this.paginatedList = this.paginatedList.concat(data);
+        if(data.pages > this.page){
+          this.paginatedList = this.paginatedList.concat(data.data);
           this.gallery = [...this.paginatedList];
-          this.isLoading = false;
+        } else{
+          this.paginatedList = this.paginatedList.concat(data.data);
+          this.gallery = [...this.paginatedList];
+          this.button = false;
         }
+        this.page = this.page + 1;
+        this.isLoading = false;
       }
     })
   }
 }
+

@@ -12,7 +12,7 @@ import { MainService } from 'src/app/services/main.service';
 export class DirectionsPageComponent implements OnInit {
   title: string = 'directions.title'
   isLoading: boolean = true;
-  directions!: Direction[];
+  directions: Direction[] = []
   breadCrump: BreadCrump[] = [
     {
       title: 'home.title',
@@ -38,7 +38,7 @@ export class DirectionsPageComponent implements OnInit {
     this.isLoading = true;
     this.directionsService.get(lang).subscribe({
       next: data => {
-        this.directions = data;
+        this.directions = data.filter(data => data.teachers.length !=0)
         this.isLoading = false;
       }
     })

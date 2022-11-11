@@ -10,7 +10,7 @@ import { NewsService } from 'src/app/services/news.service';
   styleUrls: ['./news-page.component.less']
 })
 export class NewsPageComponent implements OnInit {
-  page:number = 1;
+  page:number = 0;
   lang!:string;
   button: boolean = true;
   title: string = 'news.pageTitle'
@@ -34,35 +34,37 @@ export class NewsPageComponent implements OnInit {
     this.mainService.message.subscribe({
       next: data => {
         this.lang = data;
-        this.getData(0,data);
+        this.getData(data);
       }
     })
   }
 
-  getData(page:number,lang:string):void{
+  getData(lang:string):void{
     this.isLoading = true;
-    this.newsService.get(0,lang).subscribe({
+    this.newsService.get(this.page,lang).subscribe({
       next: data => {
-        this.news = data;
-        this.paginatedList = data;
+        this.news = data.data;
+        this.paginatedList = data.data;
+        this.page = this.page + 1;
         this.isLoading = false;
       }
     })
   }
 
   loadMore():void{
-    this.page = this.page + 1;
     this.isLoading = true;
     this.newsService.get(this.page,this.lang).subscribe({
       next: data => {
-        if(data.length === 0){
-          this.button = false;
-          this.isLoading = false;
-        } else{
-          this.paginatedList = this.paginatedList.concat(data);
+        if(data.pages > this.page){
+          this.paginatedList = this.paginatedList.concat(data.data);
           this.news = [...this.paginatedList];
-          this.isLoading = false;
+        } else{
+          this.paginatedList = this.paginatedList.concat(data.data);
+          this.news = [...this.paginatedList];
+          this.button = false;
         }
+        this.page = this.page + 1;
+        this.isLoading = false;
       }
     })
   }

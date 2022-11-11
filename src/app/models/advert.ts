@@ -5,3 +5,8 @@ export interface Advert{
     description: string,
     photo: string
 }
+
+export interface Adverts {
+    data: Advert[],
+    pages: number
+}

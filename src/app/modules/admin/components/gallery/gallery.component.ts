@@ -32,7 +32,7 @@ export class GalleryComponent implements OnInit {
     this.isLoading = true;
     this.galleryService.get(0).subscribe({
       next: data => {
-        this.gallery = data;
+        this.gallery = data.data;
         this.isLoading = false;
       },
       error: () => {

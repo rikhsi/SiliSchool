@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Gallery } from '../models/gallery';
+import { Galleries, Gallery } from '../models/gallery';
 import { api } from './main.service';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { api } from './main.service';
 export class GalleryService {
 
   get(page:number){
-    return this.http.get<Gallery[]>(api + `getGalleries?page=${page}`)
+    return this.http.get<Galleries>(api + `getGalleries?page=${page}`)
   }
 
   post(formData: FormData){

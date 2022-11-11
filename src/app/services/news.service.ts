@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Advert } from '../models/advert';
+import { Advert, Adverts } from '../models/advert';
 import { api } from './main.service';
 
 @Injectable({
@@ -9,11 +9,11 @@ import { api } from './main.service';
 export class NewsService {
   
   get(page:number,lang:string){
-    return this.http.get<Advert[]>(api + `getNews?lang=${lang}&page=${page}`)
+    return this.http.get<Adverts>(api + `getNews?lang=${lang}&page=${page}`)
   }
 
-  getID(id:number){
-    return this.http.get<Advert>('');
+  getID(id:number, lang: string){
+    return this.http.get<Advert>(api + `getNews/${id}?lang=${lang}`);
   }
 
   delete(id:number){

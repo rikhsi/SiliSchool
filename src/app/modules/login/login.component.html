@@ -1,0 +1,27 @@
+<div class="login__wrapper">
+    <div nz-row nzJustify="center" nzAlign="middle" style="height: 100%;">
+        <div nz-col>
+            <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your username!">
+                    <nz-input-group nzPrefixIcon="user">
+                      <input formControlName="name" nz-input placeholder="Username" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control nzErrorTip="Please input your Password!">
+                    <nz-input-group nzPrefixIcon="lock">
+                      <input formControlName="password" nz-input type="password" placeholder="Password" />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control>
+                    <button type="submit" nz-button nzType="primary" [disabled]="!validateForm.valid">Log in</button>
+                  </nz-form-control>
+                </nz-form-item>
+              </form>
+        </div>
+    </div>
+</div>

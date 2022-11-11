@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Advert } from 'src/app/models/advert';
 import { BreadCrump } from 'src/app/models/breadCrump';
+import { MainService } from 'src/app/services/main.service';
 import { NewsService } from 'src/app/services/news.service';
 
 @Component({
@@ -13,9 +14,10 @@ export class NewsCardPageComponent implements OnInit {
   title: string = 'news.more-news';
   fallback:string = '../../../../../assets/img/fallback.png';
   routeId!: number;
+  lang!:string;
   isLoading: boolean = true;
   advert!: Advert;
-  news!: Advert[];
+  news: Advert[] = [];
   breadCrump: BreadCrump[] = [
     {
       title: 'home.title',
@@ -31,14 +33,48 @@ export class NewsCardPageComponent implements OnInit {
     }
   ];
 
-  constructor(private newsService: NewsService, private activedRoute: ActivatedRoute) { }
+  constructor(private newsService: NewsService, private activedRoute: ActivatedRoute,private mainService: MainService) { }
 
   ngOnInit(): void {
     this.activedRoute.params.subscribe((params: Params) => this.routeId = +params['id']);
-    setTimeout(() => {
-      // this.advert = this.newsService.adverts[this.routeId-1];
-      // this.news = this.newsService.adverts.filter(data => data.id !== this.advert.id ).slice(0,3);
-      this.isLoading = false;
-    }, 2000);
+    this.mainService.message.subscribe({
+      next: data => {
+        this.lang = data;
+        this.getAdvert();
+        this.getNews(); 
+      }
+    })
+  }
+
+  getAdvert():void{
+    this.newsService.getID(this.routeId,this.lang).subscribe({
+      next: data => {
+        this.advert = data;
+        this.isLoading = false;
+      }
+    })
+  }
+
+  getNews():void{
+    this.newsService.get(0,this.lang).subscribe({
+      next: data => {
+        this.news = data.data.filter(data => data.id != this.routeId)
+      }
+    })
+  }
+
+  navigateToCard(id:number){
+    this.isLoading = true;
+    this.newsService.getID(id,this.lang).subscribe({
+      next: data => {
+        this.advert = data;
+        this.isLoading = false;
+      }
+    })
+    this.newsService.get(0,this.lang).subscribe({
+      next: data => {
+        this.news = data.data.filter(data => data.id != this.routeId)
+      }
+    })
   }
 }

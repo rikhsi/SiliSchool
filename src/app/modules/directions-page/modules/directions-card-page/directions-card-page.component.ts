@@ -4,7 +4,7 @@ import { BreadCrump } from 'src/app/models/breadCrump';
 import { Direction } from 'src/app/models/direction';
 import { Teacher } from 'src/app/models/teachers';
 import { DirectionsService } from 'src/app/services/directions.service';
-import { TeachersService } from 'src/app/services/teachers.service';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'sili-directions-card-page',
@@ -14,10 +14,11 @@ import { TeachersService } from 'src/app/services/teachers.service';
 export class DirectionsCardPageComponent implements OnInit {
   fallback:string = '../../../../../assets/img/fallback.png';
   title: string = 'directions.teachers';
+  lang!:string;
   routeId!: number;
   isLoading: boolean = true;
   direction!: Direction;
-  teachers!: Teacher[];
+  teachers: Teacher[] = []
   breadCrump: BreadCrump[] = [
     {
       title: 'home.title',
@@ -29,14 +30,27 @@ export class DirectionsCardPageComponent implements OnInit {
     }
   ];
 
-  constructor(private directionsService: DirectionsService, private teachersService: TeachersService,private activedRoute: ActivatedRoute) { }
+  constructor(private directionsService: DirectionsService, private activedRoute: ActivatedRoute,private mainService:MainService) { }
 
   ngOnInit(): void {
     this.activedRoute.params.subscribe((params: Params) => this.routeId = +params['id']);
-    setTimeout(() => {
-      // this.direction = this.directionsService.directions[this.routeId-1];
-      this.breadCrump.push({title: `${this.direction.name}`, path: `directions/${this.direction.id}`})
-      this.isLoading = false;
-    }, 2000);
+    this.mainService.message.subscribe({
+      next: data => {
+        this.lang = data;
+        this.getAdvert();
+      }
+    })
+  }
+
+  getAdvert():void{
+    this.isLoading = true;
+    this.directionsService.getID(this.routeId,this.lang).subscribe({
+      next: data => {
+        this.direction = data;
+        this.teachers = data.teachers;
+        this.breadCrump.push({title: `${data.name}`, path: `directions/${data.id}`});
+        this.isLoading = false;
+      }
+    })
   }
 }

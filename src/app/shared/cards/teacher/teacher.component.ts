@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Teacher } from 'src/app/models/teachers';
+import { api } from 'src/app/services/main.service';
 
 
 @Component({
@@ -14,6 +15,10 @@ export class TeacherComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  open(id:number){
+    window.open(api + `/getTeacherTimetable/${id}`, '_blank')
   }
 
 }

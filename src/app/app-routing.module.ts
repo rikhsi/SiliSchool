@@ -29,6 +29,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/connection-page/connection-page.module').then(m => m.ConnectionPageModule)
   },
   {
+    path: 'login',
+    loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule)
+  },
+  {
     path: 'admin',
     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
   },

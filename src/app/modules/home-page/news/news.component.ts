@@ -48,7 +48,7 @@ export class NewsComponent implements OnInit {
     this.isLoading = true;
     this.newsService.get(0,lang).subscribe({
       next: data => {
-        this.adverts = data;
+        this.adverts = data.data;
         this.isLoading = false;
       }
     })

@@ -14,8 +14,8 @@ export class DirectionsService {
     return this.http.get<Direction[]>(api + `getDepartments?lang=${lang}`)
   }
 
-  getID(id:number){
-    return this.http.get<Direction>('');
+  getID(id:number, lang: string){
+    return this.http.get<Direction>(api + `getDepartment/${id}?lang=${lang}`);
   }
 
   edit(id:number,data: JSON){
