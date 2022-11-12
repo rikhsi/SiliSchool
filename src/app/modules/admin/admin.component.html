@@ -17,7 +17,7 @@
                 <div nz-col nzSpan="24">
                     <div nz-row nzAlign="middle">
                         <div nz-col nzSpan="12">
-                            <button nz-button nzType="primary" [title]="'admin.buttons.lang' | translate" class="button" (click)="this.isTable = true" *ngIf="!isTable">
+                            <button nz-button nzType="primary" [title]="'admin.buttons.lang' | translate" class="button" (click)="this.isTable = true" *ngIf="isBack">
                                 <span nz-icon nzType="rollback" nzTheme="outline" class="icon"></span>
                             </button>
                         </div>

@@ -20,6 +20,8 @@ export class DirectionsComponent implements OnInit {
   @Output() changeToEdit = new EventEmitter;
   lang!:string;
   id!: number;
+  description_ru!: string;
+  description_uz!: string;
   uploading!: boolean;
   isLoading!: boolean;
   createForm!: FormGroup;
@@ -49,7 +51,6 @@ export class DirectionsComponent implements OnInit {
       next: data => {
         this.directions = data;
         this.isLoading = false;
-        console.log(data)
       },
       error: () => {
         this.isLoading = false;
@@ -71,7 +72,7 @@ export class DirectionsComponent implements OnInit {
       nzOnOk: () => {
         this.isTable = false;
         this.isDirection.emit(true);
-        this.changeToEdit.emit(true)
+        this.changeToEdit.emit(true);        
         this.id = id;
       }
     })

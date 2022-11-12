@@ -34,31 +34,12 @@ export class NewsPageComponent implements OnInit {
     this.mainService.message.subscribe({
       next: data => {
         this.lang = data;
-        this.getData(data);
+        this.getData();
       }
     })
   }
 
-  getData(lang:string):void{
-    this.isLoading = true;
-    this.isLoading = true;
-    this.newsService.get(this.page,this.lang).subscribe({
-      next: data => {
-        if(data.pages > this.page){
-          this.paginatedList = this.paginatedList.concat(data.data);
-          this.news = [...this.paginatedList];
-        } else{
-          this.paginatedList = this.paginatedList.concat(data.data);
-          this.news = [...this.paginatedList];
-          this.button = false;
-        }
-        this.page = this.page + 1;
-        this.isLoading = false;
-      }
-    })
-  }
-
-  loadMore():void{
+  getData():void{
     this.isLoading = true;
     this.newsService.get(this.page,this.lang).subscribe({
       next: data => {

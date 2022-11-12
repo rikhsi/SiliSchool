@@ -15,6 +15,7 @@ import { FaqComponent } from './components/faq/faq.component';
 export class AdminComponent implements OnInit {
   isTable: boolean = true;
   isDirection: boolean = false;
+  isBack: boolean = false;
   translateTexts: any;
   confirmModal?: NzModalRef;
   isRu!: boolean;
@@ -141,6 +142,6 @@ export class AdminComponent implements OnInit {
   }
 
   handleEdit():void{
-    this.isTable = !this.isTable;
+    this.isBack = !this.isBack;
   }
 }

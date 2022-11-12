@@ -53,23 +53,5 @@ export class GalleryPageComponent implements OnInit {
       }
     })
   }
-
-  loadMore():void{
-    this.isLoading = true;
-    this.galleryService.get(this.page).subscribe({
-      next: data => {
-        if(data.pages > this.page){
-          this.paginatedList = this.paginatedList.concat(data.data);
-          this.gallery = [...this.paginatedList];
-        } else{
-          this.paginatedList = this.paginatedList.concat(data.data);
-          this.gallery = [...this.paginatedList];
-          this.button = false;
-        }
-        this.page = this.page + 1;
-        this.isLoading = false;
-      }
-    })
-  }
 }
 
