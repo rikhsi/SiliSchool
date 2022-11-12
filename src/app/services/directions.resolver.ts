@@ -23,7 +23,7 @@ export class DirectionsResolver implements Resolve<Direction> {
   resolve(route: ActivatedRouteSnapshot): Observable<Direction> {
     return this.directionsService.getID(route.params?.['id'],this.lang).pipe(
       catchError(() => {
-        this.router.navigate(['home'])
+        this.router.navigate([''])
         return EMPTY
       })
     )

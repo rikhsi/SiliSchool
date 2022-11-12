@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Direction } from '../models/direction';
+import { headers } from './login.service';
 import { api } from './main.service';
 
 @Injectable({
@@ -19,6 +20,6 @@ export class DirectionsService {
   }
 
   edit(id:number,data: JSON){
-    return this.http.post(api + `updateDepartmentDescription/${id}`,data)
+    return this.http.post(api + `updateDepartmentDescription/${id}`,data,{headers})
   }
 }

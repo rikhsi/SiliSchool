@@ -133,7 +133,8 @@ export class AdminComponent implements OnInit {
       nzOnOk: () => {
         setTimeout(() => {
           this.mainService.setPage(true)
-          this.router.navigate(['home'])
+          localStorage.removeItem('dfmsadklfmsalkdfjsdklf')
+          this.router.navigate([''])
         }, 0)
       }
     })

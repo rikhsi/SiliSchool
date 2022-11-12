@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   isBurger: boolean = false;
   schoolNumber!: number;
   schoolPhone!: string;
-  currentLang: string = 'Ру';
+  currentLang: string = 'Uz';
 
   constructor(private mainService: MainService,public translateService: TranslateService, private router: Router) { }
 
@@ -78,7 +78,7 @@ export class HeaderComponent implements OnInit {
 
   backHome():void{
     setTimeout(() => {
-      this.router.navigate(['/home'])
+      this.router.navigate([''])
     }, 20);
   
   }

@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { HomePageComponent } from './modules/home-page/home-page.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomePageComponent},
+  { path: '', component: HomePageComponent},
   {
     path: "gallery",
     loadChildren: () => import('./modules/gallery-page/gallery-page.module').then(m => m.GalleryPageModule)
@@ -34,9 +35,11 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [AuthGuard],
+    canDeactivate: [AuthGuard],
     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
   },
-  { path: "**", redirectTo: "/home" }
+  { path: "**", redirectTo: "" }
 ];
 
 @NgModule({

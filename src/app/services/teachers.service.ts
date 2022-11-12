@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Teacher } from '../models/teachers';
+import { headers } from './login.service';
 import { api } from './main.service';
 
 @Injectable({
@@ -15,10 +16,10 @@ export class TeachersService {
   }
 
   post(formData: FormData){
-    return this.http.post(api + 'addTeacher', formData)
+    return this.http.post(api + 'addTeacher', formData,{headers})
   }
 
   delete(id: number){
-    return this.http.post(api + `deleteTeacher/${id}`,'')
+    return this.http.post(api + `deleteTeacher/${id}`,'',{headers})
   }
 }

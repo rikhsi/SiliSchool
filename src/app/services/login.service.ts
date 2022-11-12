@@ -1,25 +1,37 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { api, MainService } from './main.service';
+import { Router } from '@angular/router';
+import { api} from './main.service';
+
+export interface Token {
+  token:string
+}
+
+export let headers = { 'x-access-tokens': ''}
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  lang!:string;
+ isLogged!: boolean;
 
-  constructor(private http: HttpClient, private mainService: MainService) { 
-    this.mainService.message.subscribe({
-      next: data => {
-        this.lang = data;
-      },error: data => {
-        console.log(data)
-      }
-    })
-  }
+  constructor(private http: HttpClient,private router: Router) { }
 
   post(data: JSON){
-    return this.http.post(api + 'login',data);
+    return this.http.post<Token>(api + 'login',data);
   }
+
+  setToken(token: string){
+    localStorage.setItem('dfmsadklfmsalkdfjsdklf', token);
+  }
+
+  getToken() {
+    let token = localStorage.getItem('dfmsadklfmsalkdfjsdklf');
+    if(token != null){
+      headers['x-access-tokens'] = token;
+    }
+    return token
+  }
+
 
 }

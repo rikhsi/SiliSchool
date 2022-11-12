@@ -1,24 +1,24 @@
-<div class="login__wrapper">
+<div class="connection__wrapper">
     <div nz-row nzJustify="center" nzAlign="middle" style="height: 100%;">
         <div nz-col>
-            <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+            <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
                 <nz-form-item>
                   <nz-form-control nzErrorTip="Please input your username!">
                     <nz-input-group nzPrefixIcon="user">
-                      <input formControlName="name" nz-input placeholder="Username" />
+                      <input formControlName="name" nz-input placeholder="Username" class="connection__input"/>
                     </nz-input-group>
                   </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
                   <nz-form-control nzErrorTip="Please input your Password!">
                     <nz-input-group nzPrefixIcon="lock">
-                      <input formControlName="password" nz-input type="password" placeholder="Password" />
+                      <input formControlName="password" nz-input type="password" placeholder="Password" class="connection__input"/>
                     </nz-input-group>
                   </nz-form-control>
                 </nz-form-item>
                 <nz-form-item>
                   <nz-form-control>
-                    <button type="submit" nz-button nzType="primary" [disabled]="!validateForm.valid">Log in</button>
+                    <button type="submit" nz-button nzType="primary" [disabled]="!validateForm.valid" class="connection__button">Log in</button>
                   </nz-form-control>
                 </nz-form-item>
               </form>

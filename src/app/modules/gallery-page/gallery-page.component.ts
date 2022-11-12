@@ -16,8 +16,8 @@ export class GalleryPageComponent implements OnInit {
   page: number = 0;
   pageSize: number = 6;
   isLoading!: boolean;
-  gallery!: Gallery[];
-  paginatedList!: Gallery[];
+  gallery: Gallery[] = []
+  paginatedList: Gallery[] = []
   breadCrump: BreadCrump[] = [
     {
       title: 'home.title',
@@ -40,8 +40,14 @@ export class GalleryPageComponent implements OnInit {
     this.isLoading = true;
     this.galleryService.get(this.page).subscribe({
       next: data => {
-        this.gallery = data.data;
-        this.paginatedList = data.data;
+        if(data.pages > this.page){
+          this.paginatedList = this.paginatedList.concat(data.data);
+          this.gallery = [...this.paginatedList];
+        } else{
+          this.paginatedList = this.paginatedList.concat(data.data);
+          this.gallery = [...this.paginatedList];
+          this.button = false;
+        }
         this.page = this.page + 1;
         this.isLoading = false;
       }

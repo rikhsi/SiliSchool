@@ -23,9 +23,9 @@ export class NewsResolver implements Resolve<Advert> {
   resolve(route: ActivatedRouteSnapshot): Observable<Advert> {
     return this.newsService.getID(route.params?.['id'],this.lang).pipe(
       catchError(() => {
-        this.router.navigate(['home'])
+        this.router.navigate([''])
         return EMPTY
-      })
+      }),
     )
   }
 }

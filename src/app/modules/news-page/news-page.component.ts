@@ -15,7 +15,7 @@ export class NewsPageComponent implements OnInit {
   button: boolean = true;
   title: string = 'news.pageTitle'
   isLoading = true;
-  news!: Advert[];
+  news: Advert[] = [];
   paginatedList: Advert[] = [];
   breadCrump: BreadCrump[] = [
     {
@@ -41,10 +41,17 @@ export class NewsPageComponent implements OnInit {
 
   getData(lang:string):void{
     this.isLoading = true;
-    this.newsService.get(this.page,lang).subscribe({
+    this.isLoading = true;
+    this.newsService.get(this.page,this.lang).subscribe({
       next: data => {
-        this.news = data.data;
-        this.paginatedList = data.data;
+        if(data.pages > this.page){
+          this.paginatedList = this.paginatedList.concat(data.data);
+          this.news = [...this.paginatedList];
+        } else{
+          this.paginatedList = this.paginatedList.concat(data.data);
+          this.news = [...this.paginatedList];
+          this.button = false;
+        }
         this.page = this.page + 1;
         this.isLoading = false;
       }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Galleries, Gallery } from '../models/gallery';
+import { headers } from './login.service';
 import { api } from './main.service';
 
 @Injectable({
@@ -13,11 +14,11 @@ export class GalleryService {
   }
 
   post(formData: FormData){
-    return this.http.post(api + 'addGallery',formData)
+    return this.http.post(api + 'addGallery',formData,{headers})
   }
 
   delete(id:number){
-    return this.http.post(api + `deleteGallery/${id}`,'')
+    return this.http.post(api + `deleteGallery/${id}`,'',{headers})
   }
   
   constructor(private http: HttpClient) { }

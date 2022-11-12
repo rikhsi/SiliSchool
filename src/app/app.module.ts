@@ -34,6 +34,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { AnimationModule } from './shared/animation/animation.module';
+import { NZ_I18N, ru_RU } from 'ng-zorro-antd/i18n';
 
 @NgModule({
   declarations: [
@@ -65,9 +66,10 @@ import { AnimationModule } from './shared/animation/animation.module';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-      defaultLanguage: 'ru',
+      defaultLanguage: 'uz',
     })
   ],
+  providers: [{ provide: NZ_I18N, useValue: ru_RU }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
