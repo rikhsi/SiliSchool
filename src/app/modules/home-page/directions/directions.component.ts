@@ -21,7 +21,6 @@ export class DirectionsComponent implements OnInit {
     spaceBetween: 24,
     touchEventsTarget: 'container',
     grabCursor: true,
-    loop: true,
     autoplay: {
       delay: 10000
     },
@@ -72,7 +71,7 @@ export class DirectionsComponent implements OnInit {
     this.isLoading = true;
     this.directionsService.get(lang).subscribe({
       next: data => {
-        this.directions = data;
+        this.directions = data.filter(data => data.teachers.length !=0)
         this.isLoading = false;
       }
     })
@@ -91,5 +90,4 @@ export class DirectionsComponent implements OnInit {
   swipeNext(): void {
     this.swiper?.swiperRef.slideNext(700);
   }
-
 }

@@ -8,6 +8,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
     FormsModule,
     ReactiveFormsModule,
     NzButtonModule,
-    NzInputModule
+    NzInputModule,
+    TranslateModule
   ]
 })
 export class LoginModule { }

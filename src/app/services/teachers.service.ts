@@ -15,8 +15,8 @@ export class TeachersService {
     return this.http.get<Teacher[]>(api + `getTeachers?lang=${lang}`)
   }
 
-  update(id:number){
-    return this.http.post(api + `updateTeacherTimetable/${id}`, '', {headers})
+  update(id:number,formData: FormData){
+    return this.http.post(api + `updateTeacherTimetable/${id}`,formData, {headers})
   }
 
   post(formData: FormData){

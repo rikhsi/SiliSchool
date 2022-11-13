@@ -23,10 +23,10 @@ export class TeachersComponent implements OnInit {
   lang!:string;
   api = api;
   id!: number;
+  isVisible:boolean = false;
   button: boolean = false;
   timeTable: boolean = false;
   uploading: boolean = false;
-  isEdit: boolean = false;
   fileList: NzUploadFile[] = [];
   timeTableList: NzUploadFile[] = [];
   teachers: Teacher[] = []
@@ -77,12 +77,6 @@ export class TeachersComponent implements OnInit {
     })
   }
 
-  edit(id: number):void{
-    this.isEdit = true;
-    this.isTable = true;
-    this.id = id;
-  }
-
   update():void{
     if(this.timeTableList.length > 0){
       this.timeTable = false;
@@ -91,10 +85,11 @@ export class TeachersComponent implements OnInit {
       this.timeTableList.forEach((file: any) => {
         formData.append('timetable', file);
       });
-      this.teachersService.update(this.id).subscribe({
+      this.teachersService.update(this.id,formData).subscribe({
         next: () => {
           this.timeTableList = [];
           this.uploading = false;
+          this.isVisible = false;
           this.get();
           this.msg.success(this.translateTexts.add.success);
         },
@@ -241,4 +236,9 @@ export class TeachersComponent implements OnInit {
     this.timeTableList = this.timeTableList.concat(file);
     return false;
   };
+
+  showModal(id:number): void {
+    this.isVisible = true;
+    this.id = id;
+  }
 }

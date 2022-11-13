@@ -176,7 +176,11 @@
                 "table": "Jadval",
                 "upload": "Jadvalni tanglang",
                 "img": "Fotosurat"
-            }
+            },
+            "modal": {
+                "title": "Jadvalni o`zgartirish"
+            },
+            "window": "Bu sahifa 1200px dan past bo`lgan ekranlarda ishlamaydi"
         }
     },  
     "form":  {
@@ -189,7 +193,17 @@
             "name": "FIO ni to`liq kiriting",
             "phone": "Telefon raqamingizni to`liq kiriting",
             "mail": "Elektron pochtangizni to`liq kiriting",
-            "message": "Izohingizni kiriting"
+            "message": "Izohingizni kiriting"        
+        },
+        "login": {
+            "name": "Login",
+            "password": "Parol",
+            "button": "Kirish",
+            "errors": {
+                "name": "Loginni kiriting",
+                "password": "Parolni kiriting",
+                "notLog": "Login yoki parolda xatolik"
+            }
         },
         "send": "Yuborish",
         "convention": "Ushbu shaklni yuborish orqali siz shaxsiy ma'lumotlarni qayta ishlash va axborot byulletenlarini qabul qilish siyosatiga rozilik bildirasiz"
