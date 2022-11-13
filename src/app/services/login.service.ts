@@ -18,7 +18,7 @@ export class LoginService {
   constructor(private http: HttpClient,private router: Router) { }
 
   post(data: JSON){
-    return this.http.post<Token>(api + 'login',data);
+    return this.http.post<Token>(api+'login',data);
   }
 
   setToken(token: string){

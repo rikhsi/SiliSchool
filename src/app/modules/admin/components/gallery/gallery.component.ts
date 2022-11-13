@@ -15,10 +15,10 @@ import { NzUploadFile } from 'ng-zorro-antd/upload';
 export class GalleryComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
-  @Input() isLoading!: boolean;
-  uploading = false;
+  isLoading!: boolean;
+  uploading:boolean = false;
   fileList: NzUploadFile[] = [];
-  gallery!: Gallery[];
+  gallery: Gallery[] = [];
   confirmModal?: NzModalRef;
   fallback:string = '../../../../../assets/img/fallback.png';
 
@@ -30,9 +30,9 @@ export class GalleryComponent implements OnInit {
 
   get():void{
     this.isLoading = true;
-    this.galleryService.get(0).subscribe({
+    this.galleryService.getAll().subscribe({
       next: data => {
-        this.gallery = data.data;
+        this.gallery = data;
         this.isLoading = false;
       },
       error: () => {
@@ -73,7 +73,6 @@ export class GalleryComponent implements OnInit {
           next: () => {
             this.gallery = this.gallery.filter(data => data.id !== id);
             this.msg.success(this.translateTexts.delete.success);
-            this.get();
           },
           error: () => {
             this.msg.error(this.translateTexts.delete.error)
@@ -83,7 +82,7 @@ export class GalleryComponent implements OnInit {
     })
   }
 
-  preview(id: number,img: string):void{
+  preview(img: string):void{
     const images = [
       {
         src: img,
@@ -100,7 +99,7 @@ export class GalleryComponent implements OnInit {
       this.msg.error(this.translateTexts?.upload.errors.format);
       return false;
     }
-    const isLt2M = file.size! / 1024 / 1024 < 2;
+    const isLt2M = file.size! / 1024 / 1024 < 8;
     if (!isLt2M) {
       this.msg.error(this.translateTexts?.upload.errors.size);
       return false;

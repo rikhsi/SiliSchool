@@ -15,7 +15,7 @@ import { AchievementsService } from 'src/app/services/achievements.service';
 export class AchievementsComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
-  @Input() achievements!: Achievements[];
+  achievements: Achievements[] = [];
   isLoading: boolean = false;
   uploading = false;
   fileList: NzUploadFile[] = [];
@@ -25,9 +25,7 @@ export class AchievementsComponent implements OnInit {
   constructor(private achievementsService: AchievementsService,private msg: NzMessageService,private modalService: NzModalService,private nzImageService: NzImageService) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.get();
-    }, 0);
+    this.get();
   }
 
   get():void{
@@ -75,7 +73,6 @@ export class AchievementsComponent implements OnInit {
           next: () => {
             this.achievements = this.achievements.filter(data => data.id !== id);
             this.msg.success(this.translateTexts.delete.success);
-            this.get();
           },
           error: () => {
             this.msg.error(this.translateTexts.delete.error)
@@ -85,7 +82,7 @@ export class AchievementsComponent implements OnInit {
     })
   }
 
-  preview(id: number,img: string):void{
+  preview(img: string):void{
     const images = [
       {
         src: img,
@@ -102,7 +99,7 @@ export class AchievementsComponent implements OnInit {
       this.msg.error(this.translateTexts?.upload.errors.format);
       return false;
     }
-    const isLt2M = file.size! / 1024 / 1024 < 2;
+    const isLt2M = file.size! / 1024 / 1024 < 8;
     if (!isLt2M) {
       this.msg.error(this.translateTexts?.upload.errors.size);
       return false;

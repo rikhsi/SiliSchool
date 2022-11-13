@@ -14,8 +14,6 @@ import { FaqComponent } from './components/faq/faq.component';
 })
 export class AdminComponent implements OnInit {
   isTable: boolean = true;
-  isDirection: boolean = false;
-  isBack: boolean = false;
   translateTexts: any;
   confirmModal?: NzModalRef;
   isRu!: boolean;
@@ -24,7 +22,6 @@ export class AdminComponent implements OnInit {
       name: 'gallery.title',
       id: 1,
       isShow: true,
-      component: FaqComponent
     },
     {
       name: 'faq.title',
@@ -52,17 +49,11 @@ export class AdminComponent implements OnInit {
       isShow: false
     },
     {
-      name: 'directions.title',
+      name: 'achievements.title',
       id: 7,
       isShow: false
     },
-    {
-      name: 'achievements.title',
-      id: 8,
-      isShow: false
-    },
   ]
-
   constructor(private mainService: MainService,private msg: NzMessageService,public translate: TranslateService,private router:Router, private modalService: NzModalService) { }
 
   ngOnInit(): void {
@@ -73,11 +64,6 @@ export class AdminComponent implements OnInit {
   }
 
   changePage(id:number):void{
-    if(id === 7){
-      this.isDirection = true;
-    } else{
-      this.isDirection = false;
-    }
     this.pages.find(data => {
       if(data.id === id){
         data.isShow = true
@@ -139,9 +125,5 @@ export class AdminComponent implements OnInit {
         }, 0)
       }
     })
-  }
-
-  handleEdit():void{
-    this.isBack = !this.isBack;
   }
 }

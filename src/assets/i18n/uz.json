@@ -48,6 +48,7 @@
         "title": "Aloqaga chiqish"
     },
     "admin": {
+        "all": "Barchasi",
         "tables": {
             "faq": {
                 "answer": "Javob",
@@ -156,8 +157,25 @@
         },
         "upload": {
             "errors": {
-                "size": "Faylning hajmi 2mb oshmasligi kerak",
-                "format": "Faqat JPG va PNG formatdagi fayllarni yuklash mumkin"
+                "size": "Faylning hajmi 8mb oshmasligi kerak",
+                "format": "Faqat JPG va PNG formatdagi fayllarni yuklash mumkin",
+                "recomend": "Barcha ekranlarda tasvir sifatini saqlab qolish uchun gorizontal tartibga ega fotosuratni yuklash tavsiya etiladi",
+                "look": "E`tibor bering!"
+            },
+            "faq": {
+                "recomend": "Ota-onalar hamda o`quvchilar maktab hodimlariga takroriy ravishda beradigan savollariga javob yozishingiz mumkin" 
+            },
+            "docs": {
+                "size": "Faylning hajmi 8mb oshmasligi kerak",
+                "format": "Faqat PDF, Word va EXCEL formatdagi fayllarni yuklash mumkin"
+            },
+            "adminstration": {
+                "recomend": "Barcha ekranlarda tasvir sifatini saqlab qolish uchun vertikal tartibga ega fotosuratni yuklash tavsiya etiladi"
+            },
+            "teachers": {
+                "table": "Jadval",
+                "upload": "Jadvalni tanglang",
+                "img": "Fotosurat"
             }
         }
     },  

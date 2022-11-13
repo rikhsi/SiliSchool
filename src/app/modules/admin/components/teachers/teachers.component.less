@@ -1,6 +1,6 @@
 @import '../../../../styles/colors.less';
 
-.news{
+.teachers{
     &__input{
         height: 40px;
     }
@@ -8,10 +8,20 @@
         height: 100px;
         resize: none;
     }
+    &__counter{
+        font-size: 18px;
+        font-weight: 700;
+    }
+    &__read{
+        font-size: 60px;
+    }
     &__button{
         width: auto;
         height: auto;
         padding: 10px;
+    }
+    &__list{
+        text-align: center;
     }
     &__error{
         border: 1px solid red;
@@ -31,5 +41,46 @@
             object-fit: cover;
             pointer-events: none;
         }
+    }
+}
+
+
+
+.upload{
+    &__button{
+        width: 100%;
+        height: 100px;
+        padding: 10px;
+
+        &:hover{
+            background: @mainBlue;
+            border: none;
+            color: white;
+        }
+    }
+    &__upload{
+        width: 100%;
+        height: 50px;
+        padding: 10px; 
+    }    
+    &__img{
+        width: 250px;
+        height: 200px;
+        img{
+            object-fit: cover;
+            pointer-events: none;
+        }
+    }
+}
+
+.box{
+    max-width: 100%;
+    padding: 12px;
+    background-color: @skeleton;
+
+    &__title{
+        color: @mainBlue;
+        font-size: 24px;
+        font-weight: 700px;
     }
 }

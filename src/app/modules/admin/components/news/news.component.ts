@@ -14,24 +14,25 @@ import { MainService } from 'src/app/services/main.service';
   styleUrls: ['./news.component.less'],
   providers: [NzMessageService, NzModalService,NzImageService]
 })
+
 export class NewsComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
-  @Input() isLoading!: boolean;
+  isLoading!: boolean;
   lang!:string;
   button: boolean = false;
   uploading: boolean = false;
   fileList: NzUploadFile[] = [];
   createForm!: FormGroup;
-  news!: Advert[];
+  news: Advert[] = [];
   confirmModal?: NzModalRef;
   fallback:string = '../../../../../assets/img/fallback.png';
 
   constructor(private mainService: MainService,private newsService: NewsService, private msg: NzMessageService,private fb: FormBuilder,private modalService: NzModalService,private nzImageService: NzImageService) { 
     this.createForm = this.fb.group({
       name_uz: [null, [Validators.required]],
-      description_uz: [null, [Validators.required]],
       name_ru: [null, [Validators.required]],
+      description_uz: [null, [Validators.required]],
       description_ru: [null, [Validators.required]]
     })
   }
@@ -47,9 +48,9 @@ export class NewsComponent implements OnInit {
 
   get():void{
     this.isLoading = true;
-    this.newsService.get(0,this.lang).subscribe({
+    this.newsService.getAll(this.lang).subscribe({
       next: data => {
-        this.news = data.data
+        this.news = data;
         this.isLoading = false;
       },
       error: () => {
@@ -74,7 +75,6 @@ export class NewsComponent implements OnInit {
           next: () => {
             this.news = this.news.filter(data => data.id !== id);
             this.msg.success(this.translateTexts.delete.success);
-            this.get();
           },
           error: () => {
             this.msg.error(this.translateTexts.delete.error);
@@ -136,7 +136,7 @@ export class NewsComponent implements OnInit {
     }
   }
 
-  preview(id: number,img: string):void{
+  preview(img: string):void{
     const images = [
       {
         src: img,
@@ -154,7 +154,7 @@ export class NewsComponent implements OnInit {
       this.msg.error(this.translateTexts?.upload.errors.format);
       return false;
     }
-    const isLt2M = file.size! / 1024 / 1024 < 2;
+    const isLt2M = file.size! / 1024 / 1024 < 8;
     if (!isLt2M) {
       this.button = true;
       this.msg.error(this.translateTexts?.upload.errors.size);

@@ -12,14 +12,15 @@ import { MainService } from 'src/app/services/main.service';
   styleUrls: ['./faq.component.less'],
   providers: [NzMessageService, NzModalService]
 })
+
 export class FaqComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
-  @Input() isLoading!: boolean;
+  isLoading!: boolean;
   lang!:string;
   uploading: boolean = false;
   createForm!: FormGroup;
-  faqs!: Faq[];
+  faqs: Faq[] = []
   confirmModal?: NzModalRef;
 
   constructor(private mainService: MainService,private faqsService: FaqService, private msg: NzMessageService,private fb: FormBuilder,private modal: NzModalService) { 
@@ -69,7 +70,6 @@ export class FaqComponent implements OnInit {
           next: () => {
             this.faqs = this.faqs.filter(data => data.id !== id);
             this.msg.success(this.translateTexts.delete.success);
-            this.get(this.lang);
           },
           error: () => {
             this.msg.error(this.translateTexts.delete.error);

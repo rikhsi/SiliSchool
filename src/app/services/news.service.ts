@@ -13,6 +13,10 @@ export class NewsService {
     return this.http.get<Adverts>(api + `getNews?lang=${lang}&page=${page}`)
   }
 
+  getAll(lang:string){
+    return this.http.get<Advert[]>(api + `getAllNews?lang=${lang}`)
+  }
+
   getID(id:number, lang: string){
     return this.http.get<Advert>(api + `getNews/${id}?lang=${lang}`);
   }

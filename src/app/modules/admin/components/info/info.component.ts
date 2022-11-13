@@ -14,21 +14,27 @@ import { api, MainService } from 'src/app/services/main.service';
   styleUrls: ['./info.component.less'],
   providers: [NzMessageService, NzModalService,NzImageService]
 })
+
 export class InfoComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
-  @Input() isLoading!: boolean;
+  isLoading!: boolean;
   lang!:string;
-  api = api;
+  api:string = api;
   button: boolean = false;
-  uploading = false;
+  uploading:boolean = false;
   fileList: NzUploadFile[] = [];
-  docs!: Docs[];
+  docs: Docs[] = [];
   createForm!: FormGroup;
   confirmModal?: NzModalRef;
   fallback:string = '../../../../../assets/img/fallback.png';
 
-  constructor(private mainService: MainService,private docsService: DocsService,private msg: NzMessageService,private modalService: NzModalService,private fb: FormBuilder) { 
+  constructor(
+    private mainService: MainService,
+    private docsService: DocsService,
+    private msg: NzMessageService,
+    private modalService: NzModalService,
+    private fb: FormBuilder) { 
     this.createForm = this.fb.group({
       name_uz: [null, [Validators.required]],
       name_ru: [null, [Validators.required]]
@@ -90,7 +96,6 @@ export class InfoComponent implements OnInit {
           next: () => {
             this.docs = this.docs.filter(data => data.id !== id);
             this.msg.success(this.translateTexts.delete.success);
-            this.get();
           },
           error: () => {
             this.msg.error(this.translateTexts.delete.error);
@@ -101,16 +106,21 @@ export class InfoComponent implements OnInit {
   }
 
   beforeUpload = (file: NzUploadFile): boolean => {
-    const isJpgOrPng = file.type === 'application/pdf' || file.type === 'application/msword' || file.type === 'application/vnd.ms-excel';
+    const isJpgOrPng = file.type 
+    === 'application/pdf' || file.type
+    === 'application/msword' || file.type 
+    === 'application/vnd.ms-excel' || file.type 
+    === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || file.type 
+    === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
     if (!isJpgOrPng) {
       this.button = true;
-      this.msg.error(this.translateTexts?.upload.errors.format);
+      this.msg.error(this.translateTexts?.upload.docs.format);
       return false;
     }
-    const isLt2M = file.size! / 1024 / 1024 < 2;
+    const isLt2M = file.size! / 1024 / 1024 < 8;
     if (!isLt2M) {
       this.button = true;
-      this.msg.error(this.translateTexts?.upload.errors.size);
+      this.msg.error(this.translateTexts?.upload.docs.size);
       return false;
     }
     this.fileList = this.fileList.concat(file);

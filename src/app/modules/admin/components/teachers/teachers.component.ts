@@ -19,20 +19,29 @@ import { api, MainService } from 'src/app/services/main.service';
 export class TeachersComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
-  @Input() isLoading!: boolean;
+  isLoading!: boolean;
   lang!:string;
   api = api;
+  id!: number;
   button: boolean = false;
+  timeTable: boolean = false;
   uploading: boolean = false;
+  isEdit: boolean = false;
   fileList: NzUploadFile[] = [];
   timeTableList: NzUploadFile[] = [];
-  createForm!: FormGroup;
-  teachers!: Teacher[];
+  teachers: Teacher[] = []
   directions!: Direction[];
+  createForm!: FormGroup;
   confirmModal?: NzModalRef;
   fallback:string = '../../../../../assets/img/fallback.png';
 
-  constructor(private mainService: MainService,private teachersService: TeachersService, private directionsService: DirectionsService, private msg: NzMessageService,private fb: FormBuilder,private modalService: NzModalService,private nzImageService: NzImageService) { 
+  constructor(private mainService: MainService,
+    private teachersService: TeachersService, 
+    private directionsService: DirectionsService, 
+    private msg: NzMessageService,
+    private fb: FormBuilder,
+    private modalService: NzModalService,
+    private nzImageService: NzImageService) { 
     this.createForm = this.fb.group({
       name_uz: [null, [Validators.required]],
       name_ru: [null, [Validators.required]],
@@ -44,7 +53,7 @@ export class TeachersComponent implements OnInit {
     this.mainService.message.subscribe({
       next: data => {
         this.lang = data;
-        this.directionsService.get(this.lang).subscribe({
+        this.directionsService.get(data).subscribe({
           next: data => {
             this.directions = data;
             this.get();
@@ -58,7 +67,6 @@ export class TeachersComponent implements OnInit {
     this.isLoading = true;
     this.teachersService.get(this.lang).subscribe({
       next: data => {
-        console.log(data)
         this.teachers = data;
         this.isLoading = false;
       },
@@ -67,6 +75,37 @@ export class TeachersComponent implements OnInit {
         this.msg.error(this.translateTexts.reload.error);
       }
     })
+  }
+
+  edit(id: number):void{
+    this.isEdit = true;
+    this.isTable = true;
+    this.id = id;
+  }
+
+  update():void{
+    if(this.timeTableList.length > 0){
+      this.timeTable = false;
+      this.uploading = true;
+      const formData = new FormData();
+      this.timeTableList.forEach((file: any) => {
+        formData.append('timetable', file);
+      });
+      this.teachersService.update(this.id).subscribe({
+        next: () => {
+          this.timeTableList = [];
+          this.uploading = false;
+          this.get();
+          this.msg.success(this.translateTexts.add.success);
+        },
+        error: () => {
+          this.uploading = false;
+          this.msg.error(this.translateTexts.add.error)
+        }
+      })
+    } else{
+      this.button = true;
+    }
   }
 
   post(formData: FormData):void{
@@ -102,7 +141,6 @@ export class TeachersComponent implements OnInit {
           next: () => {
             this.teachers = this.teachers.filter(data => data.id !== id);
             this.msg.success(this.translateTexts.delete.success);
-            this.get();
           },
           error: () => {
             this.msg.error(this.translateTexts.delete.error);
@@ -116,6 +154,7 @@ export class TeachersComponent implements OnInit {
   submit(): void {
     if (this.createForm.valid && this.fileList.length > 0) {
       this.button = false;
+      this.timeTable = false;
       const formData = new FormData();
       this.fileList.forEach((file: any) => {
         formData.append('file', file);
@@ -142,7 +181,9 @@ export class TeachersComponent implements OnInit {
     e.preventDefault();
     this.createForm.reset();
     this.fileList = [];
+    this.timeTableList = [];
     this.button = false;
+    this.timeTable = false;
     for (const key in this.createForm.controls) {
       if (this.createForm.controls.hasOwnProperty(key)) {
         this.createForm.controls[key].markAsPristine();
@@ -151,7 +192,7 @@ export class TeachersComponent implements OnInit {
     }
   }
 
-  preview(id: number,img: string):void{
+  preview(img: string):void{
     const images = [
       {
         src: img,
@@ -165,11 +206,13 @@ export class TeachersComponent implements OnInit {
   beforeUpload = (file: NzUploadFile): boolean => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
+      this.button = true;
       this.msg.error(this.translateTexts?.upload.errors.format);
       return false;
     }
-    const isLt2M = file.size! / 1024 / 1024 < 2;
+    const isLt2M = file.size! / 1024 / 1024 < 8;
     if (!isLt2M) {
+      this.button = true;
       this.msg.error(this.translateTexts?.upload.errors.size);
       return false;
     }
@@ -178,16 +221,21 @@ export class TeachersComponent implements OnInit {
   };
 
   beforeUploadTable = (file: NzUploadFile): boolean => {
-    const isJpgOrPng = file.type === 'application/pdf' || file.type === 'application/msword' || file.type === 'application/vnd.ms-excel';
+    const isJpgOrPng = file.type 
+    === 'application/pdf' || file.type
+    === 'application/msword' || file.type 
+    === 'application/vnd.ms-excel' || file.type 
+    === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' || file.type 
+    === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
     if (!isJpgOrPng) {
-      this.button = true;
-      this.msg.error(this.translateTexts?.upload.errors.format);
+      this.timeTable = true;
+      this.msg.error(this.translateTexts?.upload.docs.format);
       return false;
     }
-    const isLt2M = file.size! / 1024 / 1024 < 2;
+    const isLt2M = file.size! / 1024 / 1024 < 8;
     if (!isLt2M) {
-      this.button = true;
-      this.msg.error(this.translateTexts?.upload.errors.size);
+      this.timeTable = true;
+      this.msg.error(this.translateTexts?.upload.docs.size);
       return false;
     }
     this.timeTableList = this.timeTableList.concat(file);

@@ -13,6 +13,10 @@ export class GalleryService {
     return this.http.get<Galleries>(api + `getGalleries?page=${page}`)
   }
 
+  getAll(){
+    return this.http.get<Gallery[]>(api + 'getAllGalleries')
+  }
+
   post(formData: FormData){
     return this.http.post(api + 'addGallery',formData,{headers})
   }

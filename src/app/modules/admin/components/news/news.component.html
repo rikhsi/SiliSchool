@@ -1,140 +1,189 @@
 <div nz-row [nzGutter]="[0,40]">
     <ng-container *ngIf="isTable">
         <div nz-col nzSpan="24">
-            <nz-table nzTableLayout="fixed" [nzLoading]="isLoading" [nzPageSize]="10" #basicTable [nzData]="news">
-                <thead>
-                    <tr>
-                        <th [nzWidth]="'5%'">№</th>
-                        <th [nzWidth]="'200px'">{{'admin.tables.news.data' | translate}}</th>
-                        <th [nzWidth]="'250px'">{{'admin.tables.news.img' | translate}}</th>
-                        <th>{{'admin.tables.news.title' | translate}}</th>
-                        <th>{{'admin.tables.news.description' | translate}}</th>
-                        <th [nzWidth]="'140px'">{{'admin.tables.news.instruments' | translate}}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let data of basicTable.data; let i = index">
-                    <td>{{i+1}}</td>
-                    <td>{{data.datetime_posted}}</td>
-                    <td>
-                        <div class="news__img" (click)="preview(data.id,data.photo)">
-                            <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback">
-                        </div>
-                    </td>
-                    <td>
-                        <nz-collapse nzGhost>
-                            <nz-collapse-panel 
-                                [nzHeader]="question"
-                            >
-                                <ng-template #question>
-                                    <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.name}}</p>
-                                </ng-template>
-                                <p style="margin:0;">
-                                    {{data.name}}
-                                </p>
-                            </nz-collapse-panel>
-                        </nz-collapse>
-                    </td>
-                    <td>
-                        <nz-collapse nzGhost>
-                            <nz-collapse-panel
-                                [nzHeader]="answer"
-                            >
-                                <ng-template #answer>
-                                    <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.description}}</p>
-                                </ng-template>
-                                <p style="margin:0;">
-                                    {{data.description}}
-                                </p>
-                            </nz-collapse-panel>
-                        </nz-collapse>
-                    </td>
-                    <td>
-                        <button nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.buttons.delete' | translate" (click)="delete(data.id)">
-                            <span nz-icon nzType="delete" nzTheme="outline"></span>
-                        </button>
-                    </td>
-                </tr>
-                </tbody>
-            </nz-table>
-        </div>
+            <div nz-row [nzGutter]="[0,24]">
+                <div nz-col nzSpan="24">
+                    <p class="news__counter">{{'admin.all' | translate}} {{news.length}}</p>
+                </div>
+                <div nz-col nzSpan="24">
+                    <nz-table nzTableLayout="fixed" [nzLoading]="isLoading" [nzPageSize]="5" #basicTable [nzData]="news">
+                        <thead>
+                            <tr>
+                                <th [nzWidth]="'5%'">ID</th>
+                                <th [nzWidth]="'200px'">{{'admin.tables.news.data' | translate}}</th>
+                                <th [nzWidth]="'250px'">{{'admin.tables.news.img' | translate}}</th>
+                                <th>{{'admin.tables.news.title' | translate}}</th>
+                                <th>{{'admin.tables.news.description' | translate}}</th>
+                                <th [nzWidth]="'140px'">{{'admin.tables.news.instruments' | translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let data of basicTable.data">
+                            <td>{{data.id}}</td>
+                            <td>{{data.datetime_posted}}</td>
+                            <td>
+                                <div class="news__img" (click)="preview(data.photo)">
+                                    <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback">
+                                </div>
+                            </td>
+                            <td>
+                                <nz-collapse nzGhost>
+                                    <nz-collapse-panel 
+                                        [nzHeader]="question"
+                                    >
+                                        <ng-template #question>
+                                            <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.name}}</p>
+                                        </ng-template>
+                                        <p style="margin:0;">
+                                            {{data.name}}
+                                        </p>
+                                    </nz-collapse-panel>
+                                </nz-collapse>
+                            </td>
+                            <td>
+                                <nz-collapse nzGhost>
+                                    <nz-collapse-panel
+                                        [nzHeader]="answer"
+                                    >
+                                        <ng-template #answer>
+                                            <p nz-typography nzEllipsis [nzEllipsisRows]="1">{{data.description}}</p>
+                                        </ng-template>
+                                        <p style="margin:0;">
+                                            {{data.description}}
+                                        </p>
+                                    </nz-collapse-panel>
+                                </nz-collapse>
+                            </td>
+                            <td>
+                                <button nz-button nzType="primary" [disabled]="isLoading" [title]="'admin.buttons.delete' | translate" (click)="delete(data.id)">
+                                    <span nz-icon nzType="delete" nzTheme="outline"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </nz-table>
+                </div>
+            </div>  
+        </div>   
     </ng-container>
     <ng-container *ngIf="!isTable">
         <div nz-col nzSpan="24">
-            <form nz-form [formGroup]="createForm" (ngSubmit)="submit()">
-                <div nz-row [nzGutter]="[24,24]">
-                    <div nz-col nzSpan="24">
-                        <div nz-row>
-                            <div nz-col nzSpan="24">
-                                <div nz-row [nzGutter]="24">
-                                    <div nz-col nzSpan="12">
-                                        <div nz-row [nzGutter]="[0,10]">
+            <div nz-row [nzGutter]="[0,24]">
+                <div nz-col nzSpan="24">
+                    <div nz-row [nzGutter]="[0,24]">
+                        <div nz-col nzSpan="24">
+                            <div nz-row nzJustify="center">
+                                <div nz-col>
+                                    <span nz-icon nzType="read" nzTheme="outline" class="news__read"></span>
+                                </div>
+                                <div nz-col nzSpan="24">
+                                    <p class="news__counter news__list">{{'admin.upload.errors.look' | translate}}</p>
+                                </div>
+                            </div>         
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <div class="box">
+                                <div nz-row [nzGutter]="[0,40]" nzJustify="center" >
+                                    <div nz-col nzSpan="24">
+                                        <div nz-row>
                                             <div nz-col nzSpan="24">
-                                                <div nz-row>
-                                                    <div nz-col nzSpan="24">
-                                                        <nz-form-item>
-                                                            <nz-form-control [nzErrorTip]="'To`liq kiriting'" nzHasFeedback>
-                                                                <input nz-input [placeholder]="'Sarlavhani kiriting'" formControlName="name_uz" class="news__input"/>
-                                                            </nz-form-control>
-                                                        </nz-form-item>
-                                                    </div>
-                                                    <div nz-col nzSpan="24">
-                                                        <nz-form-item>
-                                                            <nz-form-control [nzErrorTip]="'To`liq kiriting'" nzHasFeedback>
-                                                                <textarea nz-input [placeholder]="'Tavsif kiriting'" formControlName="description_uz" class="news__area"></textarea>
-                                                            </nz-form-control>
-                                                        </nz-form-item>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>   
+                                                <ul nz-row [nzGutter]="[0,10]">
+                                                    <li nz-col nzSpan="24" class="news__counter news__list">{{'admin.upload.errors.format' | translate}}</li>
+                                                    <li nz-col nzSpan="24" class="news__counter news__list">{{'admin.upload.errors.size' | translate}}</li>
+                                                    <li nz-col nzSpan="24" class="news__counter news__list">{{'admin.upload.errors.recomend' | translate}}</li>
+                                                    <li nz-col nzSpan="24">
+                                                        <div nz-row nzJustify="center">
+                                                            <div nz-col class="upload__img">
+                                                                <img src="../../../../../assets/img/1.png">
+                                                            </div>
+                                                        </div>                    
+                                                    </li>
+                                                </ul>
+                                            </div>  
+                                        </div>
                                     </div>
-                                    <div nz-col nzSpan="12">
-                                        <div nz-row [nzGutter]="[0,10]">
-                                            <div nz-col nzSpan="24">
-                                                <div nz-row>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+                <div nz-col nzSpan="24">
+                    <form nz-form [formGroup]="createForm" (ngSubmit)="submit()">
+                        <div nz-row [nzGutter]="[24,24]">
+                            <div nz-col nzSpan="24">
+                                <div nz-row>
+                                    <div nz-col nzSpan="24">
+                                        <div nz-row [nzGutter]="24">
+                                            <div nz-col nzSpan="12">
+                                                <div nz-row [nzGutter]="[0,10]">
                                                     <div nz-col nzSpan="24">
-                                                        <nz-form-item>
-                                                            <nz-form-control [nzErrorTip]="'Заполните поле'" nzHasFeedback>
-                                                                <input nz-input [placeholder]="'Введите заголовок'" formControlName="name_ru" class="news__input"/>
-                                                            </nz-form-control>
-                                                        </nz-form-item>
+                                                        <div nz-row>
+                                                            <div nz-col nzSpan="24">
+                                                                <nz-form-item>
+                                                                    <nz-form-control [nzErrorTip]="'To`liq kiriting'" nzHasFeedback>
+                                                                        <input nz-input [placeholder]="'Sarlavhani kiriting'" formControlName="name_uz" class="news__input"/>
+                                                                    </nz-form-control>
+                                                                </nz-form-item>
+                                                            </div>
+                                                            <div nz-col nzSpan="24">
+                                                                <nz-form-item>
+                                                                    <nz-form-control [nzErrorTip]="'To`liq kiriting'" nzHasFeedback>
+                                                                        <textarea nz-input [placeholder]="'Tavsif kiriting'" formControlName="description_uz" class="news__area"></textarea>
+                                                                    </nz-form-control>
+                                                                </nz-form-item>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div nz-col nzSpan="24">
-                                                        <nz-form-item>
-                                                            <nz-form-control [nzErrorTip]="'Заполните поле'" nzHasFeedback>
-                                                                <textarea nz-input [placeholder]="'Введите описание'" formControlName="description_ru" class="news__area"></textarea>
-                                                            </nz-form-control>
-                                                        </nz-form-item>
-                                                    </div>
-                                                </div>
+                                                </div>   
                                             </div>
-                                        </div>   
+                                            <div nz-col nzSpan="12">
+                                                <div nz-row [nzGutter]="[0,10]">
+                                                    <div nz-col nzSpan="24">
+                                                        <div nz-row>
+                                                            <div nz-col nzSpan="24">
+                                                                <nz-form-item>
+                                                                    <nz-form-control [nzErrorTip]="'Заполните поле'" nzHasFeedback>
+                                                                        <input nz-input [placeholder]="'Введите заголовок'" formControlName="name_ru" class="news__input"/>
+                                                                    </nz-form-control>
+                                                                </nz-form-item>
+                                                            </div>
+                                                            <div nz-col nzSpan="24">
+                                                                <nz-form-item>
+                                                                    <nz-form-control [nzErrorTip]="'Заполните поле'" nzHasFeedback>
+                                                                        <textarea nz-input [placeholder]="'Введите описание'" formControlName="description_ru" class="news__area"></textarea>
+                                                                    </nz-form-control>
+                                                                </nz-form-item>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>   
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div nz-col nzSpan="24">
+                                        <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload" [nzDisabled]="fileList.length === 1">
+                                            <button type="button" nz-button [ngClass]="{news__error: button, news__default: fileList.length != 0}" class="upload__button">
+                                                <span nz-icon nzType="upload"></span>
+                                                {{'admin.buttons.upload.photo' | translate}}
+                                            </button>
+                                        </nz-upload>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div nz-col nzSpan="24">  
+                                <div nz-row [nzGutter]="24">
+                                    <div nz-col>
+                                        <button nz-button nzType="primary" [disabled]="uploading" class="news__button">{{'admin.buttons.save' | translate}}</button>
+                                    </div>
+                                    <div nz-col>
+                                        <button nz-button nzType="primary" [disabled]="uploading" nzDanger class="news__button" (click)="reset($event)">{{'admin.buttons.reset' | translate}}</button>
                                     </div>
                                 </div>
                             </div>
-                            <div nz-col>
-                                <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload" [nzDisabled]="fileList.length === 1">
-                                    <button type="button" nz-button [ngClass]="{news__error: button, news__default: fileList.length != 0}">
-                                        <span nz-icon nzType="upload"></span>
-                                        {{'admin.buttons.upload.photo' | translate}}
-                                    </button>
-                                </nz-upload>
-                            </div>
-                        </div>  
-                    </div>
-                    <div nz-col nzSpan="24">  
-                        <div nz-row [nzGutter]="24">
-                            <div nz-col>
-                                <button nz-button nzType="primary" [disabled]="uploading" class="news__button">{{'admin.buttons.save' | translate}}</button>
-                            </div>
-                            <div nz-col>
-                                <button nz-button nzType="primary" [disabled]="uploading" nzDanger class="news__button" (click)="reset($event)">{{'admin.buttons.reset' | translate}}</button>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
-            </form>
+                        </div> 
+                    </form>
+                </div>
+            </div>
         </div>
     </ng-container>
 </div>

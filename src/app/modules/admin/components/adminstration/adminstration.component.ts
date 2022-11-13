@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component,Input, OnInit} from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
@@ -14,17 +14,17 @@ import { MainService } from 'src/app/services/main.service';
   styleUrls: ['./adminstration.component.less'],
   providers: [NzMessageService, NzModalService,NzImageService]
 })
+
 export class AdminstrationComponent implements OnInit {
   @Input() translateTexts!: any;
   @Input() isTable: boolean = true;
-  @Input() isLoading!: boolean;
-  @Output() refresh = new EventEmitter;
+  isLoading!: boolean;
   lang!:string;
   button: boolean = false;
   uploading: boolean = false;
   fileList: NzUploadFile[] = [];
   createForm!: FormGroup;
-  adminstrations!: Adminstration[];
+  adminstrations: Adminstration[] = []
   professions!: Profession[];
   confirmModal?: NzModalRef;
   fallback:string = '../../../../../assets/img/fallback.png';
@@ -38,15 +38,15 @@ export class AdminstrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.adminstrationsService.getProfession('ru').subscribe({
-      next: data => {
-        this.professions = data;
-      }
-    })
     this.mainService.message.subscribe({
       next: data => {
         this.lang = data;
         this.get(data);
+        this.adminstrationsService.getProfession(data).subscribe({
+          next: data => {
+            this.professions = data;
+          }
+        })
       }
     })
   }
@@ -97,7 +97,6 @@ export class AdminstrationComponent implements OnInit {
           next: () => {
             this.adminstrations = this.adminstrations.filter(data => data.id !== id);
             this.msg.success(this.translateTexts.delete.success);
-            this.get(this.lang);
           },
           error: () => {
             this.msg.error(this.translateTexts.delete.error);
@@ -142,7 +141,7 @@ export class AdminstrationComponent implements OnInit {
     }
   }
 
-  preview(id: number,img: string):void{
+  preview(img: string):void{
     const images = [
       {
         src: img,
@@ -159,7 +158,7 @@ export class AdminstrationComponent implements OnInit {
       this.msg.error(this.translateTexts?.upload.errors.format);
       return false;
     }
-    const isLt2M = file.size! / 1024 / 1024 < 2;
+    const isLt2M = file.size! / 1024 / 1024 < 8;
     if (!isLt2M) {
       this.msg.error(this.translateTexts?.upload.errors.size);
       return false;

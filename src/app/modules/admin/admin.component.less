@@ -1,22 +1,12 @@
-.logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-}
-
 .layout {
   min-height: 100vh;
 }
 
 nz-sider {
-  overflow: auto;
-  height: 100%;
-  position: fixed;
+  overflow: hidden;
+  min-height: 100%;
+  position: relative;
   left: 0;
-}
-
-.right-layout {
-  margin-left: 200px;
 }
 
 nz-content {
@@ -40,7 +30,9 @@ nz-content {
 }
 
 .exit{
-  position: absolute;
-  left: 12%;
-  bottom: 5%;
+  width: 83%;
+  margin: 16px;
+  height: 32px;
+  border: none;
+  background: rgba(199, 72, 72, 0.815);
 }
