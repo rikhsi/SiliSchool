@@ -13,7 +13,7 @@ export class DocsPageComponent implements OnInit {
   api = api;
   title: string = 'faq.info';
   isLoading: boolean = true;
-  docs!: Docs[];
+  docs: Docs[] = [];
   breadCrump: BreadCrump[] = [
     {
       title: 'home.title',

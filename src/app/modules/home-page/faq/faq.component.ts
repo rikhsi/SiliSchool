@@ -11,7 +11,7 @@ import { MainService } from 'src/app/services/main.service';
 export class FaqComponent implements OnInit {
   active: boolean = false;
   title: string = 'faq.title';
-  faqs!: Faq[];
+  faqs: Faq[] = [];
   customStyle = {
     background: '#FFF2B7',
     padding: '40px 0px',

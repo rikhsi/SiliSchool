@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BreadCrump } from 'src/app/models/breadCrump';
 import { Direction } from 'src/app/models/direction';
 import { Teacher } from 'src/app/models/teachers';
@@ -30,7 +30,7 @@ export class DirectionsCardPageComponent implements OnInit {
     }
   ];
 
-  constructor(private directionsService: DirectionsService, private activedRoute: ActivatedRoute,private mainService:MainService) { }
+  constructor(private directionsService: DirectionsService, private activedRoute: ActivatedRoute,private mainService:MainService,private router: Router) { }
 
   ngOnInit(): void {
     this.activedRoute.params.subscribe((params: Params) => this.routeId = +params['id']);
@@ -46,10 +46,14 @@ export class DirectionsCardPageComponent implements OnInit {
     this.isLoading = true;
     this.directionsService.getID(this.routeId,this.lang).subscribe({
       next: data => {
-        this.direction = data;
-        this.teachers = data.teachers;
-        this.breadCrump.push({title: `${data.name}`, path: `directions/${data.id}`});
-        this.isLoading = false;
+        if(data.teachers.length === 0){
+          this.router.navigate([''])
+        } else{
+          this.direction = data;
+          this.teachers = data.teachers;
+          this.breadCrump.push({title: `${data.name}`, path: `directions/${data.id}`});
+          this.isLoading = false;
+        }
       }
     })
   }

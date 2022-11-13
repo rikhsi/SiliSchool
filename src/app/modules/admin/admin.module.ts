@@ -27,6 +27,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { AchievementsComponent } from './components/achievements/achievements.component';
 import { AdminstrationComponent } from './components/adminstration/adminstration.component';
 import { InfoComponent } from './components/info/info.component';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { InfoComponent } from './components/info/info.component';
     NzImageModule,
     NzUploadModule,
     NzModalModule,
-    NzSelectModule
+    NzSelectModule,
+    NzSpinModule
   ]
 })
 export class AdminModule { }

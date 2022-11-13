@@ -14,7 +14,7 @@ export class GalleryComponent implements OnInit {
   title: string = 'gallery.title';
   isLoading: boolean = true;
   fallback:string = '../../../../assets/img/fallback.png';
-  galleries!: Gallery[];
+  galleries: Gallery[] = [];
   config: SwiperOptions = {
     slidesPerView: 'auto',
     spaceBetween: 24,

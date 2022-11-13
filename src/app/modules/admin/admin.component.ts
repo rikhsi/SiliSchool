@@ -4,7 +4,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { MainService } from 'src/app/services/main.service';
-import { FaqComponent } from './components/faq/faq.component';
 
 @Component({
   selector: 'sili-admin',
@@ -14,46 +13,55 @@ import { FaqComponent } from './components/faq/faq.component';
 })
 export class AdminComponent implements OnInit {
   isTable: boolean = true;
+  isChangeLang: boolean = false;
   translateTexts: any;
   confirmModal?: NzModalRef;
-  isRu!: boolean;
+  isRu: boolean = true;
   pages = [
     {
       name: 'gallery.title',
       id: 1,
       isShow: true,
+      icon: 'file-image'
     },
     {
       name: 'faq.title',
       id: 2,
-      isShow: false
+      isShow: false,
+      icon: 'info-circle'
     },
     {
       name: 'news.title',
       id: 3,
-      isShow: false
+      isShow: false,
+      icon: 'carry-out'
     },
     {
       name: 'docs.title',
       id: 4,
-      isShow: false
+      isShow: false,
+      icon: 'book'
     },
     {
       name: 'adminstration.title',
       id: 5,
-      isShow: false
+      isShow: false,
+      icon: 'solution'
     },
     {
       name: 'teachers.title',
       id: 6,
-      isShow: false
+      isShow: false,
+      icon: 'user'
     },
     {
       name: 'achievements.title',
       id: 7,
-      isShow: false
+      isShow: false,
+      icon: 'trophy'
     },
   ]
+
   constructor(private mainService: MainService,private msg: NzMessageService,public translate: TranslateService,private router:Router, private modalService: NzModalService) { }
 
   ngOnInit(): void {
@@ -74,27 +82,31 @@ export class AdminComponent implements OnInit {
   }
 
   changeLang(){
-    if(this.isRu){
-      this.mainService.setLang('ru');
-      this.translate.use('ru').subscribe({
-        next: () => {
-          this.getTranslate();
-          this.msg.success(this.translateTexts.lang.success);
-          this.isRu = !this.isRu;
-        }
-      })
-      return 'ru'
-    } else{
-      this.mainService.setLang('uz');
-      this.translate.use('uz').subscribe({
-        next: () => {
-          this.getTranslate();
-          this.msg.success(this.translateTexts.lang.success);
-          this.isRu = !this.isRu;
-        }
-      })
-      return 'uz'
-    }
+    this.isChangeLang = true;
+    setTimeout(() => {
+      if(this.isRu){
+        this.mainService.setLang('ru');
+        this.translate.use('ru').subscribe({
+          next: () => {
+            this.getTranslate();
+            this.msg.success(this.translateTexts.lang.success);
+            this.isRu = !this.isRu;
+            this.isChangeLang = false;
+          }
+        })
+      } else{
+        this.mainService.setLang('uz');
+        this.translate.use('uz').subscribe({
+          next: () => {
+            this.getTranslate();
+            this.msg.success(this.translateTexts.lang.success);
+            this.isRu = !this.isRu;
+            this.isChangeLang = false;
+          }
+        })
+      }
+    }, 1000);
+    
   }
 
   getTranslate():void {

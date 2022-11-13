@@ -13,7 +13,7 @@ export class AchievementsComponent implements OnInit {
   title: string = 'achievements.title';
   fallback:string = '../../../../assets/img/fallback.png';
   isLoading: boolean = true;
-  achievements!: Achievements[];
+  achievements: Achievements[] = [];
   config: SwiperOptions = {
     slidesPerView: 3,
     spaceBetween: 24,

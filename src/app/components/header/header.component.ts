@@ -14,20 +14,23 @@ export class HeaderComponent implements OnInit {
   isBurger: boolean = false;
   schoolNumber!: number;
   schoolPhone!: string;
-  currentLang: string = 'Uz';
+  currentLang!: string;
 
   constructor(private mainService: MainService,public translateService: TranslateService, private router: Router) { }
 
   ngOnInit(): void {
     this.schoolNumber = this.mainService.schoolNumber;
     this.schoolPhone = this.mainService.schoolPhone;
+    this.getLang();
   }
 
   getLang():void{
     if(this.translateService.getDefaultLang() === 'ru'){
       this.currentLang = 'Ру'
+      this.changeLang('ru')
     } else{
       this.currentLang = 'Uz'
+      this.changeLang('uz')
     }
   }
   

@@ -4,24 +4,31 @@
             <div nz-col nzSpan="24">
                 <sili-title [title]="title" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
             </div>
-            <div nz-col nzSpan="24">
-                <ng-container *ngIf="!isLoading">
-                    <swiper #swiper [config]="config" class="achievements__swiper">
-                        <ng-template swiperSlide *ngFor="let data of achievements">
-                            <div class="achievements__img">
-                                <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback" alt="news"> 
-                            </div>
-                        </ng-template>
-                    </swiper>
-                </ng-container>
-                <ng-container *ngIf="isLoading">
-                    <swiper #swiper [config]="config" class="achievements__swiper">
-                        <ng-template swiperSlide *ngFor="let data of [1,2,3,4]">
-                            <sili-achievement-skeleton [counter]="1"></sili-achievement-skeleton>
-                        </ng-template>
-                    </swiper>
-                </ng-container>
-            </div>
+            <ng-container *ngIf="achievements.length > 0">
+                <div nz-col nzSpan="24">
+                    <ng-container *ngIf="!isLoading">
+                        <swiper #swiper [config]="config" class="achievements__swiper">
+                            <ng-template swiperSlide *ngFor="let data of achievements">
+                                <div class="achievements__img">
+                                    <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback" alt="news"> 
+                                </div>
+                            </ng-template>
+                        </swiper>
+                    </ng-container>
+                    <ng-container *ngIf="isLoading">
+                        <swiper #swiper [config]="config" class="achievements__swiper">
+                            <ng-template swiperSlide *ngFor="let data of [1,2,3,4]">
+                                <sili-achievement-skeleton [counter]="1"></sili-achievement-skeleton>
+                            </ng-template>
+                        </swiper>
+                    </ng-container>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="achievements.length === 0">
+                <div nz-col nzSpan="24">
+                    <sili-empty></sili-empty>
+                </div> 
+            </ng-container>
         </div>
     </div>
 </div>

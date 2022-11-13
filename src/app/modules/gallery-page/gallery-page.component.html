@@ -2,36 +2,43 @@
     <div nz-col nzSpan="24">
         <sili-page-container [title]="title" [photos]="{model_1: true,model_2: false,model_3:false,model_4:false}"></sili-page-container>
     </div> 
-    <div nz-col nzSpan="24">
-        <div nz-row>
-            <div nz-col nzSpan="24">
-                <div class="gallery__wrapper">
-                    <div class="gallery__container">
-                        <div nz-row [nzGutter]="[0,{xl:64,lg:32,md:32,sm:32,xs:32}]">
-                            <div nz-col nzSpan="24">
-                                <sili-bread-crump [breadCrump]="breadCrump"></sili-bread-crump>
-                            </div>
-                            <div nz-col nzSpan="24">
-                                <div nz-row [nzGutter]="[{xl:24,lg:24,md:24,sm:16,xs:16},{xl:24,lg:24,md:24,sm:16,xs:16}]">
-                                    <div nz-col nzSpan="12" *ngFor="let data of paginatedList">
-                                        <div class="gallery__img">
-                                            <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback">
-                                        </div>                      
-                                    </div>
-                                    <ng-container *ngIf="isLoading">
-                                        <div nz-col nzSpan="24">
-                                            <sili-gallery-skeleton [counter]="pageSize"></sili-gallery-skeleton>
-                                        </div>           
-                                    </ng-container>
+    <ng-container *ngIf="gallery.length > 0">
+        <div nz-col nzSpan="24">
+            <div nz-row>
+                <div nz-col nzSpan="24">
+                    <div class="gallery__wrapper">
+                        <div class="gallery__container">
+                            <div nz-row [nzGutter]="[0,{xl:64,lg:32,md:32,sm:32,xs:32}]">
+                                <div nz-col nzSpan="24">
+                                    <sili-bread-crump [breadCrump]="breadCrump"></sili-bread-crump>
                                 </div>
+                                <div nz-col nzSpan="24">
+                                    <div nz-row [nzGutter]="[{xl:24,lg:24,md:24,sm:16,xs:16},{xl:24,lg:24,md:24,sm:16,xs:16}]">
+                                        <div nz-col nzSpan="12" *ngFor="let data of paginatedList">
+                                            <div class="gallery__img">
+                                                <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback">
+                                            </div>                      
+                                        </div>
+                                        <ng-container *ngIf="isLoading">
+                                            <div nz-col nzSpan="24">
+                                                <sili-gallery-skeleton [counter]="pageSize"></sili-gallery-skeleton>
+                                            </div>           
+                                        </ng-container>
+                                    </div>
+                                </div>
+                                <div nz-col nzSpan="24" *ngIf="button">
+                                    <sili-more (loadMore)="getData()"></sili-more>
+                                </div>  
                             </div>
-                            <div nz-col nzSpan="24" *ngIf="button">
-                                <sili-more (loadMore)="getData()"></sili-more>
-                            </div>  
                         </div>
-                    </div>
-                </div>         
+                    </div>         
+                </div>
             </div>
         </div>
-    </div>
+    </ng-container>
+    <ng-container *ngIf="gallery.length === 0">
+        <div nz-col nzSpan="24">
+            <sili-empty></sili-empty>
+        </div> 
+    </ng-container>
 </div>

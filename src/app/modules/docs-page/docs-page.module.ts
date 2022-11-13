@@ -15,6 +15,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 
 //translateModule
 import { TranslateModule } from '@ngx-translate/core';
+import { EmptyModule } from 'src/app/shared/empty/empty.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { TranslateModule } from '@ngx-translate/core';
     NzGridModule,
     NzButtonModule,
     TranslateModule,
-    BreadCrumpModule
+    BreadCrumpModule,
+    EmptyModule
   ]
 })
 export class DocsPageModule { }

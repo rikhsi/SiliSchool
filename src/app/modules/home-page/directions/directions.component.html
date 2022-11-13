@@ -3,35 +3,42 @@
         <div nz-col nzSpan="24">
             <sili-title [title]="title" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
         </div>
-        <div nz-col nzSpan="24">
-            <div class="gallery__swiper">
-                <div nz-row>
-                    <div nz-col nzSpan="24">
-                        <ng-container *ngIf="!isLoading">
-                            <swiper #swiper [config]="config">
-                                <ng-template swiperSlide *ngFor="let data of directions">
-                                    <sili-direction [direction]="data"></sili-direction>
-                                </ng-template>
-                            </swiper>
-                        </ng-container>
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <ng-container *ngIf="isLoading">
-                            <swiper #swiper [config]="config">
-                                <ng-template swiperSlide *ngFor="let data of [1,2,3,4]">
-                                    <div nz-row>
-                                        <div nz-col nzSpan="24">
-                                            <sili-direction-skeleton></sili-direction-skeleton>
-                                        </div>
-                                    </div>              
-                                </ng-template>
-                            </swiper>
-                        </ng-container>
+        <ng-container *ngIf="directions.length > 0">
+            <div nz-col nzSpan="24">
+                <div class="gallery__swiper">
+                    <div nz-row>
+                        <div nz-col nzSpan="24">
+                            <ng-container *ngIf="!isLoading">
+                                <swiper #swiper [config]="config">
+                                    <ng-template swiperSlide *ngFor="let data of directions">
+                                        <sili-direction [direction]="data"></sili-direction>
+                                    </ng-template>
+                                </swiper>
+                            </ng-container>
+                        </div>
+                        <div nz-col nzSpan="24">
+                            <ng-container *ngIf="isLoading">
+                                <swiper #swiper [config]="config">
+                                    <ng-template swiperSlide *ngFor="let data of [1,2,3,4]">
+                                        <div nz-row>
+                                            <div nz-col nzSpan="24">
+                                                <sili-direction-skeleton></sili-direction-skeleton>
+                                            </div>
+                                        </div>              
+                                    </ng-template>
+                                </swiper>
+                            </ng-container>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div nz-col nzSpan="24">
+        </ng-container>
+        <ng-container *ngIf="directions.length === 0">
+            <div nz-col nzSpan="24">
+                <sili-empty></sili-empty>
+            </div> 
+        </ng-container>
+        <div nz-col nzSpan="24" *ngIf="directions.length > 0">
             <sili-more (loadMore)="navigate()"></sili-more>
         </div>
     </div>

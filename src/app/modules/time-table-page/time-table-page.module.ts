@@ -18,6 +18,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 
 //translateModule
 import { TranslateModule } from '@ngx-translate/core';
+import { EmptyModule } from 'src/app/shared/empty/empty.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TranslateModule } from '@ngx-translate/core';
     NzButtonModule,
     TranslateModule,
     SkeletonModule,
-    BreadCrumpModule
+    BreadCrumpModule,
+    EmptyModule
   ]
 })
 export class TimeTablePageModule { }

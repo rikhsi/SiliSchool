@@ -27,9 +27,11 @@ import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
 import { MoreModule } from 'src/app/shared/more/more.module';
 import { CardsModule } from 'src/app/shared/cards/cards.module';
 
+
 //translateModule
 import { TranslateModule } from '@ngx-translate/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { EmptyModule } from 'src/app/shared/empty/empty.module';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     TranslateModule,
     NzTypographyModule,
     CardsModule,
-    NzIconModule
+    NzIconModule,
+    EmptyModule
   ]
 })
 export class HomePageModule { }

@@ -8,7 +8,7 @@
                 </button>
                 <ul nz-menu nzTheme="dark" nzMode="inline">
                     <li nz-menu-item [nzSelected]="data.id === 1" (click)="changePage(data.id)" *ngFor="let data of pages">
-                        <span nz-icon nzType="file"></span>
+                        <span nz-icon [nzType]="data.icon"></span>
                         <span>{{data.name| translate}}</span>
                     </li>
                 </ul>
@@ -79,4 +79,8 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="spin" *ngIf="isChangeLang">
+    <nz-spin nzSimple [nzSize]="'large'"></nz-spin>
 </div>

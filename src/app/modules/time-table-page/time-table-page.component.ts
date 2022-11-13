@@ -13,7 +13,7 @@ export class TimeTablePageComponent implements OnInit {
   api = api;
   title: string = 'time-table.title';
   isLoading: boolean = true;
-  teachers!: Teacher[];
+  teachers: Teacher[] = [];
   breadCrump: BreadCrump[] = [
     {
       title: 'home.title',

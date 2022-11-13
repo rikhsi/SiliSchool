@@ -3,27 +3,34 @@
         <div nz-col nzSpan="24">
             <sili-title [title]="title" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
         </div>
-        <div nz-col nzSpan="24">
-            <div class="gallery__swiper">
-                <ng-container *ngIf="!isLoading">
-                    <swiper #swiper [config]="config">
-                        <ng-template swiperSlide *ngFor="let data of galleries">
-                            <div class="gallery__img">
-                                <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback" alt="news">
-                            </div>
-                        </ng-template>
-                    </swiper>
-                </ng-container>
-                <ng-container *ngIf="isLoading">
-                    <swiper #swiper [config]="config">
-                        <ng-template swiperSlide *ngFor="let data of [1,2,3,4]">
-                            <sili-gallery-skeleton [counter]="1" [span]="24" [isMain]="true"></sili-gallery-skeleton>
-                        </ng-template>
-                    </swiper>
-                </ng-container>
+        <ng-container *ngIf="galleries.length > 0">
+            <div nz-col nzSpan="24">
+                <div class="gallery__swiper">
+                    <ng-container *ngIf="!isLoading">
+                        <swiper #swiper [config]="config">
+                            <ng-template swiperSlide *ngFor="let data of galleries">
+                                <div class="gallery__img">
+                                    <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback" alt="news">
+                                </div>
+                            </ng-template>
+                        </swiper>
+                    </ng-container>
+                    <ng-container *ngIf="isLoading">
+                        <swiper #swiper [config]="config">
+                            <ng-template swiperSlide *ngFor="let data of [1,2,3,4]">
+                                <sili-gallery-skeleton [counter]="1" [span]="24" [isMain]="true"></sili-gallery-skeleton>
+                            </ng-template>
+                        </swiper>
+                    </ng-container>
+                </div>
             </div>
-        </div>
-        <div nz-col nzSpan="24">
+        </ng-container>
+        <ng-container *ngIf="galleries.length === 0">
+            <div nz-col nzSpan="24">
+                <sili-empty></sili-empty>
+            </div>
+        </ng-container>
+        <div nz-col nzSpan="24" *ngIf="galleries.length > 0">
             <sili-more (loadMore)="navigate()"></sili-more>
         </div>
     </div>

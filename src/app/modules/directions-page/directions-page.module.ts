@@ -12,6 +12,7 @@ import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
 import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
 import { CardsModule } from 'src/app/shared/cards/cards.module';
 import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module';
+import { EmptyModule } from 'src/app/shared/empty/empty.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module'
     SkeletonModule,
     PageContainerModule,
     CardsModule,
-    BreadCrumpModule
+    BreadCrumpModule,
+    EmptyModule
   ]
 })
 export class DirectionsPageModule { }

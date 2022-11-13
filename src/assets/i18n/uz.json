@@ -195,6 +195,10 @@
             "mail": "Elektron pochtangizni to`liq kiriting",
             "message": "Izohingizni kiriting"        
         },
+        "order": {
+            "success": "Sizning so`rovingiz yuborildi",
+            "error": "So`rov yuborilmadi, internet aloqasi uzilgan bo`lishi mumkin"
+        },
         "login": {
             "name": "Login",
             "password": "Parol",

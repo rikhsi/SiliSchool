@@ -14,7 +14,7 @@ export class AdministrationComponent implements OnInit {
   title: string = 'adminstration.title';
   fallback:string = '../../../../assets/img/fallback.png';
   isLoading: boolean = true;
-  administrations!: Adminstration[];
+  administrations: Adminstration[] = [];
   config: SwiperOptions = {
     slidesPerView: 'auto',
     spaceBetween: 24,

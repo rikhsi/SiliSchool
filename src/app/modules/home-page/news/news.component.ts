@@ -14,7 +14,7 @@ import { MainService } from 'src/app/services/main.service';
 export class NewsComponent implements OnInit {
   title: string = 'news.title';
   isLoading: boolean = true;
-  adverts!: Advert[];
+  adverts: Advert[] = [];
   config: SwiperOptions = {
     slidesPerView: 1,
     effect: 'fade',

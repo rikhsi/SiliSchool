@@ -15,7 +15,7 @@ export class DirectionsComponent implements OnInit {
   title: string = 'directions.title';
   isLoading: boolean = true;
   fallback:string = '../../../../assets/img/fallback.png';
-  directions!: Direction[];
+  directions: Direction[] = [];
   config: SwiperOptions = {
     slidesPerView: 'auto',
     spaceBetween: 24,

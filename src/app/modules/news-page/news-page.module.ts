@@ -10,6 +10,7 @@ import { SkeletonModule } from 'src/app/shared/skeleton/skeleton.module';
 import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
 import { MoreModule } from 'src/app/shared/more/more.module';
 import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module';
+import { EmptyModule } from 'src/app/shared/empty/empty.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module'
     SkeletonModule,
     PageContainerModule,
     MoreModule,
-    BreadCrumpModule
+    BreadCrumpModule,
+    EmptyModule
   ]
 })
 export class NewsPageModule { }
