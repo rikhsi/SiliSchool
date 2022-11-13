@@ -13,6 +13,7 @@ export class AchievementsComponent implements OnInit {
   title: string = 'achievements.title';
   fallback:string = '../../../../assets/img/fallback.png';
   isLoading: boolean = true;
+  isEmpty: boolean = false;
   achievements: Achievements[] = [];
   config: SwiperOptions = {
     slidesPerView: 3,
@@ -69,7 +70,16 @@ export class AchievementsComponent implements OnInit {
     this.isLoading = true;
     this.achievementsService.get().subscribe({
       next: data => {
-        this.achievements = data;
+        if(data.length === 0){
+          this.isEmpty = true;
+        } else{
+          this.achievements = data;
+          this.isEmpty = false;
+        }
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isEmpty = true;
         this.isLoading = false;
       }
     })

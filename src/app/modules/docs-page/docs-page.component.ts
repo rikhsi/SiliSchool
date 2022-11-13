@@ -13,6 +13,7 @@ export class DocsPageComponent implements OnInit {
   api = api;
   title: string = 'faq.info';
   isLoading: boolean = true;
+  isEmpty: boolean = false;
   docs: Docs[] = [];
   breadCrump: BreadCrump[] = [
     {
@@ -38,7 +39,16 @@ export class DocsPageComponent implements OnInit {
     this.isLoading = true;
     this.docsService.get(lang).subscribe({
       next: data => {
-        this.docs = data;
+        if(data.length === 0){
+          this.isEmpty = true;
+        } else{
+          this.docs = data;
+          this.isEmpty = false;
+        }
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isEmpty = true;
         this.isLoading = false;
       }
     })

@@ -37,12 +37,12 @@ export class DirectionsCardPageComponent implements OnInit {
     this.mainService.message.subscribe({
       next: data => {
         this.lang = data;
-        this.getAdvert();
+        this.get();
       }
     })
   }
 
-  getAdvert():void{
+  get():void{
     this.isLoading = true;
     this.directionsService.getID(this.routeId,this.lang).subscribe({
       next: data => {
@@ -54,6 +54,8 @@ export class DirectionsCardPageComponent implements OnInit {
           this.breadCrump.push({title: `${data.name}`, path: `directions/${data.id}`});
           this.isLoading = false;
         }
+      },error: () => {
+        this.router.navigate([''])
       }
     })
   }

@@ -4,7 +4,7 @@
             <div nz-col nzSpan="24">
                 <sili-title [title]="title" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
             </div>    
-            <ng-container *ngIf="administrations.length > 0">
+            <ng-container *ngIf="!isEmpty">
                 <div nz-col nzSpan="24">
                     <ng-container *ngIf="!isLoading">
                         <swiper #swiper [config]="config" class="adminstration__swiper">
@@ -22,7 +22,7 @@
                     </ng-container>
                 </div>
             </ng-container>
-            <ng-container *ngIf="administrations.length === 0">
+            <ng-container *ngIf="isEmpty">
                 <div nz-col nzSpan="24">
                     <sili-empty></sili-empty>
                 </div> 

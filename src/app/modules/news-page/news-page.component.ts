@@ -12,6 +12,7 @@ import { NewsService } from 'src/app/services/news.service';
 export class NewsPageComponent implements OnInit {
   page:number = 0;
   lang!:string;
+  isEmpty: boolean = false;
   button: boolean = true;
   title: string = 'news.pageTitle'
   isLoading = true;
@@ -43,15 +44,24 @@ export class NewsPageComponent implements OnInit {
     this.isLoading = true;
     this.newsService.get(this.page,this.lang).subscribe({
       next: data => {
-        if(data.pages > this.page){
-          this.paginatedList = this.paginatedList.concat(data.data);
-          this.news = [...this.paginatedList];
+        if(data.data.length === 0){
+          this.isEmpty = true;
         } else{
-          this.paginatedList = this.paginatedList.concat(data.data);
-          this.news = [...this.paginatedList];
-          this.button = false;
+          if(data.pages > this.page){
+            this.paginatedList = this.paginatedList.concat(data.data);
+            this.news = [...this.paginatedList];
+          } else{
+            this.paginatedList = this.paginatedList.concat(data.data);
+            this.news = [...this.paginatedList];
+            this.button = false;
+          }
+          this.page = this.page + 1;
+          this.isEmpty = false;
+          this.isLoading = false;
         }
-        this.page = this.page + 1;
+      },
+      error: () => {
+        this.isEmpty = true;
         this.isLoading = false;
       }
     })

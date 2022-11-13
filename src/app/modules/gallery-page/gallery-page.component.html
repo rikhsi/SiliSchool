@@ -2,7 +2,7 @@
     <div nz-col nzSpan="24">
         <sili-page-container [title]="title" [photos]="{model_1: true,model_2: false,model_3:false,model_4:false}"></sili-page-container>
     </div> 
-    <ng-container *ngIf="gallery.length > 0">
+    <ng-container *ngIf="!isEmpty">
         <div nz-col nzSpan="24">
             <div nz-row>
                 <div nz-col nzSpan="24">
@@ -36,7 +36,7 @@
             </div>
         </div>
     </ng-container>
-    <ng-container *ngIf="gallery.length === 0">
+    <ng-container *ngIf="isEmpty">
         <div nz-col nzSpan="24">
             <sili-empty></sili-empty>
         </div> 

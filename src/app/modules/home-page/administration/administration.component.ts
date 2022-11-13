@@ -14,6 +14,7 @@ export class AdministrationComponent implements OnInit {
   title: string = 'adminstration.title';
   fallback:string = '../../../../assets/img/fallback.png';
   isLoading: boolean = true;
+  isEmpty: boolean = false;
   administrations: Adminstration[] = [];
   config: SwiperOptions = {
     slidesPerView: 'auto',
@@ -71,8 +72,17 @@ export class AdministrationComponent implements OnInit {
     this.isLoading = true;
     this.adminstrationService.get(lang).subscribe({
       next: data => {
-        this.administrations = data;
+        if(data.length === 0){
+          this.isEmpty = true;
+        } else{
+          this.administrations = data;
+          this.isEmpty = false;
+        }
         this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        this.isEmpty = true;
       }
     })
   }

@@ -13,6 +13,7 @@ export class GalleryPageComponent implements OnInit {
   title: string = 'gallery.title';
   fallback:string = '../../../../assets/img/fallback.png';
   button: boolean = true;
+  isEmpty: boolean = false;
   page: number = 0;
   pageSize: number = 6;
   isLoading!: boolean;
@@ -40,15 +41,24 @@ export class GalleryPageComponent implements OnInit {
     this.isLoading = true;
     this.galleryService.get(this.page).subscribe({
       next: data => {
-        if(data.pages > this.page){
-          this.paginatedList = this.paginatedList.concat(data.data);
-          this.gallery = [...this.paginatedList];
+        if(data.data.length === 0){
+          this.isEmpty = true;
         } else{
-          this.paginatedList = this.paginatedList.concat(data.data);
-          this.gallery = [...this.paginatedList];
-          this.button = false;
+          if(data.pages > this.page){
+            this.paginatedList = this.paginatedList.concat(data.data);
+            this.gallery = [...this.paginatedList];
+          } else{
+            this.paginatedList = this.paginatedList.concat(data.data);
+            this.gallery = [...this.paginatedList];
+            this.button = false;
+          }
+          this.page = this.page + 1;
+          this.isEmpty = false;
+          this.isLoading = false;
         }
-        this.page = this.page + 1;
+      },
+      error: () => {
+        this.isEmpty = true;
         this.isLoading = false;
       }
     })

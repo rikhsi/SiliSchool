@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class GalleryComponent implements OnInit {
   title: string = 'gallery.title';
   isLoading: boolean = true;
+  isEmpty: boolean = false;
   fallback:string = '../../../../assets/img/fallback.png';
   galleries: Gallery[] = [];
   config: SwiperOptions = {
@@ -73,8 +74,17 @@ export class GalleryComponent implements OnInit {
     this.isLoading = true;
     this.galleryService.get(0).subscribe({
       next: data => {
-        this.galleries = data.data;
+        if(data.data.length === 0){
+          this.isEmpty = true;
+        } else{
+          this.galleries = data.data;
+          this.isEmpty = false;
+        }
         this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        this.isEmpty = true;
       }
     })
   }

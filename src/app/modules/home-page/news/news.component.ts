@@ -14,6 +14,7 @@ import { MainService } from 'src/app/services/main.service';
 export class NewsComponent implements OnInit {
   title: string = 'news.title';
   isLoading: boolean = true;
+  isEmpty: boolean = false;
   adverts: Advert[] = [];
   config: SwiperOptions = {
     slidesPerView: 1,
@@ -48,8 +49,17 @@ export class NewsComponent implements OnInit {
     this.isLoading = true;
     this.newsService.get(0,lang).subscribe({
       next: data => {
-        this.adverts = data.data;
+        if(data.data.length === 0){
+          this.isEmpty = true;
+        } else{
+          this.adverts = data.data;
+          this.isEmpty = false;
+        }
         this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        this.isEmpty = true;
       }
     })
   }

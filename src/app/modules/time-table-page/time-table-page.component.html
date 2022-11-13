@@ -1,8 +1,8 @@
-<div nz-row [nzGutter]="[0,{xL:64,lg:64,md:32,sm:32,xs:32}]" class="bg">
+<div nz-row [nzGutter]="[0,{xL:64,lg:64,md:32,sm:32,xs:32}]" [ngClass]="{bg: !isEmpty}">
     <div nz-col nzSpan="24">
         <sili-page-container [title]="title" [photos]="{model_1: true,model_2: false,model_3:false,model_4: false}"></sili-page-container>
     </div>  
-    <ng-container *ngIf="teachers.length > 0">
+    <ng-container *ngIf="!isEmpty">
         <div nz-col nzSpan="24" class="bg">
             <div class="table__wrapper">
                 <div nz-row [nzGutter]="[0,{xL:64,lg:64,md:32,sm:32,xs:32}]">
@@ -49,7 +49,7 @@
             </div>
         </div>
     </ng-container>
-    <ng-container *ngIf="teachers.length === 0">
+    <ng-container *ngIf="isEmpty">
         <div nz-col nzSpan="24">
             <sili-empty></sili-empty>
         </div> 

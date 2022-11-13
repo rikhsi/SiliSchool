@@ -3,7 +3,7 @@
         <div nz-col nzSpan="24">
             <sili-title [title]="title" (swipePrev)="swipePrev()" (swipeNext)="swipeNext()"></sili-title>
         </div>
-        <ng-container *ngIf="directions.length > 0">
+        <ng-container *ngIf="!isEmpty">
             <div nz-col nzSpan="24">
                 <div class="gallery__swiper">
                     <div nz-row>
@@ -33,12 +33,12 @@
                 </div>
             </div>
         </ng-container>
-        <ng-container *ngIf="directions.length === 0">
+        <ng-container *ngIf="isEmpty">
             <div nz-col nzSpan="24">
                 <sili-empty></sili-empty>
             </div> 
         </ng-container>
-        <div nz-col nzSpan="24" *ngIf="directions.length > 0">
+        <div nz-col nzSpan="24" *ngIf="!isEmpty">
             <sili-more (loadMore)="navigate()"></sili-more>
         </div>
     </div>

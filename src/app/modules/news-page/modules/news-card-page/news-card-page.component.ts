@@ -33,7 +33,7 @@ export class NewsCardPageComponent implements OnInit {
     }
   ];
 
-  constructor(private newsService: NewsService, private activedRoute: ActivatedRoute,private mainService: MainService) { }
+  constructor(private newsService: NewsService, private activedRoute: ActivatedRoute,private mainService: MainService,private router: Router) { }
 
   ngOnInit(): void {
     this.activedRoute.params.subscribe((params: Params) => this.routeId = +params['id']);
@@ -47,10 +47,14 @@ export class NewsCardPageComponent implements OnInit {
   }
 
   getAdvert():void{
+    this.isLoading = true;
     this.newsService.getID(this.routeId,this.lang).subscribe({
       next: data => {
         this.advert = data;
         this.isLoading = false;
+      },
+      error: () => {
+        this.router.navigate([''])
       }
     })
   }
@@ -69,12 +73,11 @@ export class NewsCardPageComponent implements OnInit {
       next: data => {
         this.advert = data;
         this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
       }
     })
-    this.newsService.get(0,this.lang).subscribe({
-      next: data => {
-        this.news = data.data.filter(data => data.id != this.routeId)
-      }
-    })
+    this.getNews();
   }
 }

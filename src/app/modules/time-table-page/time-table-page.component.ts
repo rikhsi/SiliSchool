@@ -13,6 +13,7 @@ export class TimeTablePageComponent implements OnInit {
   api = api;
   title: string = 'time-table.title';
   isLoading: boolean = true;
+  isEmpty: boolean = false;
   teachers: Teacher[] = [];
   breadCrump: BreadCrump[] = [
     {
@@ -38,7 +39,16 @@ export class TimeTablePageComponent implements OnInit {
     this.isLoading = true;
     this.teachersService.get(lang).subscribe({
       next: data => {
-        this.teachers = data;
+        if(data.length === 0){
+          this.isEmpty = true;
+        } else{
+          this.teachers = data;
+          this.isEmpty = false;
+        }
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isEmpty = true;
         this.isLoading = false;
       }
     })
