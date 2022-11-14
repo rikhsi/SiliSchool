@@ -19,7 +19,6 @@ export class AdministrationComponent implements OnInit {
   config: SwiperOptions = {
     slidesPerView: 'auto',
     spaceBetween: 24,
-    loop: true,
     touchEventsTarget: 'container',
     grabCursor: true,
     autoplay: {

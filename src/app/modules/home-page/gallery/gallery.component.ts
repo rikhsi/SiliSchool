@@ -21,7 +21,6 @@ export class GalleryComponent implements OnInit {
     spaceBetween: 24,
     touchEventsTarget: 'container',
     grabCursor: true,
-    loop: true,
     autoplay: {
       delay: 10000
     },

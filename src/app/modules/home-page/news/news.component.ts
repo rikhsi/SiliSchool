@@ -19,7 +19,6 @@ export class NewsComponent implements OnInit {
   config: SwiperOptions = {
     slidesPerView: 1,
     effect: 'fade',
-    loop: true,
     simulateTouch:false,
     fadeEffect: { crossFade: true, },
     autoplay: {

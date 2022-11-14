@@ -19,7 +19,6 @@ export class AchievementsComponent implements OnInit {
     slidesPerView: 3,
     spaceBetween: 24,
     touchEventsTarget: 'container',
-    loop: true,
     grabCursor: true,
     autoplay: {
       delay: 10000
