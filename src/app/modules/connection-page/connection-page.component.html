@@ -1,83 +1,90 @@
-<div class="connection__wrapper">
-    <div class="connection__container">
-        <div nz-row>
-            <div nz-col nzXs="24" nzMd="12">
-                <div nz-row [nzGutter]="[0,{xl:48,lg:15,md:15,sm:15,xs:15}]">
-                    <div nz-col nzSpan="24">
-                        <h1 class="connection__title">{{'form.title' | translate}}</h1>
-                    </div>
-                    <div nz-col nzSpan="24">
-                        <form nz-form [formGroup]="order" (ngSubmit)="submit($event)">
-                            <div nz-row [nzGutter]="[0,10]">
-                                <div nz-col nzSpan="24">
-                                    <div nz-row>
+<div nz-row>
+    <div nz-col nzSpan="24">
+        <div class="connection__wrapper">
+            <div class="connection__container">
+                <div nz-row>
+                    <div nz-col nzXs="24" nzMd="12">
+                        <div nz-row [nzGutter]="[0,{xl:48,lg:15,md:15,sm:15,xs:15}]">
+                            <div nz-col nzSpan="24">
+                                <h1 class="connection__title">{{'form.title' | translate}}</h1>
+                            </div>
+                            <div nz-col nzSpan="24">
+                                <form nz-form [formGroup]="order" (ngSubmit)="submit($event)">
+                                    <div nz-row [nzGutter]="[0,10]">
                                         <div nz-col nzSpan="24">
-                                            <nz-form-item>
-                                                <nz-form-control [nzErrorTip]="'form.errors.name' | translate">
-                                                    <input nz-input [placeholder]="'form.name' | translate" formControlName="name" name="name" [disabled]="isLoading" class="connection__input"/>
-                                                </nz-form-control>
-                                            </nz-form-item>
-                                        </div>
-                                        <div nz-col nzSpan="24">
-                                            <nz-form-item>
-                                                <nz-form-control [nzErrorTip]="'form.errors.phone' | translate">
-                                                    <input nz-input [placeholder]="'form.phone' | translate" formControlName="phone" [disabled]="isLoading"  name="phone" mask="+000(00) 000-00-00" [showMaskTyped]="false" class="connection__input"/>
-                                                </nz-form-control>
-                                            </nz-form-item>
-                                        </div>
-                                        <div nz-col nzSpan="24">
-                                            <nz-form-item>
-                                                <nz-form-control [nzErrorTip]="'form.errors.mail' | translate">
-                                                    <input nz-input [placeholder]="'form.mail' | translate" formControlName="email"  name="mail" [disabled]="isLoading" class="connection__input"/>
-                                                </nz-form-control>
-                                            </nz-form-item>
-                                        </div>
-                                        <div nz-col nzSpan="24">
-                                            <nz-form-item>
-                                                <nz-form-control [nzErrorTip]="'form.errors.message' | translate">
-                                                    <textarea nz-input [placeholder]="'form.message' | translate" [disabled]="isLoading" formControlName="message"  name="info" class="connection__area"></textarea>
-                                                </nz-form-control>
-                                            </nz-form-item>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div nz-col nzSpan="24">
-                                    <div nz-row [nzGutter]="[0,16]">
-                                        <div nz-col nzSpan="24">  
-                                            <button nz-button nzType="primary" class="connection__button" [disabled]="isLoading">{{'form.send' | translate}}</button>
+                                            <div nz-row>
+                                                <div nz-col nzSpan="24">
+                                                    <nz-form-item>
+                                                        <nz-form-control [nzErrorTip]="'form.errors.name' | translate">
+                                                            <input nz-input [placeholder]="'form.name' | translate" formControlName="name" name="name" class="connection__input"/>
+                                                        </nz-form-control>
+                                                    </nz-form-item>
+                                                </div>
+                                                <div nz-col nzSpan="24">
+                                                    <nz-form-item>
+                                                        <nz-form-control [nzErrorTip]="'form.errors.phone' | translate">
+                                                            <input nz-input [placeholder]="'form.phone' | translate" formControlName="phone" name="phone" mask="+000(00) 000-00-00" [showMaskTyped]="false" class="connection__input"/>
+                                                        </nz-form-control>
+                                                    </nz-form-item>
+                                                </div>
+                                                <div nz-col nzSpan="24">
+                                                    <nz-form-item>
+                                                        <nz-form-control [nzErrorTip]="'form.errors.mail' | translate">
+                                                            <input nz-input [placeholder]="'form.mail' | translate" formControlName="email"  name="mail"  class="connection__input"/>
+                                                        </nz-form-control>
+                                                    </nz-form-item>
+                                                </div>
+                                                <div nz-col nzSpan="24">
+                                                    <nz-form-item>
+                                                        <nz-form-control [nzErrorTip]="'form.errors.message' | translate">
+                                                            <textarea nz-input [placeholder]="'form.message' | translate" formControlName="message"  name="info" class="connection__area"></textarea>
+                                                        </nz-form-control>
+                                                    </nz-form-item>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div nz-col nzSpan="24">
-                                            <p class="connection__convention">{{'form.convention' | translate}}</p>
+                                            <div nz-row [nzGutter]="[0,16]">
+                                                <div nz-col nzSpan="24">  
+                                                    <button nz-button nzType="primary" class="connection__button" [disabled]="isLoading">{{'form.send' | translate}}</button>
+                                                </div>
+                                                <div nz-col nzSpan="24">
+                                                    <p class="connection__convention">{{'form.convention' | translate}}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>      
-                        </form>
+                                    </div>      
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="img__container display" style="z-index: 900;">
+                <div class="img__box">
+                    <div nz-row nzJustify="end" nzAlign="bottom">
+                        <div nz-col>
+                            <div class="img__img">
+                                <img src="../../../assets/img/main.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <div class="img__container vector">
+                <div class="img__box">
+                    <div nz-row nzJustify="end" nzAlign="bottom">
+                        <div nz-col>
+                            <div class="img__img">
+                                <img src="../../../assets/img/vector.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
         </div>
     </div>
-    <div class="img__container display" style="z-index: 900;">
-        <div class="img__box">
-            <div nz-row nzJustify="end" nzAlign="bottom">
-                <div nz-col>
-                    <div class="img__img">
-                        <img src="../../../assets/img/main.png">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>  
-    <div class="img__container vector">
-        <div class="img__box">
-            <div nz-row nzJustify="end" nzAlign="bottom">
-                <div nz-col>
-                    <div class="img__img">
-                        <img src="../../../assets/img/vector.png">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>  
+    <div nz-col nzSpan="24">
+        <sili-faq></sili-faq>
+    </div>
 </div>

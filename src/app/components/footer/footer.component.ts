@@ -11,6 +11,7 @@ export class FooterComponent implements OnInit {
   schoolNumber!: number;
   schoolPhone!: string;
   schoolLocation!: string;
+  email!: string;
   youTube!: string;
   instagram!: string;
   locationLink!: string;
@@ -20,6 +21,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
     this.schoolNumber = this.mainService.schoolNumber;
     this.schoolPhone = this.mainService.schoolPhone;
+    this.email = this.mainService.email;
     this.locationLink = this.mainService.locationLink;
   }
 

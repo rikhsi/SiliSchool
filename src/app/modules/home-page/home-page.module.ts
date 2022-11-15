@@ -7,7 +7,6 @@ import { MainComponent } from './main/main.component';
 import { NewsComponent } from './news/news.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { DirectionsComponent } from './directions/directions.component';
-import { FaqComponent } from './faq/faq.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { AdministrationComponent } from './administration/administration.component';
 
@@ -32,6 +31,7 @@ import { CardsModule } from 'src/app/shared/cards/cards.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { EmptyModule } from 'src/app/shared/empty/empty.module';
+import { FaqModule } from 'src/app/shared/faq/faq.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,6 @@ import { EmptyModule } from 'src/app/shared/empty/empty.module';
     AchievementsComponent,
     AdministrationComponent,
     DirectionsComponent,
-    FaqComponent
   ],
   imports: [
     CommonModule,
@@ -59,7 +58,8 @@ import { EmptyModule } from 'src/app/shared/empty/empty.module';
     NzTypographyModule,
     CardsModule,
     NzIconModule,
-    EmptyModule
+    EmptyModule,
+    FaqModule
   ]
 })
 export class HomePageModule { }

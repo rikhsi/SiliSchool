@@ -17,9 +17,8 @@ export class FaqComponent implements OnInit {
     padding: '40px 0px',
     border: '0px 0px 1px 0px solid #CFD3D8'
   }
-
   constructor(private faqsService: FaqService, private mainService: MainService) { }
-
+  
   ngOnInit(): void {
     this.mainService.message.subscribe({
       next: data => {
@@ -35,4 +34,5 @@ export class FaqComponent implements OnInit {
       }
     })
   }
+
 }

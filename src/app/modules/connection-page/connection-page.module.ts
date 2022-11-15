@@ -18,6 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 //ngxMaskModule
 import { NgxMaskModule } from 'ngx-mask';
+import { FaqModule } from 'src/app/shared/faq/faq.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NgxMaskModule } from 'ngx-mask';
     NzFormModule,
     NzButtonModule,
     TranslateModule,
-    NgxMaskModule
+    NgxMaskModule,
+    FaqModule
   ]
 })
 export class ConnectionPageModule { }
