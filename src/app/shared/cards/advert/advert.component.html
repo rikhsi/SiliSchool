@@ -15,7 +15,7 @@
                         </div>
                         <div nz-col nzLg="0" nzXs="24">
                             <div class="card__img">
-                                <img nz-image [nzSrc]="advert.photo" [nzFallback]="fallback" alt="news">
+                                <img nz-image [nzSrc]="advert.photo[0]" [nzFallback]="fallback" alt="news">
                             </div>
                         </div>
                     </div>            
@@ -24,7 +24,7 @@
         </div>
         <div nz-col nzXl="12" nzLg="13" nzMd="0" nzXs="0">
             <div class="card__img">
-                <img nz-image [nzSrc]="advert.photo" [nzFallback]="fallback" alt="news">
+                <img nz-image [nzSrc]="advert.photo[0]" [nzFallback]="fallback" alt="news">
             </div>
         </div>
     </div>  

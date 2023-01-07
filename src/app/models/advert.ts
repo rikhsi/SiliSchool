@@ -3,7 +3,7 @@ export interface Advert{
     datetime_posted: string,
     name: string,
     description: string,
-    photo: string
+    photo: string[];
 }
 
 export interface Adverts {

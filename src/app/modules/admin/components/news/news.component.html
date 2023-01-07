@@ -22,8 +22,8 @@
                             <td>{{data.id}}</td>
                             <td>{{data.datetime_posted}}</td>
                             <td>
-                                <div class="news__img" (click)="preview(data.photo)">
-                                    <img nz-image [nzSrc]="data.photo" [nzFallback]="fallback">
+                                <div class="news__img" (click)="preview(data.photo[0])">
+                                    <img nz-image [nzSrc]="data.photo[0]" [nzFallback]="fallback">
                                 </div>
                             </td>
                             <td>
@@ -161,7 +161,7 @@
                                         </div>
                                     </div>
                                     <div nz-col nzSpan="24">
-                                        <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload" [nzDisabled]="fileList.length === 1">
+                                        <nz-upload [(nzFileList)]="fileList" [nzBeforeUpload]="beforeUpload">
                                             <button type="button" nz-button [ngClass]="{news__error: button, news__default: fileList.length != 0}" class="upload__button">
                                                 <span nz-icon nzType="upload"></span>
                                                 {{'admin.buttons.upload.photo' | translate}}

@@ -83,6 +83,14 @@
         border: none;
         background: @mainRed;
         .mainText(600,16px,24px,@white);
+
+        &:disabled{
+            background-color: grey;
+
+            &:hover{
+                color: white;
+            }
+        }
     }
     &__convention{
         letter-spacing: 0.08em;

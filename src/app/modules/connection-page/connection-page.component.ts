@@ -11,6 +11,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   providers: [NzMessageService]
 })
 export class ConnectionPageComponent implements OnInit {
+  showFaq: boolean = true;
   order!: FormGroup;
   isLoading: boolean = false;
   translateTexts: any;
@@ -39,7 +40,7 @@ export class ConnectionPageComponent implements OnInit {
       this.getTranslate();
       this.isLoading = true;
       e.preventDefault();
-      emailjs.sendForm('service_5chwzfg', 'template_nt005ib', e.target as HTMLFormElement, 'zVjtzkro_Ib9P6Fr3')
+      emailjs.sendForm('service_bdfsmcn', 'template_u1on07v', e.target as HTMLFormElement, 'Nfxiilkj-pSfCWfs5')
         .then(() => {
           this.order.reset();
           this.isLoading = false;
@@ -56,5 +57,11 @@ export class ConnectionPageComponent implements OnInit {
         }
       });
     }
+  }
+
+  hideFaq(event: boolean):void{
+    setTimeout(() => {
+      this.showFaq = event;
+    }, 0);
   }
 }

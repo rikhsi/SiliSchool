@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-export const api = 'https://bmsm33.uz/api/';
+export const api = 'https://bmsm15.uz/api/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MainService {
   isHome!: boolean;
-  lang: string = 'uz'
+  lang: string = 'uz';
   schoolNumber: number = 15;
   email: string = 'a.navai307@mail.ru'
-  schoolPhone: string = '71-6-38-72';
+  schoolPhone: string = '7071-6-38-72';
   locationLink: string = "https://goo.gl/maps/UMjvAZcy9z4MGJv36";
   
   constructor() { }

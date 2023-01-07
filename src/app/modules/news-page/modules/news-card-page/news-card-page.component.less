@@ -59,6 +59,10 @@
             object-fit: fill;
         }
     }
+    &__thumb{
+        width: 100%;
+        height: auto;
+    }
     &__title{
         text-align: center;
         .text(700,30px,150%,@grey);
@@ -80,6 +84,44 @@
     }
 }
 
-.flex{
-    display: flex;
+.thumb{
+    &__box{
+        width: 100%;
+        height: 100px;
+        background-color: @skeleton;
+        transition: 0.3s;
+        overflow: hidden;
+        cursor: pointer;
+    
+        &:hover {
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+    
+        &:active {
+            transform: scale(90%);
+            transition: 0;
+        }
+        @media (max-width:991px) {
+            height: 70px;
+        }
+    
+        @media (max-width:850px) {
+            height: 70px;
+        }
+    
+        @media (max-width:575px) {
+            height: 70px;
+        }
+    
+        @media (max-width:450px) {
+            height: 55px;
+        }
+    }
+    &__img{
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        pointer-events: none;
+    }
 }

@@ -84,7 +84,7 @@
             </div>  
         </div>
     </div>
-    <div nz-col nzSpan="24">
-        <sili-faq></sili-faq>
+    <div nz-col nzSpan="24" *ngIf="showFaq">
+        <sili-faq (isData)="hideFaq($event)"></sili-faq>
     </div>
 </div>

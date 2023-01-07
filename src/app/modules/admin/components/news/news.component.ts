@@ -102,7 +102,7 @@ export class NewsComponent implements OnInit {
   }
 
   submit(): void {
-    if (this.createForm.valid && this.fileList.length > 0) {
+    if (this.createForm.valid && this.fileList.length != 0) {
       const formData = new FormData();
       this.fileList.forEach((file: any) => {
         formData.append('file', file);

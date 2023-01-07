@@ -154,9 +154,11 @@ export class TeachersComponent implements OnInit {
       this.fileList.forEach((file: any) => {
         formData.append('file', file);
       });
-      this.timeTableList.forEach((file: any) => {
-        formData.append('timetable', file);
-      });
+      if(this.timeTableList.length !== 0){
+        this.timeTableList.forEach((file: any) => {
+          formData.append('timetable', file);
+        });
+      }
       formData.append('data', JSON.stringify(this.createForm.value))
       this.post(formData);
     } else {

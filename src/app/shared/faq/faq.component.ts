@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Faq } from 'src/app/models/faq';
 import { FaqService } from 'src/app/services/faq.service';
 import { MainService } from 'src/app/services/main.service';
@@ -9,6 +9,7 @@ import { MainService } from 'src/app/services/main.service';
   styleUrls: ['./faq.component.less']
 })
 export class FaqComponent implements OnInit {
+  @Output() isData = new EventEmitter();
   active: boolean = false;
   title: string = 'faq.title';
   faqs: Faq[] = [];
@@ -31,8 +32,15 @@ export class FaqComponent implements OnInit {
     this.faqsService.get(lang).subscribe({
       next: data => {
         this.faqs = data;
+        if(this.faqs.length === 0){
+          this.isData.emit(false);
+        } else{
+          this.isData.emit(true);
+        }
+      },
+      error: () => {
+        this.isData.emit(false);
       }
     })
   }
-
 }

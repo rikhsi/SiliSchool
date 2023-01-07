@@ -11,6 +11,7 @@ import { BreadCrumpModule } from 'src/app/shared/bread-crump/bread-crump.module'
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { PageContainerModule } from 'src/app/shared/page-container/page-container.module';
+import { SwiperModule } from 'swiper/angular';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { PageContainerModule } from 'src/app/shared/page-container/page-containe
     BreadCrumpModule,
     NzImageModule,
     NzSkeletonModule,
-    PageContainerModule
+    PageContainerModule,
+    SwiperModule
   ]
 })
 export class NewsCardPageModule { }
